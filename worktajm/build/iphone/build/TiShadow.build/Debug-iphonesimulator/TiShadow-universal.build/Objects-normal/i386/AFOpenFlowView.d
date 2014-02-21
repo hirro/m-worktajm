@@ -1,0 +1,6 @@
+dependencies: \
+  /Users/jiar/git/m-worktajm/worktajm/build/iphone/Classes/AFOpenFlow/AFOpenFlowView.m \
+  /Users/jiar/git/m-worktajm/worktajm/build/iphone/Classes/AFOpenFlow/AFOpenFlowView.h \
+  /Users/jiar/git/m-worktajm/worktajm/build/iphone/Classes/AFOpenFlow/AFItemView.h \
+  /Users/jiar/git/m-worktajm/worktajm/build/iphone/Classes/AFOpenFlow/AFOpenFlowConstants.h \
+  /Users/jiar/git/m-worktajm/worktajm/build/iphone/Classes/AFOpenFlow/AFUIImageReflection.h
