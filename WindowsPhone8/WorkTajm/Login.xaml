@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -22,14 +23,29 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="WORKTAJM" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="Login" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <TextBlock TextWrapping="Wrap" Text="Username"/>
+                <TextBox Height="72" TextWrapping="Wrap" Text="demo@worktajm.com" x:Name="username"/>
+                <TextBlock TextWrapping="Wrap" Text="Password"/>
+                <PasswordBox x:Name="password" />
+                <CheckBox x:Name="rememberMe" Content="Remember me"/>
+                <Button x:Name="LoginButton" Content="login"/>
+            </StackPanel>
 
         </Grid>
+        <StackPanel x:Name="pending" Visibility="Collapsed">
+            <Rectangle Height="300"/>
+            <TextBlock Text="Contacting server" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+            <Rectangle Height="20"/>
+            <toolkit:PerformanceProgressBar Name="ProgressBar1" IsEnabled="True" IsIndeterminate="True" Foreground="White"/>
+            <Rectangle Height="80"/>
+        </StackPanel>
     </Grid>
 
 </phone:PhoneApplicationPage>

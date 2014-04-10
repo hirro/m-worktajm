@@ -16,5 +16,10 @@ namespace WorkTajm
         {
             InitializeComponent();
         }
+
+        private void PasswordBox_TextInput_1(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+
+        }
     }
 }
