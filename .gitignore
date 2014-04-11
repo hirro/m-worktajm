@@ -1,4 +1,5 @@
-/WindowsPhone8/packages
-/WindowsPhone8/WorkTajm/obj
-/WindowsPhone8/WorkTajm/Bin
+WindowsPhone8/packages
+WindowsPhone8/WorkTajm/obj
 WindowsPhone8/WorkTajm/Bin/
+WindowsPhone8/WorkTajmTest/Bin/
+WindowsPhone8/WorkTajmTest/obj/

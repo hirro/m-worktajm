@@ -35,7 +35,7 @@
                 <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.LoginPassword, Source={StaticResource LocalizedStrings}}"/>
                 <PasswordBox x:Name="password" />
                 <CheckBox x:Name="rememberMe" Content="{Binding Path=LocalizedResources.LoginRememberMe, Source={StaticResource LocalizedStrings}}"/>
-                <Button x:Name="LoginButton" Content="{Binding Path=LocalizedResources.LoginLoginButton, Source={StaticResource LocalizedStrings}}"/>
+                <Button x:Name="LoginButton" Content="{Binding Path=LocalizedResources.LoginLoginButton, Source={StaticResource LocalizedStrings}}" Click="login_Click" />
             </StackPanel>
 
         </Grid>
