@@ -23,19 +23,19 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="WORKTAJM" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="Login" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.LoginTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <TextBlock TextWrapping="Wrap" Text="Username"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.LoginUsername, Source={StaticResource LocalizedStrings}}"/>
                 <TextBox Height="72" TextWrapping="Wrap" Text="demo@worktajm.com" x:Name="username"/>
-                <TextBlock TextWrapping="Wrap" Text="Password"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.LoginPassword, Source={StaticResource LocalizedStrings}}"/>
                 <PasswordBox x:Name="password" />
-                <CheckBox x:Name="rememberMe" Content="Remember me"/>
-                <Button x:Name="LoginButton" Content="login"/>
+                <CheckBox x:Name="rememberMe" Content="{Binding Path=LocalizedResources.LoginRememberMe, Source={StaticResource LocalizedStrings}}"/>
+                <Button x:Name="LoginButton" Content="{Binding Path=LocalizedResources.LoginLoginButton, Source={StaticResource LocalizedStrings}}"/>
             </StackPanel>
 
         </Grid>
