@@ -24,6 +24,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.Windows.Controls.Primitives;
 
 namespace WorkTajm
 {
@@ -34,9 +35,27 @@ namespace WorkTajm
             InitializeComponent();
         }
 
+        #region Popup
+        private Popup p = new Popup();
         private void login_Click(object sender, RoutedEventArgs e)
         {
+            if (p.Child == null)
+            {
+                LoginPopupControl pup = new LoginPopupControl();
+                pup.LoginButton.Click += new RoutedEventHandler(PopupClose_Click);
+                p.Child = pup;
+            }
+            p.IsOpen = true;
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
+
+        private void PopupClose_Click(object sender, RoutedEventArgs e)
+        {
+            if (p != null)
+            {
+                p.IsOpen = false;
+            }
+        }
+        #endregion
     }
 }

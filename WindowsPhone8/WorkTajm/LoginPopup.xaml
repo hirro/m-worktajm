@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="WorkTajm.LoginPopupControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"             
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    MinHeight="600" MinWidth="400">
+
+    <Grid x:Name="LayoutRoot" Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.LoginTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.LoginUsername, Source={StaticResource LocalizedStrings}}"/>
+                <TextBox Height="72" TextWrapping="Wrap" Text="demo@worktajm.com" x:Name="username"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.LoginPassword, Source={StaticResource LocalizedStrings}}"/>
+                <PasswordBox x:Name="password" />
+                <CheckBox x:Name="rememberMe" Content="{Binding Path=LocalizedResources.LoginRememberMe, Source={StaticResource LocalizedStrings}}"/>
+                <Button x:Name="LoginButton" Content="{Binding Path=LocalizedResources.LoginLoginButton, Source={StaticResource LocalizedStrings}}" Click="login_Click" />
+            </StackPanel>
+
+        </Grid>
+        <StackPanel x:Name="pending" Visibility="Collapsed">
+            <Rectangle Height="300"/>
+            <TextBlock Text="Contacting server" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+            <Rectangle Height="20"/>
+            <toolkit:PerformanceProgressBar Name="ProgressBar1" IsEnabled="True" IsIndeterminate="True" Foreground="White"/>
+            <Rectangle Height="80"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

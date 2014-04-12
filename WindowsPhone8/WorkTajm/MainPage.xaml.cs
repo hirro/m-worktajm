@@ -25,6 +25,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using WorkTajm.Resources;
+using System.Windows.Controls.Primitives;
 
 namespace WorkTajm
 {
@@ -54,5 +55,6 @@ namespace WorkTajm
         //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
         //    ApplicationBar.MenuItems.Add(appBarMenuItem);
         //}
+
     }
 }
