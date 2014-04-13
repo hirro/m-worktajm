@@ -25,6 +25,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Windows.Controls.Primitives;
+using System.ComponentModel;
 
 namespace WorkTajm
 {
@@ -55,6 +56,26 @@ namespace WorkTajm
             {
                 p.IsOpen = false;
             }
+        }
+        #endregion
+
+        #region BackKey
+        protected override void OnBackKeyPress(CancelEventArgs e)
+        {
+            if (p != null && p.IsOpen)
+            {
+                p.IsOpen = false;
+                e.Cancel = true;
+            }
+
+
+            //e.Cancel = true;
+            //base.OnBackKeyPress(e);
+        }
+
+        private void PhoneApplicationPage_BackKeyPress(
+            object sender, CancelEventArgs e)
+        {
         }
         #endregion
     }
