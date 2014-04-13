@@ -78,7 +78,8 @@ namespace WorkTajm
         {
             if (loginPopup != null)
             {
-                Login("demo@worktajm.com", "password");
+                var form = (LoginPopupControl) loginPopup.Child;
+                Login(form.username.Text, form.password.Password);
             }
         }
         //const string LOGIN_URL = "http://dev.windowsphone.com";
@@ -89,7 +90,7 @@ namespace WorkTajm
             {
                 HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(LOGIN_URL);
                 //webRequest.ContentType = "text/xml";
-                webRequest.Credentials = new NetworkCredential("demo@worktajm.com", "password");
+                webRequest.Credentials = new NetworkCredential(username, password);
                 try
                 {
                     WebResponse response = await webRequest.GetResponseAsync();
@@ -100,7 +101,23 @@ namespace WorkTajm
                 }
                 catch (WebException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    if (ex.Status == WebExceptionStatus.ProtocolError)
+                    {
+                        var response = ex.Response as HttpWebResponse;
+                        if (response != null)
+                        {
+                            MessageBox.Show("HTTP Status Code: " + (int)response.StatusCode);
+                        }
+                        else
+                        {
+                            MessageBox.Show("WTF error");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unknown error");
+                        // no http status code available
+                    }
                 }
             }
             catch (Exception e)
