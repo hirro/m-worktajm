@@ -8,7 +8,7 @@ namespace WorkTajm.Constants
 {
     class Constants
     {
-        public readonly const string password = "password";
-        public readonly const string username = "username";
+        public const string password = "password";
+        public const string username = "username";
     }
 }

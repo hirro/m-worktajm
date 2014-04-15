@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace WorkTajm.Storage
 {
+    /*
+     * Used to store configuration properties.
+     * Should be safe (saved) between update.
+     */
     class Configuration
     {
         private static Configuration instance;

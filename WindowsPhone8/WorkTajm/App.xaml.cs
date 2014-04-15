@@ -7,6 +7,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using WorkTajm.Resources;
+using WorkTajm.Storage;
 
 namespace WorkTajm
 {
@@ -61,6 +62,16 @@ namespace WorkTajm
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            UriMapper mapper = Resources["uriMapper"] as UriMapper;
+            RootFrame.UriMapper = mapper;
+            if (Configuration.Instance.RememberMe)
+            {
+                mapper.UriMappings[0].MappedUri = new Uri("/Dashboard.xaml", UriKind.Relative); 
+            }
+            else
+            {
+                mapper.UriMappings[0].MappedUri = new Uri("/Login.xaml?type=newvault", UriKind.Relative); 
+            }
         }
 
         // Code to execute when the application is activated (brought to foreground)
