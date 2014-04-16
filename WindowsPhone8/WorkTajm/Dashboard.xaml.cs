@@ -15,20 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using WorkTajm.Resources;
-using System.Windows.Controls.Primitives;
 using System.ComponentModel;
-using System.IO;
-using System.Windows.Media.Imaging;
+using System.Windows;
+using System.Windows.Controls.Primitives;
 using WorkTajm.Backend;
 using WorkTajm.Storage;
 
@@ -73,7 +63,7 @@ namespace WorkTajm
             if (loginPopup.Child == null)
             {
                 LoginPopupControl pup = new LoginPopupControl();
-                if (Configuration.Instance.RememberMe)
+                wif (Configuration.Instance.RememberMe)
                 {
                     pup.username.Text = Configuration.Instance.Username;
                     pup.password.Password = Configuration.Instance.Password;
