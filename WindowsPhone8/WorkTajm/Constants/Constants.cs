@@ -10,5 +10,6 @@ namespace WorkTajm.Constants
     {
         public const string password = "password";
         public const string username = "username";
+        public const string rememberMe = "rememberMe";
     }
 }

@@ -29,6 +29,8 @@ using System.Windows.Controls.Primitives;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Media.Imaging;
+using WorkTajm.Backend;
+using WorkTajm.Storage;
 
 namespace WorkTajm
 {
@@ -41,7 +43,10 @@ namespace WorkTajm
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
-            Login();
+            if (!Synchronizer.Instance.LoggedIn)
+            {
+                Login();
+            }
         }
 
         // Sample code for building a localized ApplicationBar
@@ -64,9 +69,20 @@ namespace WorkTajm
         private Popup loginPopup = new Popup();
         private void Login()
         {
+            // First try to login using the stored credentials
             if (loginPopup.Child == null)
             {
                 LoginPopupControl pup = new LoginPopupControl();
+                if (Configuration.Instance.RememberMe)
+                {
+                    pup.username.Text = Configuration.Instance.Username;
+                    pup.password.Password = Configuration.Instance.Password;
+                    pup.rememberMe.IsChecked = true;
+                }
+                else
+                {
+                    pup.rememberMe.IsChecked = false;
+                }
                 pup.LoginButton.Click += new RoutedEventHandler(PopupLogin_Click);
                 loginPopup.Child = pup;
             }
@@ -74,57 +90,31 @@ namespace WorkTajm
         }
 
 
-        private void PopupLogin_Click(object sender, RoutedEventArgs e)
+        private async void PopupLogin_Click(object sender, RoutedEventArgs e)
         {
             if (loginPopup != null)
             {
                 var form = (LoginPopupControl) loginPopup.Child;
-                Login(form.username.Text, form.password.Password);
-            }
-        }
-        //const string LOGIN_URL = "http://dev.windowsphone.com";
-        const string LOGIN_URL = "http://192.168.1.94:8080/worktajm-api/authenticate";
-        private async void Login(string username, string password)
-        {
-            try
-            {
-                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(LOGIN_URL);
-                //webRequest.ContentType = "text/xml";
-                webRequest.Credentials = new NetworkCredential(username, password);
-                try
+                Synchronizer.Instance.Password = form.password.Password;
+                Synchronizer.Instance.Username = form.username.Text;
+                await Synchronizer.Instance.Authenticate();
+                if (Synchronizer.Instance.LoggedIn)
                 {
-                    WebResponse response = await webRequest.GetResponseAsync();
-                    Stream responseStream = response.GetResponseStream();
-                    StreamReader reader = new StreamReader(responseStream);
-                    var txt = reader.ReadToEnd();
-                    loginPopup.IsOpen = false; 
-                }
-                catch (WebException ex)
-                {
-                    if (ex.Status == WebExceptionStatus.ProtocolError)
+                    loginPopup.IsOpen = false;
+                    if (form.rememberMe.IsChecked.Value)
                     {
-                        var response = ex.Response as HttpWebResponse;
-                        if (response != null)
-                        {
-                            MessageBox.Show("HTTP Status Code: " + (int)response.StatusCode);
-                        }
-                        else
-                        {
-                            MessageBox.Show("WTF error");
-                        }
+                        Configuration.Instance.Password = form.password.Password;
+                        Configuration.Instance.Username = form.username.Text;
+                        Configuration.Instance.RememberMe = true;
                     }
                     else
                     {
-                        MessageBox.Show("Unknown error");
-                        // no http status code available
+                        Configuration.Instance.Password = "";
+                        Configuration.Instance.Username = "";
+                        Configuration.Instance.RememberMe = false;
                     }
                 }
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-
         }
         #endregion
 

@@ -13,98 +13,75 @@ namespace WorkTajm.Storage
      */
     class Configuration
     {
-        private static Configuration instance;
-        IsolatedStorageSettings store;
-        private string password;
-        private string username;
-        private bool rememberMe;
-
-        #region static
+        // Recommended singleton pattern in multithreaded context
+        private static volatile Configuration instance;
+        private static object syncRoot = new Object();
         public static Configuration Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new Configuration();
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new Configuration();
+                        }
+                    }
                 }
                 return instance;
             }
-
         }
-        #endregion
 
-        #region accessors
-        public string Password
+        IsolatedStorageSettings store;
+        
+        public string Password 
         {
             get
             {
-                return password;
+                string stringValue;
+                store.TryGetValue(Constants.Constants.password, out stringValue);
+                return stringValue;
             }
             set
             {
-                password = value;
+                store[Constants.Constants.password] = value;
+                store.Save();
             }
         }
-
-        public string Username
+        public string Username 
         {
             get
             {
-                return username;
+                string stringValue;
+                store.TryGetValue(Constants.Constants.username, out stringValue);
+                return stringValue;
             }
             set
             {
-                username = value;
+                store[Constants.Constants.username] = value;
+                store.Save();
             }
         }
-        public bool RememberMe
+        public bool RememberMe 
         {
             get
             {
-                return rememberMe;
+                bool boolValue;
+                store.TryGetValue(Constants.Constants.rememberMe, out boolValue);
+                return boolValue;
             }
             set
             {
-                rememberMe = value;
+                store[Constants.Constants.rememberMe] = value;
+                store.Save();
             }
         }
-        #endregion
 
         private Configuration()
         {
             store = System.IO.IsolatedStorage.IsolatedStorageSettings.ApplicationSettings;
-            Load();
         }
-
-        private void Load()
-        {
-            string stringValue;
-            if (store.TryGetValue(Constants.Constants.username, out stringValue))
-            {
-                username = stringValue;
-                rememberMe = true;
-            }
-            if (store.TryGetValue(Constants.Constants.password, out stringValue))
-            {
-                password = stringValue;
-                rememberMe = true;
-            }
-        }
-
-        private void Save()
-        {
-            if (rememberMe)
-            {
-                store[Constants.Constants.password] = password;
-                store[Constants.Constants.username] = username;
-            }
-            else
-            {
-                store[Constants.Constants.password] = null;
-                store[Constants.Constants.username] = null;
-            }
-        }
-
     }
 }

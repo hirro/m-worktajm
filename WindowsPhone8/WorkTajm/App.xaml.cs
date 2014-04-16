@@ -64,14 +64,7 @@ namespace WorkTajm
         {
             UriMapper mapper = Resources["uriMapper"] as UriMapper;
             RootFrame.UriMapper = mapper;
-            if (Configuration.Instance.RememberMe)
-            {
-                mapper.UriMappings[0].MappedUri = new Uri("/Dashboard.xaml", UriKind.Relative); 
-            }
-            else
-            {
-                mapper.UriMappings[0].MappedUri = new Uri("/Login.xaml?type=newvault", UriKind.Relative); 
-            }
+            mapper.UriMappings[0].MappedUri = new Uri("/Dashboard.xaml", UriKind.Relative); 
         }
 
         // Code to execute when the application is activated (brought to foreground)
