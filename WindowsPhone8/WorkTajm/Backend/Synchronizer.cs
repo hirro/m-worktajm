@@ -20,6 +20,7 @@ using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
 using WorkTajm.Backend.Json;
 using WorkTajm.Constants;
+using System.Diagnostics;
 
 namespace WorkTajm.Backend
 {
@@ -79,6 +80,9 @@ namespace WorkTajm.Backend
                     var txt = reader.ReadToEnd();
                     UserInformation json = JsonConvert.DeserializeObject<UserInformation>(txt);
                     LoggedIn = true;
+
+                    // Let the projects load in its own pace
+                    Task projectLoader = LoadProjects(); 
                 }
                 catch (WebException ex)
                 {
@@ -93,7 +97,32 @@ namespace WorkTajm.Backend
 
         public async Task LoadProjects()
         {
-
+            if (!LoggedIn)
+            {
+                throw new UnauthorizedAccessException("Tried to load projects when not logged in");
+            }
+            try
+            {
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(PROJECTS_URL);
+                webRequest.Credentials = new NetworkCredential(Username, Password);
+                try
+                {
+                    WebResponse response = await webRequest.GetResponseAsync();
+                    Stream responseStream = response.GetResponseStream();
+                    StreamReader reader = new StreamReader(responseStream);
+                    var txt = reader.ReadToEnd();
+                    Project[] projects = JsonConvert.DeserializeObject<Project[]>(txt);
+                    LoggedIn = true;
+                }
+                catch (WebException ex)
+                {
+                    MessageBox.Show(WebExceptions.Lookup(ex.Status), AppResources.LoginFailedTitle, MessageBoxButton.OK);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
     }
 }

@@ -64,7 +64,7 @@ namespace WorkTajm
         {
             UriMapper mapper = Resources["uriMapper"] as UriMapper;
             RootFrame.UriMapper = mapper;
-            mapper.UriMappings[0].MappedUri = new Uri("/Dashboard.xaml", UriKind.Relative); 
+            mapper.UriMappings[0].MappedUri = new Uri("/Views/Dashboard.xaml", UriKind.Relative); 
         }
 
         // Code to execute when the application is activated (brought to foreground)

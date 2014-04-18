@@ -169,6 +169,15 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string SettingsTitle {
+            get {
+                return ResourceManager.GetString("SettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified cache entry was not found..
         /// </summary>
         public static string WebExceptionStatus_CacheEntryNotFound {

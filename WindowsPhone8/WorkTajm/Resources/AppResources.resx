@@ -218,4 +218,7 @@
   <data name="LoginFailedButton" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
 </root>
