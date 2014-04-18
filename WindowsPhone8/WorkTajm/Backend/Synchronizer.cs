@@ -19,6 +19,7 @@ using System.IO;
 using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
 using WorkTajm.Backend.Json;
+using WorkTajm.Constants;
 
 namespace WorkTajm.Backend
 {
@@ -81,29 +82,17 @@ namespace WorkTajm.Backend
                 }
                 catch (WebException ex)
                 {
-                    if (ex.Status == WebExceptionStatus.ProtocolError)
-                    {
-                        var response = ex.Response as HttpWebResponse;
-                        if (response != null)
-                        {
-                            MessageBox.Show("HTTP Status Code: " + (int)response.StatusCode);
-                        }
-                        else
-                        {
-                            MessageBox.Show("WTF error");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Unknown error");
-                        // no http status code available
-                    }
+                    MessageBox.Show(WebExceptions.Lookup(ex.Status), AppResources.LoginFailedTitle, MessageBoxButton.OK);
                 }
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
             }
+        }
+
+        public async Task LoadProjects()
+        {
 
         }
     }

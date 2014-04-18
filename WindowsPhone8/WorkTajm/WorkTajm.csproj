@@ -96,6 +96,7 @@
     <Compile Include="Backend\Synchronizer.cs" />
     <Compile Include="Backend\Json\UserInformation.cs" />
     <Compile Include="Constants\Constants.cs" />
+    <Compile Include="Constants\WebExceptions.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -171,6 +172,7 @@
     <EmbeddedResource Include="Resources\AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

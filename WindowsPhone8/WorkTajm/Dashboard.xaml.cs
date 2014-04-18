@@ -63,7 +63,7 @@ namespace WorkTajm
             if (loginPopup.Child == null)
             {
                 LoginPopupControl pup = new LoginPopupControl();
-                wif (Configuration.Instance.RememberMe)
+                if (Configuration.Instance.RememberMe)
                 {
                     pup.username.Text = Configuration.Instance.Username;
                     pup.password.Password = Configuration.Instance.Password;

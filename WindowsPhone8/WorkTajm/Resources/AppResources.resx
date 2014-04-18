@@ -149,4 +149,73 @@
   <data name="LoginUsername" xml:space="preserve">
     <value>Username</value>
   </data>
+  <data name="WebExceptionStatus_CacheEntryNotFound" xml:space="preserve">
+    <value>The specified cache entry was not found.</value>
+  </data>
+  <data name="WebExceptionStatus_ConnectFailure" xml:space="preserve">
+    <value>The remote service point could not be contacted at the transport level.</value>
+  </data>
+  <data name="WebExceptionStatus_ConnectionClosed" xml:space="preserve">
+    <value>The connection was prematurely closed.</value>
+  </data>
+  <data name="WebExceptionStatus_KeepAliveFailure" xml:space="preserve">
+    <value>The connection for a request that specifies the Keep-alive header was closed unexpectedly.</value>
+  </data>
+  <data name="WebExceptionStatus_MessageLengthLimitExceeded" xml:space="preserve">
+    <value>A message was received that exceeded the specified limit when sending a request or receiving a response from the server.</value>
+  </data>
+  <data name="WebExceptionStatus_NameResolutionFailure" xml:space="preserve">
+    <value>The name resolver service could not resolve the host name.</value>
+  </data>
+  <data name="WebExceptionStatus_Pending" xml:space="preserve">
+    <value>An internal asynchronous request is pending.</value>
+  </data>
+  <data name="WebExceptionStatus_PipelineFailure" xml:space="preserve">
+    <value>The request was a piplined request and the connection was closed before the response was received.</value>
+  </data>
+  <data name="WebExceptionStatus_ProtocolError" xml:space="preserve">
+    <value>The response received from the server was complete but indicated a protocol-level error. For example, an HTTP protocol error such as 401 Access Denied would use this status.</value>
+  </data>
+  <data name="WebExceptionStatus_ProxyNameResolutionFailure" xml:space="preserve">
+    <value>The name resolver service could not resolve the proxy host name.</value>
+  </data>
+  <data name="WebExceptionStatus_ReceiveFailure" xml:space="preserve">
+    <value>A complete response was not received from the remote server.</value>
+  </data>
+  <data name="WebExceptionStatus_RequestCanceled" xml:space="preserve">
+    <value>The request was canceled, the WebRequest.Abort method was called, or an unclassifiable error occurred. This is the default value for Status.</value>
+  </data>
+  <data name="WebExceptionStatus_RequestProhibitedByCachePolicy" xml:space="preserve">
+    <value>The request was not permitted by the cache policy. In general, this occurs when a request is not cacheable and the effective policy prohibits sending the request to the server. You might receive this status if a request method implies the presence of a request body, a request method requires direct interaction with the server, or a request contains a conditional header.</value>
+  </data>
+  <data name="WebExceptionStatus_RequestProhibitedByProxy" xml:space="preserve">
+    <value>This request was not permitted by the proxy.</value>
+  </data>
+  <data name="WebExceptionStatus_SecureChannelFailure" xml:space="preserve">
+    <value>An error occurred while establishing a connection using SSL.</value>
+  </data>
+  <data name="WebExceptionStatus_SendFailure" xml:space="preserve">
+    <value>A complete request could not be sent to the remote server.</value>
+  </data>
+  <data name="WebExceptionStatus_ServerProtocolViolation" xml:space="preserve">
+    <value>The server response was not a valid HTTP response.</value>
+  </data>
+  <data name="WebExceptionStatus_Success" xml:space="preserve">
+    <value>No error was encountered.</value>
+  </data>
+  <data name="WebExceptionStatus_Timeout" xml:space="preserve">
+    <value>No response was received during the time-out period for a request.</value>
+  </data>
+  <data name="WebExceptionStatus_TrustFailure" xml:space="preserve">
+    <value>A server certificate could not be validated.</value>
+  </data>
+  <data name="WebExceptionStatus_UnknownError" xml:space="preserve">
+    <value>An exception of unknown type has occurred.</value>
+  </data>
+  <data name="LoginFailedTitle" xml:space="preserve">
+    <value>Login failed</value>
+  </data>
+  <data name="LoginFailedButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>
