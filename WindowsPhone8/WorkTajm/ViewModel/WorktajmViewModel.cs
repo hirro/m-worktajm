@@ -17,11 +17,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WorkTajm.Model;
+using WorkTajm.DataModel;
 
 namespace WorkTajm
 {
@@ -29,12 +30,52 @@ namespace WorkTajm
     {
         // LINQ to SQL data context for the local database
         private WorkTajmContext workTajmDb;
+        private bool isDataLoaded;
+
+        public ObservableCollection<Customer> Customers { get; private set; }
+        public ObservableCollection<Project> Projects { get; private set; }
+        public ObservableCollection<TimeEntry> TimeEntries { get; private set; }
 
         public WorkTajmViewModel(string workTajmConnectionString)
         {
             workTajmDb = new WorkTajmContext(workTajmConnectionString);
+            if (!workTajmDb.DatabaseExists())
+            {
+                workTajmDb.CreateDatabase();
+            } 
         }
 
+        public void LoadData()
+        {
+            if (!isDataLoaded)
+            {
+                Customers = new ObservableCollection<Customer>(workTajmDb.Customers);
+                Projects = new ObservableCollection<Project>(workTajmDb.Projects);
+                TimeEntries = new ObservableCollection<TimeEntry>(workTajmDb.TimeEntries);
+                isDataLoaded = true;
+            }
+        }
+
+        public void AddCustomer(Customer customer)
+        {
+            workTajmDb.Customers.InsertOnSubmit(customer);
+            Customers.Add(customer);
+            workTajmDb.SubmitChanges();
+        }
+
+        public void AddProject(Project project)
+        {
+            workTajmDb.Projects.InsertOnSubmit(project);
+            Projects.Add(project);
+            workTajmDb.SubmitChanges();
+        }
+
+        public void AddTimeEntry(TimeEntry timeEntry)
+        {
+            workTajmDb.TimeEntries.InsertOnSubmit(timeEntry);
+            TimeEntries.Add(timeEntry);
+            workTajmDb.SubmitChanges();
+        }
 
         #region INotifyPropertyChanged Members
 

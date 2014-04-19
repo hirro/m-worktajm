@@ -1,26 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using WorkTajm.Resources;
-using System.Windows.Controls.Primitives;
 using System.ComponentModel;
 using System.IO;
-using System.Windows.Media.Imaging;
-using Newtonsoft.Json;
+using System.Net;
+using System.Threading.Tasks;
+using System.Windows;
 using WorkTajm.Backend.Json;
 using WorkTajm.Constants;
-using System.Diagnostics;
+using WorkTajm.Resources;
 
 namespace WorkTajm.Backend
 {
@@ -112,7 +99,10 @@ namespace WorkTajm.Backend
                     StreamReader reader = new StreamReader(responseStream);
                     var txt = reader.ReadToEnd();
                     Project[] projects = JsonConvert.DeserializeObject<Project[]>(txt);
-                    LoggedIn = true;
+                    foreach (Project project in projects)
+                    {
+
+                    }
                 }
                 catch (WebException ex)
                 {

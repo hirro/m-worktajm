@@ -98,6 +98,9 @@
     <Compile Include="Backend\Json\UserInformation.cs" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Constants\WebExceptions.cs" />
+    <Compile Include="DataModel\Customer.cs" />
+    <Compile Include="DataModel\Project.cs" />
+    <Compile Include="DataModel\TimeEntry.cs" />
     <Compile Include="Views\CustomerControl.xaml.cs">
       <DependentUpon>CustomerControl.xaml</DependentUpon>
     </Compile>
@@ -111,7 +114,7 @@
     <Compile Include="Views\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\WorkTajmContext.cs" />
+    <Compile Include="DataModel\WorkTajmContext.cs" />
     <Compile Include="Views\ProjectControl.xaml.cs">
       <DependentUpon>ProjectControl.xaml</DependentUpon>
     </Compile>
