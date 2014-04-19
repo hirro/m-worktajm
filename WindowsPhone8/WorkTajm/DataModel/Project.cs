@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace WorkTajm.DataModel
 {
-    [Table]
+    [Table(Name="Project")]
     public class Project : INotifyPropertyChanged, INotifyPropertyChanging
     {
         // Define ID: private field, public property, and database column.
@@ -25,7 +25,6 @@ namespace WorkTajm.DataModel
 
         // Project name
         private string name;
-
         [Column]
         public string Name
         {
@@ -59,9 +58,9 @@ namespace WorkTajm.DataModel
         }
 
         // Rate
-        private decimal rate;
+        private decimal? rate;
         [Column]
-        public decimal Rate
+        public decimal? Rate
         {
             get
             {

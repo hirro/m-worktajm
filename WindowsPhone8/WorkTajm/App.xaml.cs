@@ -64,13 +64,15 @@ namespace WorkTajm
         {
             UriMapper mapper = Resources["uriMapper"] as UriMapper;
             RootFrame.UriMapper = mapper;
-            mapper.UriMappings[0].MappedUri = new Uri("/Views/Dashboard.xaml", UriKind.Relative); 
+            mapper.UriMappings[0].MappedUri = new Uri("/Views/Dashboard.xaml", UriKind.Relative);
+            WorkTajmViewModel.Instance.LoadData();
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            WorkTajmViewModel.Instance.LoadData();
         }
 
         // Code to execute when the application is deactivated (sent to background)

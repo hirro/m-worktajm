@@ -28,6 +28,24 @@ namespace WorkTajm
 {
     class WorkTajmViewModel : INotifyPropertyChanged
     {
+        private static Object lockObject = new Object();
+        private static WorkTajmViewModel mainViewModel;
+        public static WorkTajmViewModel Instance
+        {
+            get
+            {
+                if (mainViewModel == null)
+                {
+                    lock (lockObject)
+                    {
+                        mainViewModel = new WorkTajmViewModel(WorkTajmContext.ConnectionString);
+                    }
+                }
+
+                return mainViewModel;
+            }
+        }
+
         // LINQ to SQL data context for the local database
         private WorkTajmContext workTajmDb;
         private bool isDataLoaded;
@@ -39,10 +57,16 @@ namespace WorkTajm
         public WorkTajmViewModel(string workTajmConnectionString)
         {
             workTajmDb = new WorkTajmContext(workTajmConnectionString);
+
+            if (workTajmDb.DatabaseExists())
+            {
+                workTajmDb.DeleteDatabase();
+            }
             if (!workTajmDb.DatabaseExists())
             {
                 workTajmDb.CreateDatabase();
-            } 
+            }
+            LoadData();
         }
 
         public void LoadData()
@@ -56,17 +80,18 @@ namespace WorkTajm
             }
         }
 
-        public void AddCustomer(Customer customer)
-        {
-            workTajmDb.Customers.InsertOnSubmit(customer);
-            Customers.Add(customer);
-            workTajmDb.SubmitChanges();
-        }
 
         public void AddProject(Project project)
         {
             workTajmDb.Projects.InsertOnSubmit(project);
             Projects.Add(project);
+            workTajmDb.SubmitChanges();
+        }
+
+        public void AddCustomer(Customer customer)
+        {
+            workTajmDb.Customers.InsertOnSubmit(customer);
+            Customers.Add(customer);
             workTajmDb.SubmitChanges();
         }
 

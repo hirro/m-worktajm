@@ -9,20 +9,17 @@ namespace WorkTajm.DataModel
     public class TimeEntry : INotifyPropertyChanged, INotifyPropertyChanging
     {
         // Define ID: private field, public property, and database column.
-        private int _timeEntryId;
+        private int _id;
 
-        [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Idenitity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
-        public int TimeEntryId
+        [Column(DbType = "INT NOT NULL IDENTITY", IsDbGenerated = true, IsPrimaryKey = true)]
+        public int Id
         {
-            get { return _timeEntryId; }
+            get { return _id; }
             set
             {
-                if (_timeEntryId != value)
-                {
-                    NotifyPropertyChanging("TimeEntryId");
-                    _timeEntryId = value;
-                    NotifyPropertyChanged("TimeEntryId");
-                }
+                NotifyPropertyChanging("Id");
+                _id = value;
+                NotifyPropertyChanged("Id");
             }
         }
 

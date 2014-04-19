@@ -98,10 +98,13 @@ namespace WorkTajm.Backend
                     Stream responseStream = response.GetResponseStream();
                     StreamReader reader = new StreamReader(responseStream);
                     var txt = reader.ReadToEnd();
-                    Project[] projects = JsonConvert.DeserializeObject<Project[]>(txt);
-                    foreach (Project project in projects)
+                    WorkTajm.DataModel.Project[] projects = JsonConvert.DeserializeObject<WorkTajm.DataModel.Project[]>(txt);
+                    foreach (WorkTajm.DataModel.Project project in projects)
                     {
-
+                        WorkTajm.DataModel.Project p = new WorkTajm.DataModel.Project();
+                        p.Name = project.Name;
+                        p.Rate = 222;
+                        WorkTajmViewModel.Instance.AddProject(p);
                     }
                 }
                 catch (WebException ex)
