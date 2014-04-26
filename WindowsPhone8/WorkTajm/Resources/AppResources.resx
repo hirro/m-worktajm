@@ -221,4 +221,24 @@
   <data name="SettingsTitle" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>Worktajm</value>
+    <comment>The application name</comment>
+  </data>
+  <data name="CustomersTitle" xml:space="preserve">
+    <value>Customers</value>
+    <comment>All the available customers</comment>
+  </data>
+  <data name="ProjectsTitle" xml:space="preserve">
+    <value>Projects</value>
+    <comment>All the available projects</comment>
+  </data>
+  <data name="StartTitle" xml:space="preserve">
+    <value>Start</value>
+    <comment>The start page</comment>
+  </data>
+  <data name="TimeEntriesTitle" xml:space="preserve">
+    <value>Time Entries</value>
+    <comment>All the books time entries</comment>
+  </data>
 </root>

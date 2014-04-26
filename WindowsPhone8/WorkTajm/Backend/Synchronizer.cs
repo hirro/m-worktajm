@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -13,10 +15,10 @@ namespace WorkTajm.Backend
 {
     class Synchronizer
     {
-        const string LOGIN_URL = "http://worktajm.arnellconsulting.dyndns.org:8080/worktajm-api/authenticate";
-        const string PROJECTS_URL = "http://worktajm.arnellconsulting.dyndns.org:8080/worktajm-api/project";
-        const string CUSTOMER_URL = "http://worktajm.arnellconsulting.dyndns.org:8080/worktajm-api/customer";
-        const string TIMEENTRY_URL = "http://worktajm.arnellconsulting.dyndns.org:8080/worktajm-api/timeEntry";
+        const string LOGIN_URL = "http://worktajm-api.cfapps.io/authenticate";
+        const string PROJECTS_URL = "http://worktajm-api.cfapps.io/project";
+        const string CUSTOMER_URL = "http://worktajm-api.cfapps.io/customer";
+        const string TIMEENTRY_URL = "http://worktajm-api.cfapps.io/timeEntry";
 
         // Recommended singleton pattern in multithreaded context
         private static volatile Synchronizer instance;
@@ -69,7 +71,7 @@ namespace WorkTajm.Backend
                     LoggedIn = true;
 
                     // Let the projects load in its own pace
-                    Task projectLoader = LoadProjects(); 
+                    Task projectLoader = LoadFromBackend(); 
                 }
                 catch (WebException ex)
                 {
@@ -82,8 +84,60 @@ namespace WorkTajm.Backend
             }
         }
 
+        public async Task LoadFromBackend()
+        {
+            Debug.WriteLine("LoadFromBackend");
+
+            if (!LoggedIn)
+            {
+                throw new UnauthorizedAccessException("Tried to load projects when not logged in");
+            }
+
+            await LoadCustomers();
+            await LoadProjects();
+            await LoadTimeEntries();
+        }
+
+        public async Task LoadCustomers()
+        {
+            Debug.WriteLine("LoadCustomers");
+
+            if (!LoggedIn)
+            {
+                throw new UnauthorizedAccessException("Tried to load projects when not logged in");
+            }
+            try
+            {
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(CUSTOMER_URL);
+                webRequest.Credentials = new NetworkCredential(Username, Password);
+                try
+                {
+                    WebResponse response = await webRequest.GetResponseAsync();
+                    Stream responseStream = response.GetResponseStream();
+                    StreamReader reader = new StreamReader(responseStream);
+                    var txt = reader.ReadToEnd();
+                    WorkTajm.DataModel.Customer[] customers = JsonConvert.DeserializeObject<WorkTajm.DataModel.Customer[]>(txt);
+                    foreach (WorkTajm.DataModel.Customer customer in customers)
+                    {
+                        Debug.WriteLine("Added customer {0}", customer.Name);
+                        WorkTajmViewModel.Instance.AddCustomer(customer);
+                    }
+                }
+                catch (WebException ex)
+                {
+                    Debug.WriteLine(ex);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
         public async Task LoadProjects()
         {
+            Debug.WriteLine("LoadProjects");
+
             if (!LoggedIn)
             {
                 throw new UnauthorizedAccessException("Tried to load projects when not logged in");
@@ -101,20 +155,57 @@ namespace WorkTajm.Backend
                     WorkTajm.DataModel.Project[] projects = JsonConvert.DeserializeObject<WorkTajm.DataModel.Project[]>(txt);
                     foreach (WorkTajm.DataModel.Project project in projects)
                     {
-                        WorkTajm.DataModel.Project p = new WorkTajm.DataModel.Project();
-                        p.Name = project.Name;
-                        p.Rate = 222;
-                        WorkTajmViewModel.Instance.AddProject(p);
+                        Debug.WriteLine("Added project {0}", project.Name);
+                        WorkTajmViewModel.Instance.AddProject(project);
                     }
                 }
                 catch (WebException ex)
                 {
-                    MessageBox.Show(WebExceptions.Lookup(ex.Status), AppResources.LoginFailedTitle, MessageBoxButton.OK);
+                    Debug.WriteLine(ex);
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                Debug.WriteLine(e);
+            }
+        }
+
+        public async Task LoadTimeEntries()
+        {
+            string txt = "";
+
+            Debug.WriteLine("LoadTimeEntries");
+
+            if (!LoggedIn)
+            {
+                throw new UnauthorizedAccessException("Tried to load projects when not logged in");
+            }
+            try
+            {
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(TIMEENTRY_URL);
+                webRequest.Credentials = new NetworkCredential(Username, Password);
+                try
+                {
+                    WebResponse response = await webRequest.GetResponseAsync();
+                    Stream responseStream = response.GetResponseStream();
+                    StreamReader reader = new StreamReader(responseStream);
+                    txt = reader.ReadToEnd();
+                    WorkTajm.DataModel.TimeEntry[] timeEntries = JsonConvert.DeserializeObject<WorkTajm.DataModel.TimeEntry[]>(txt, new JavaScriptDateTimeConverter());
+                    foreach (WorkTajm.DataModel.TimeEntry timeEntry in timeEntries)
+                    {
+                        Debug.WriteLine("Added time entry");
+                        //WorkTajmViewModel.Instance.AddTimeEntry(timeEntry);
+                    }
+                }
+                catch (WebException ex)
+                {
+                    Debug.WriteLine(ex);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                Debug.WriteLine(txt);
             }
         }
     }
