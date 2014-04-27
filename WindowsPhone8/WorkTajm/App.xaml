@@ -10,7 +10,7 @@
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:WorkTajm" x:Key="LocalizedStrings"/>
         <navigation:UriMapper x:Name="uriMapper">
-            <navigation:UriMapping Uri="/MainPage.xaml" />
+            <navigation:UriMapping Uri="/LoginPage.xaml" />
         </navigation:UriMapper>
     </Application.Resources>
 

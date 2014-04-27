@@ -117,22 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ResourceFlowDirection" xml:space="preserve">
-    <value>LeftToRight</value>
-    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  <data name="AboutCustomers" xml:space="preserve">
+    <value>Customers</value>
   </data>
-  <data name="ResourceLanguage" xml:space="preserve">
-    <value>en-US</value>
-    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  <data name="AboutProjects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="AboutTimeEntries" xml:space="preserve">
+    <value>Time entries</value>
+  </data>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="AppBarAboutText" xml:space="preserve">
+    <value>About...</value>
+  </data>
+  <data name="AppBarAddButtonText" xml:space="preserve">
+    <value>add</value>
+  </data>
+  <data name="AppBarLoginButtonText" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="AppBarLogoutText" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="AppBarMenuItemText" xml:space="preserve">
+    <value>Menu Item</value>
+  </data>
+  <data name="AppBarSyncButtonText" xml:space="preserve">
+    <value>sync</value>
+  </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>Worktajm</value>
+    <comment>The application name</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
     <value>WorkTajm</value>
   </data>
-  <data name="AppBarButtonText" xml:space="preserve">
-    <value>add</value>
+  <data name="CustomersTitle" xml:space="preserve">
+    <value>Customers</value>
+    <comment>All the available customers</comment>
   </data>
-  <data name="AppBarMenuItemText" xml:space="preserve">
-    <value>Menu Item</value>
+  <data name="LoginFailedButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="LoginFailedTitle" xml:space="preserve">
+    <value>Login failed</value>
   </data>
   <data name="LoginLoginButton" xml:space="preserve">
     <value>Login</value>
@@ -148,6 +181,43 @@
   </data>
   <data name="LoginUsername" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="LogoutConfirm" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="LogoutDeny" xml:space="preserve">
+    <value>cancel</value>
+  </data>
+  <data name="LogoutText" xml:space="preserve">
+    <value>All data will be cleared and must be restored next time you log in. 
+
+Are you sure you want to logout?</value>
+  </data>
+  <data name="LogoutTitle" xml:space="preserve">
+    <value>Confirm Logout</value>
+  </data>
+  <data name="ProjectsTitle" xml:space="preserve">
+    <value>Projects</value>
+    <comment>All the available projects</comment>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>en-US</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="StartTitle" xml:space="preserve">
+    <value>Start</value>
+    <comment>The start page</comment>
+  </data>
+  <data name="TimeEntriesTitle" xml:space="preserve">
+    <value>Time Entries</value>
+    <comment>All the books time entries</comment>
   </data>
   <data name="WebExceptionStatus_CacheEntryNotFound" xml:space="preserve">
     <value>The specified cache entry was not found.</value>
@@ -211,34 +281,5 @@
   </data>
   <data name="WebExceptionStatus_UnknownError" xml:space="preserve">
     <value>An exception of unknown type has occurred.</value>
-  </data>
-  <data name="LoginFailedTitle" xml:space="preserve">
-    <value>Login failed</value>
-  </data>
-  <data name="LoginFailedButton" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="SettingsTitle" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="ApplicationName" xml:space="preserve">
-    <value>Worktajm</value>
-    <comment>The application name</comment>
-  </data>
-  <data name="CustomersTitle" xml:space="preserve">
-    <value>Customers</value>
-    <comment>All the available customers</comment>
-  </data>
-  <data name="ProjectsTitle" xml:space="preserve">
-    <value>Projects</value>
-    <comment>All the available projects</comment>
-  </data>
-  <data name="StartTitle" xml:space="preserve">
-    <value>Start</value>
-    <comment>The start page</comment>
-  </data>
-  <data name="TimeEntriesTitle" xml:space="preserve">
-    <value>Time Entries</value>
-    <comment>All the books time entries</comment>
   </data>
 </root>

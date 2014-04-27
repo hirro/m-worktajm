@@ -44,7 +44,7 @@
                                 <TextBlock Text="08:00:00" Style="{StaticResource PhoneTextTitle3Style}"/>
                             </StackPanel>
                         </Grid>
-                        <phone:LongListSelector x:Name="availableProjectsSelector" ItemsSource="{Binding AvailableProjects}">
+                        <phone:LongListSelector Grid.Row="1" x:Name="availableProjectsSelector" ItemsSource="{Binding Projects}">
                             <phone:LongListSelector.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>

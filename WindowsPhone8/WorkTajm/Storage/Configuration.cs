@@ -83,5 +83,12 @@ namespace WorkTajm.Storage
         {
             store = System.IO.IsolatedStorage.IsolatedStorageSettings.ApplicationSettings;
         }
+
+        internal void ForgeMe()
+        {
+            RememberMe = false;
+            Password = null;
+            Username = null;
+        }
     }
 }

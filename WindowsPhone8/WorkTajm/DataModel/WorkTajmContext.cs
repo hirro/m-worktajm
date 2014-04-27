@@ -45,6 +45,12 @@ namespace WorkTajm.DataModel
         // Time entries
         public Table<TimeEntry> TimeEntries;
 
+
+        internal void ResetDatabase()
+        {
+            DeleteDatabase();
+            CreateDatabase();
+        }
     }
 
 }

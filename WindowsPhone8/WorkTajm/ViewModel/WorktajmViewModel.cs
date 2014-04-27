@@ -15,6 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using Microsoft.Phone.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,7 +23,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls.Primitives;
+using System.Windows.Navigation;
+using WorkTajm.Backend;
 using WorkTajm.DataModel;
+using WorkTajm.Resources;
+using WorkTajm.Storage;
 
 namespace WorkTajm
 {
@@ -113,6 +120,110 @@ namespace WorkTajm
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+        #endregion
+
+
+        internal void Logout()
+        {
+            CustomMessageBox messageBox = new CustomMessageBox()
+            {
+                Caption = AppResources.LogoutTitle,
+                Message = AppResources.LogoutText,
+                LeftButtonContent = AppResources.LogoutConfirm,
+                RightButtonContent = AppResources.LogoutDeny
+            };
+
+            messageBox.Dismissed += (s1, e1) =>
+            {
+                switch (e1.Result)
+                {
+                    case CustomMessageBoxResult.LeftButton:
+                        OnLogout();
+                        break;
+                    case CustomMessageBoxResult.RightButton:
+                        // Do nothing.
+                        break;
+                    default:
+                        break;
+                }
+            };
+
+            messageBox.Show();
+        }
+
+        private void OnLogout()
+        {
+            Configuration.Instance.ForgeMe();
+            workTajmDb.ResetDatabase();
+            PhoneApplicationFrame NavigationService = (Application.Current.RootVisual as PhoneApplicationFrame);
+            while (NavigationService.CanGoBack) 
+            {
+                NavigationService.RemoveBackEntry();
+            }
+            Login();
+            //NavigationService.GoBack();
+            //NavigationService.Navigate(new Uri("/Views/LoginPage.xaml", UriKind.Relative));
+        }
+
+        public bool IsLoggedIn 
+        {
+            get
+            {
+                return Synchronizer.Instance.LoggedIn;
+            }
+        }
+
+        #region Popup
+        private Popup loginPopup = new Popup();
+        public void Login()
+        {
+            // First try to login using the stored credentials
+            if (loginPopup.Child == null)
+            {
+                LoginPopupControl pup = new LoginPopupControl();
+                if (Configuration.Instance.RememberMe)
+                {
+                    pup.username.Text = Configuration.Instance.Username;
+                    pup.password.Password = Configuration.Instance.Password;
+                    pup.rememberMe.IsChecked = true;
+                }
+                else
+                {
+                    pup.rememberMe.IsChecked = false;
+                }
+                pup.LoginButton.Click += new RoutedEventHandler(PopupLogin_Click);
+                loginPopup.Child = pup;
+            }
+            loginPopup.IsOpen = true;
+        }
+
+        private async void PopupLogin_Click(object sender, RoutedEventArgs e)
+        {
+            if (loginPopup != null)
+            {
+                var form = (LoginPopupControl)loginPopup.Child;
+                Synchronizer.Instance.Password = form.password.Password;
+                Synchronizer.Instance.Username = form.username.Text;
+                await Synchronizer.Instance.Authenticate();
+                if (Synchronizer.Instance.LoggedIn)
+                {
+                    loginPopup.IsOpen = false;
+                    if (form.rememberMe.IsChecked.Value)
+                    {
+                        Configuration.Instance.Password = form.password.Password;
+                        Configuration.Instance.Username = form.username.Text;
+                        Configuration.Instance.RememberMe = true;
+                    }
+                    else
+                    {
+                        Configuration.Instance.Password = "";
+                        Configuration.Instance.Username = "";
+                        Configuration.Instance.RememberMe = false;
+                    }
+                }
+            }
+            loginPopup.Child = null;
         }
         #endregion
 

@@ -101,25 +101,20 @@
     <Compile Include="DataModel\Customer.cs" />
     <Compile Include="DataModel\Project.cs" />
     <Compile Include="DataModel\TimeEntry.cs" />
-    <Compile Include="Views\CustomerControl.xaml.cs">
-      <DependentUpon>CustomerControl.xaml</DependentUpon>
+    <Compile Include="ViewModel\Progress.cs" />
+    <Compile Include="Views\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
-    <Compile Include="Views\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginPopup.xaml.cs">
       <DependentUpon>LoginPopup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dashboard.xaml.cs">
-      <DependentUpon>Dashboard.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DataModel\WorkTajmContext.cs" />
-    <Compile Include="Views\PanoramaPage.xaml.cs">
-      <DependentUpon>PanoramaPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ProjectControl.xaml.cs">
-      <DependentUpon>ProjectControl.xaml</DependentUpon>
+    <Compile Include="Views\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Storage\Configuration.cs" />
     <Compile Include="Views\TimeEntryControl.xaml.cs">
@@ -138,26 +133,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="Views\CustomerControl.xaml">
+    <Page Include="Views\AboutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Login.xaml">
+    <Page Include="Views\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginPopup.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Dashboard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PanoramaPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ProjectControl.xaml">
+    <Page Include="Views\DashboardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,6 +166,43 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Icons\SDK8\Light\add.png" />
+    <Content Include="Assets\Icons\SDK8\Light\back.png" />
+    <Content Include="Assets\Icons\SDK8\Light\basecircle.png" />
+    <Content Include="Assets\Icons\SDK8\Light\cancel.png" />
+    <Content Include="Assets\Icons\SDK8\Light\check.png" />
+    <Content Include="Assets\Icons\SDK8\Light\close.png" />
+    <Content Include="Assets\Icons\SDK8\Light\delete.png" />
+    <Content Include="Assets\Icons\SDK8\Light\download.png" />
+    <Content Include="Assets\Icons\SDK8\Light\edit.png" />
+    <Content Include="Assets\Icons\SDK8\Light\favs.addto.png" />
+    <Content Include="Assets\Icons\SDK8\Light\favs.png" />
+    <Content Include="Assets\Icons\SDK8\Light\feature.alarm.png" />
+    <Content Include="Assets\Icons\SDK8\Light\feature.calendar.png" />
+    <Content Include="Assets\Icons\SDK8\Light\feature.camera.png" />
+    <Content Include="Assets\Icons\SDK8\Light\feature.email.png" />
+    <Content Include="Assets\Icons\SDK8\Light\feature.phone.png" />
+    <Content Include="Assets\Icons\SDK8\Light\feature.search.png" />
+    <Content Include="Assets\Icons\SDK8\Light\feature.settings.png" />
+    <Content Include="Assets\Icons\SDK8\Light\feature.video.png" />
+    <Content Include="Assets\Icons\SDK8\Light\folder.png" />
+    <Content Include="Assets\Icons\SDK8\Light\like.png" />
+    <Content Include="Assets\Icons\SDK8\Light\microphone.png" />
+    <Content Include="Assets\Icons\SDK8\Light\minus.png" />
+    <Content Include="Assets\Icons\SDK8\Light\new.png" />
+    <Content Include="Assets\Icons\SDK8\Light\next.png" />
+    <Content Include="Assets\Icons\SDK8\Light\overflowdots.png" />
+    <Content Include="Assets\Icons\SDK8\Light\questionmark.png" />
+    <Content Include="Assets\Icons\SDK8\Light\refresh.png" />
+    <Content Include="Assets\Icons\SDK8\Light\save.png" />
+    <Content Include="Assets\Icons\SDK8\Light\share.png" />
+    <Content Include="Assets\Icons\SDK8\Light\stop.png" />
+    <Content Include="Assets\Icons\SDK8\Light\sync.png" />
+    <Content Include="Assets\Icons\SDK8\Light\transport.ff.png" />
+    <Content Include="Assets\Icons\SDK8\Light\transport.pause.png" />
+    <Content Include="Assets\Icons\SDK8\Light\transport.play.png" />
+    <Content Include="Assets\Icons\SDK8\Light\transport.rew.png" />
+    <Content Include="Assets\Icons\SDK8\Light\upload.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

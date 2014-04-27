@@ -10,6 +10,7 @@ using System.Windows;
 using WorkTajm.Backend.Json;
 using WorkTajm.Constants;
 using WorkTajm.Resources;
+using WorkTajm.ViewModel;
 
 namespace WorkTajm.Backend
 {
@@ -59,6 +60,9 @@ namespace WorkTajm.Backend
         {
             try
             {
+                // Show progress on system tray
+                Progress progress = new Progress();
+
                 HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(LOGIN_URL);
                 webRequest.Credentials = new NetworkCredential(Username, Password);
                 try
@@ -88,14 +92,28 @@ namespace WorkTajm.Backend
         {
             Debug.WriteLine("LoadFromBackend");
 
+            // Show progress on system tray
+            Progress progress = new Progress();
+
             if (!LoggedIn)
             {
                 throw new UnauthorizedAccessException("Tried to load projects when not logged in");
             }
 
+            // Load customers
+            progress.Text = "Loading customers...";
             await LoadCustomers();
+
+            // Load projects
+            progress.Text = "Loading projects...";
             await LoadProjects();
+
+            // Load time entries
+            progress.Text= "Loading time entries...";
             await LoadTimeEntries();
+
+            // Done
+            progress.Visible = false;
         }
 
         public async Task LoadCustomers()

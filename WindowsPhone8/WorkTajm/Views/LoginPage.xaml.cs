@@ -26,6 +26,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Windows.Controls.Primitives;
 using System.ComponentModel;
+using WorkTajm.Resources;
 
 namespace WorkTajm
 {
@@ -34,6 +35,27 @@ namespace WorkTajm
         public Login()
         {
             InitializeComponent();
+            BuildLocalizedApplicationBar();
+        }
+
+        private void BuildLocalizedApplicationBar()
+        {
+            // Set the page's ApplicationBar to a new instance of ApplicationBar.
+            ApplicationBar = new ApplicationBar();
+            ApplicationBar.Opacity = 1;
+            ApplicationBar.IsVisible = false;
+            ApplicationBar.Mode = ApplicationBarMode.Minimized;
+
+            // Sync button
+            ApplicationBarIconButton appBarLoginButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/SDK8/Light/check.png", UriKind.Relative));
+            appBarLoginButton.Text = AppResources.AppBarLoginButtonText;
+            appBarLoginButton.Click += login_Click;
+            ApplicationBar.Buttons.Add(appBarLoginButton);
+        }
+
+        private void login_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/PanoramaPage.xaml", UriKind.Relative));
         }
 
         #region Popup

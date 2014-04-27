@@ -61,11 +61,83 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customers.
+        /// </summary>
+        public static string AboutCustomers {
+            get {
+                return ResourceManager.GetString("AboutCustomers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projects.
+        /// </summary>
+        public static string AboutProjects {
+            get {
+                return ResourceManager.GetString("AboutProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time entries.
+        /// </summary>
+        public static string AboutTimeEntries {
+            get {
+                return ResourceManager.GetString("AboutTimeEntries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string AboutTitle {
+            get {
+                return ResourceManager.GetString("AboutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        public static string AboutVersion {
+            get {
+                return ResourceManager.GetString("AboutVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About....
+        /// </summary>
+        public static string AppBarAboutText {
+            get {
+                return ResourceManager.GetString("AppBarAboutText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to add.
         /// </summary>
-        public static string AppBarButtonText {
+        public static string AppBarAddButtonText {
             get {
-                return ResourceManager.GetString("AppBarButtonText", resourceCulture);
+                return ResourceManager.GetString("AppBarAddButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string AppBarLoginButtonText {
+            get {
+                return ResourceManager.GetString("AppBarLoginButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string AppBarLogoutText {
+            get {
+                return ResourceManager.GetString("AppBarLogoutText", resourceCulture);
             }
         }
         
@@ -75,6 +147,15 @@ namespace WorkTajm.Resources {
         public static string AppBarMenuItemText {
             get {
                 return ResourceManager.GetString("AppBarMenuItemText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sync.
+        /// </summary>
+        public static string AppBarSyncButtonText {
+            get {
+                return ResourceManager.GetString("AppBarSyncButtonText", resourceCulture);
             }
         }
         
@@ -165,6 +246,44 @@ namespace WorkTajm.Resources {
         public static string LoginUsername {
             get {
                 return ResourceManager.GetString("LoginUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ok.
+        /// </summary>
+        public static string LogoutConfirm {
+            get {
+                return ResourceManager.GetString("LogoutConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cancel.
+        /// </summary>
+        public static string LogoutDeny {
+            get {
+                return ResourceManager.GetString("LogoutDeny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All data will be cleared and must be restored next time you log in. 
+        ///
+        ///Are you sure you want to logout?.
+        /// </summary>
+        public static string LogoutText {
+            get {
+                return ResourceManager.GetString("LogoutText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Logout.
+        /// </summary>
+        public static string LogoutTitle {
+            get {
+                return ResourceManager.GetString("LogoutTitle", resourceCulture);
             }
         }
         
