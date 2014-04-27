@@ -147,6 +147,9 @@
   <data name="AppBarMenuItemText" xml:space="preserve">
     <value>Menu Item</value>
   </data>
+  <data name="AppBarRegisterButtonText" xml:space="preserve">
+    <value>Register</value>
+  </data>
   <data name="AppBarSyncButtonText" xml:space="preserve">
     <value>sync</value>
   </data>
@@ -172,6 +175,9 @@
   </data>
   <data name="LoginPassword" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="LoginRegisterButton" xml:space="preserve">
+    <value>Register as a new user</value>
   </data>
   <data name="LoginRememberMe" xml:space="preserve">
     <value>Remember me</value>
@@ -199,6 +205,27 @@ Are you sure you want to logout?</value>
   <data name="ProjectsTitle" xml:space="preserve">
     <value>Projects</value>
     <comment>All the available projects</comment>
+  </data>
+  <data name="RegisterEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="RegisterFirstname" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="RegisterLastname" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="RegisterPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="RegisterRegisterButton" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RegisterRememberMe" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="RegisterTitle" xml:space="preserve">
+    <value>Register New User</value>
   </data>
   <data name="ResourceFlowDirection" xml:space="preserve">
     <value>LeftToRight</value>

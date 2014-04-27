@@ -193,9 +193,21 @@ namespace WorkTajm
                     pup.rememberMe.IsChecked = false;
                 }
                 pup.LoginButton.Click += new RoutedEventHandler(PopupLogin_Click);
+                pup.RegisterButton.Click += new RoutedEventHandler(PopupRegister_Click);
                 loginPopup.Child = pup;
             }
             loginPopup.IsOpen = true;
+        }
+
+        private async void PopupRegister_Click(object sender, RoutedEventArgs e)
+        {
+            if (loginPopup != null)
+            {
+                PhoneApplicationFrame NavigationService = (Application.Current.RootVisual as PhoneApplicationFrame);
+                loginPopup.IsOpen = false;
+                NavigationService.Navigate(new Uri("/Views/RegisterPage.xaml", UriKind.Relative));
+            }
+            loginPopup.Child = null;
         }
 
         private async void PopupLogin_Click(object sender, RoutedEventArgs e)
@@ -227,5 +239,13 @@ namespace WorkTajm
         }
         #endregion
 
+
+        public async Task Register(string firstName, string lastName, string email, string password)
+        {
+            await Synchronizer.Instance.Register(firstName, lastName, email, password);
+
+            PhoneApplicationFrame NavigationService = (Application.Current.RootVisual as PhoneApplicationFrame);
+            NavigationService.Navigate(new Uri("/Views/DashboardPage.xaml", UriKind.Relative));
+        }
     }
 }

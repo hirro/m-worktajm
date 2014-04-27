@@ -94,6 +94,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Backend\Json\Project.cs" />
+    <Compile Include="Backend\Json\Registration.cs" />
     <Compile Include="Backend\Synchronizer.cs" />
     <Compile Include="Backend\Json\UserInformation.cs" />
     <Compile Include="Constants\Constants.cs" />
@@ -117,6 +118,9 @@
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Storage\Configuration.cs" />
+    <Compile Include="Views\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TimeEntryControl.xaml.cs">
       <DependentUpon>TimeEntryControl.xaml</DependentUpon>
     </Compile>
@@ -145,6 +149,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\DashboardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,6 +265,18 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\sl4-windowsphone71\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.1.2\lib\portable-wp8+netcore45+net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup />

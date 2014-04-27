@@ -5,21 +5,37 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Windows;
 using WorkTajm.Backend.Json;
 using WorkTajm.Constants;
 using WorkTajm.Resources;
+using WorkTajm.Storage;
 using WorkTajm.ViewModel;
 
 namespace WorkTajm.Backend
 {
+    /// <summary>
+    /// This class handle communication to the backend.
+    /// 
+    /// It authenticates and synchronizes items with the database.
+    /// </summary>
     class Synchronizer
     {
-        const string LOGIN_URL = "http://worktajm-api.cfapps.io/authenticate";
-        const string PROJECTS_URL = "http://worktajm-api.cfapps.io/project";
-        const string CUSTOMER_URL = "http://worktajm-api.cfapps.io/customer";
-        const string TIMEENTRY_URL = "http://worktajm-api.cfapps.io/timeEntry";
+        const string HOST_CF = "http://worktajm-api.cfapps.io";
+        const string HOST_AC = "http://arnellconsulting.dyndns.org:8080";
+
+        const string CONTEXT_PATH = "worktajm-api/";
+
+        const string REGISTER_PATH = "register";
+
+        const string LOGIN_URL =        "http://worktajm-api.cfapps.io/authenticate";
+        const string PROJECTS_URL =     "http://worktajm-api.cfapps.io/project";
+        const string CUSTOMER_URL =     "http://worktajm-api.cfapps.io/customer";
+        const string TIMEENTRY_URL =    "http://worktajm-api.cfapps.io/timeEntry";
+        const string REGISTER_URL =     "http://worktajm-api.cfapps.io/registration";
 
         // Recommended singleton pattern in multithreaded context
         private static volatile Synchronizer instance;
@@ -137,7 +153,11 @@ namespace WorkTajm.Backend
                     WorkTajm.DataModel.Customer[] customers = JsonConvert.DeserializeObject<WorkTajm.DataModel.Customer[]>(txt);
                     foreach (WorkTajm.DataModel.Customer customer in customers)
                     {
-                        Debug.WriteLine("Added customer {0}", customer.Name);
+                        Debug.WriteLine("Adding customer name: [{0}], Id: [{1}]", customer.Name, customer.Id);
+
+                        // Check that the items not already exists
+                        //WorkTajmViewModel.Instance.FindCustomer(customer.Id);
+
                         WorkTajmViewModel.Instance.AddCustomer(customer);
                     }
                 }
@@ -225,6 +245,47 @@ namespace WorkTajm.Backend
                 Debug.WriteLine(e);
                 Debug.WriteLine(txt);
             }
+        }
+
+        public async Task Register(string firstName, string lastName, string email, string password)
+        {
+            try
+            {
+                // Show progress on system tray
+                Progress progress = new Progress();
+
+                try
+                {
+                    using (var client = new HttpClient())
+                    {
+                        progress.Text = "Sending authorization request";
+                        client.BaseAddress = new Uri(HOST_CF);
+                        client.DefaultRequestHeaders.Accept.Clear();
+                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                        // Create PDU
+                        Registration registration = new Registration() { firstName = firstName, lastName = lastName, email = email, password = password };
+                        progress.Text = "Waiting for response";
+                        var response = await client.PostAsJsonAsync("registration", registration);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            // All is ok, store credentials and process to dashboard
+                            Configuration.Instance.Password = password;
+                            Configuration.Instance.Username = email;
+                            Configuration.Instance.RememberMe = true;
+                        }
+                        progress.Visible=false;
+                    }
+                }
+                catch (WebException ex)
+                {
+                    MessageBox.Show(WebExceptions.Lookup(ex.Status), AppResources.LoginFailedTitle, MessageBoxButton.OK);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }            
         }
     }
 }

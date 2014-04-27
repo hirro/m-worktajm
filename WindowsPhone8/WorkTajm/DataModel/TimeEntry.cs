@@ -11,7 +11,7 @@ namespace WorkTajm.DataModel
         // Define ID: private field, public property, and database column.
         private int _internalId;
         [Column(DbType = "INT NOT NULL IDENTITY", IsDbGenerated = true, IsPrimaryKey = true)]
-        public int Id2
+        public int InternalId
         {
             get { return _internalId; }
             set

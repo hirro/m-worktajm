@@ -8,7 +8,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    MinHeight="600" MinWidth="400" >
+    MinHeight="800" MinWidth="480" >
 
     <Grid x:Name="LayoutRoot" Background="Black">
         <Grid.RowDefinitions>
@@ -31,15 +31,9 @@
                 <PasswordBox x:Name="password" />
                 <CheckBox x:Name="rememberMe" Content="{Binding Path=LocalizedResources.LoginRememberMe, Source={StaticResource LocalizedStrings}}"/>
                 <Button x:Name="LoginButton" Content="{Binding Path=LocalizedResources.LoginLoginButton, Source={StaticResource LocalizedStrings}}" Click="login_Click" />
+                <Button x:Name="RegisterButton" Content="{Binding Path=LocalizedResources.LoginRegisterButton, Source={StaticResource LocalizedStrings}}" Click="register_Click" />
             </StackPanel>
 
         </Grid>
-        <StackPanel x:Name="pending" Visibility="Collapsed">
-            <Rectangle Height="300"/>
-            <TextBlock Text="Contacting server" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" />
-            <Rectangle Height="20"/>
-            <toolkit:PerformanceProgressBar Name="ProgressBar1" IsEnabled="True" IsIndeterminate="True" Foreground="White"/>
-            <Rectangle Height="80"/>
-        </StackPanel>
     </Grid>
 </UserControl>

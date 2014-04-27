@@ -151,6 +151,15 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string AppBarRegisterButtonText {
+            get {
+                return ResourceManager.GetString("AppBarRegisterButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sync.
         /// </summary>
         public static string AppBarSyncButtonText {
@@ -219,6 +228,15 @@ namespace WorkTajm.Resources {
         public static string LoginPassword {
             get {
                 return ResourceManager.GetString("LoginPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register as a new user.
+        /// </summary>
+        public static string LoginRegisterButton {
+            get {
+                return ResourceManager.GetString("LoginRegisterButton", resourceCulture);
             }
         }
         
@@ -293,6 +311,69 @@ namespace WorkTajm.Resources {
         public static string ProjectsTitle {
             get {
                 return ResourceManager.GetString("ProjectsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string RegisterEmail {
+            get {
+                return ResourceManager.GetString("RegisterEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name.
+        /// </summary>
+        public static string RegisterFirstname {
+            get {
+                return ResourceManager.GetString("RegisterFirstname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name.
+        /// </summary>
+        public static string RegisterLastname {
+            get {
+                return ResourceManager.GetString("RegisterLastname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string RegisterPassword {
+            get {
+                return ResourceManager.GetString("RegisterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string RegisterRegisterButton {
+            get {
+                return ResourceManager.GetString("RegisterRegisterButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remember me.
+        /// </summary>
+        public static string RegisterRememberMe {
+            get {
+                return ResourceManager.GetString("RegisterRememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register New User.
+        /// </summary>
+        public static string RegisterTitle {
+            get {
+                return ResourceManager.GetString("RegisterTitle", resourceCulture);
             }
         }
         

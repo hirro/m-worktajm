@@ -15,9 +15,23 @@ namespace WorkTajm
         public LoginPopupControl()
         {
             InitializeComponent();
+
+            //get heigth and width
+            double height = Application.Current.Host.Content.ActualHeight;
+            double width = Application.Current.Host.Content.ActualWidth;
+
+            this.Width = width;
+            this.Height = height;
+
         }
+
         private void login_Click(object sender, RoutedEventArgs e)
         {
         }
+
+        private void register_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
     }
 }

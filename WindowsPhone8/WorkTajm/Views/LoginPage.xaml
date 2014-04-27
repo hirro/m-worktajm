@@ -39,13 +39,6 @@
             </StackPanel>
 
         </Grid>
-        <StackPanel x:Name="pending" Visibility="Collapsed">
-            <Rectangle Height="300"/>
-            <TextBlock Text="Contacting server" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" />
-            <Rectangle Height="20"/>
-            <toolkit:PerformanceProgressBar Name="ProgressBar1" IsEnabled="True" IsIndeterminate="True" Foreground="White"/>
-            <Rectangle Height="80"/>
-        </StackPanel>
     </Grid>
 
 </phone:PhoneApplicationPage>
