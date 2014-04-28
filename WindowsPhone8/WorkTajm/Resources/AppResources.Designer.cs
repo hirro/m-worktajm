@@ -187,11 +187,74 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string CustomerAddress {
+            get {
+                return ResourceManager.GetString("CustomerAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        public static string CustomerCountry {
+            get {
+                return ResourceManager.GetString("CustomerCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string CustomerDescription {
+            get {
+                return ResourceManager.GetString("CustomerDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string CustomerName {
+            get {
+                return ResourceManager.GetString("CustomerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Organization number.
+        /// </summary>
+        public static string CustomerOrgNumber {
+            get {
+                return ResourceManager.GetString("CustomerOrgNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reference person.
+        /// </summary>
+        public static string CustomerReference {
+            get {
+                return ResourceManager.GetString("CustomerReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customers.
         /// </summary>
         public static string CustomersTitle {
             get {
                 return ResourceManager.GetString("CustomersTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zip code.
+        /// </summary>
+        public static string CustomerZipCode {
+            get {
+                return ResourceManager.GetString("CustomerZipCode", resourceCulture);
             }
         }
         
@@ -306,11 +369,38 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string ProjectDescription {
+            get {
+                return ResourceManager.GetString("ProjectDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project name.
+        /// </summary>
+        public static string ProjectName {
+            get {
+                return ResourceManager.GetString("ProjectName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Projects.
         /// </summary>
         public static string ProjectsTitle {
             get {
                 return ResourceManager.GetString("ProjectsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string ProjectTitle {
+            get {
+                return ResourceManager.GetString("ProjectTitle", resourceCulture);
             }
         }
         
@@ -419,6 +509,69 @@ namespace WorkTajm.Resources {
         public static string TimeEntriesTitle {
             get {
                 return ResourceManager.GetString("TimeEntriesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer.
+        /// </summary>
+        public static string TimeEntryCustomerName {
+            get {
+                return ResourceManager.GetString("TimeEntryCustomerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string TimeEntryDescription {
+            get {
+                return ResourceManager.GetString("TimeEntryDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End time.
+        /// </summary>
+        public static string TimeEntryEndTime {
+            get {
+                return ResourceManager.GetString("TimeEntryEndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string TimeEntryProjectName {
+            get {
+                return ResourceManager.GetString("TimeEntryProjectName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Time.
+        /// </summary>
+        public static string TimeEntryStartTime {
+            get {
+                return ResourceManager.GetString("TimeEntryStartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        public static string TimeEntryTime {
+            get {
+                return ResourceManager.GetString("TimeEntryTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Entry.
+        /// </summary>
+        public static string TimeEntryTitle {
+            get {
+                return ResourceManager.GetString("TimeEntryTitle", resourceCulture);
             }
         }
         

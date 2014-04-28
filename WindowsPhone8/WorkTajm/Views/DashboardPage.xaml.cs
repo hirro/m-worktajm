@@ -35,7 +35,7 @@ namespace WorkTajm.Views
             ApplicationBar = new ApplicationBar();
             ApplicationBar.Opacity = 1;
             ApplicationBar.IsVisible = true;
-            ApplicationBar.Mode = ApplicationBarMode.Minimized;
+            ApplicationBar.Mode = ApplicationBarMode.Default;
 
             // Sync button
             ApplicationBarIconButton appBarSyncButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/SDK8/Light/refresh.png", UriKind.Relative));
@@ -72,12 +72,24 @@ namespace WorkTajm.Views
 
         private void sync_Click(object sender, EventArgs e)
         {
-            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            //
         }
 
         private void add_Click(object sender, EventArgs e)
         {
-            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            switch (this.Panorama.SelectedIndex)
+            {
+                case 2:
+                    NavigationService.Navigate(new Uri("/Views/CustomerPage.xaml", UriKind.Relative));        
+                    break;
+                case 3:
+                    NavigationService.Navigate(new Uri("/Views/TimeEntryPage.xaml", UriKind.Relative));        
+                    break;
+                default:
+                    NavigationService.Navigate(new Uri("/Views/ProjectPage.xaml", UriKind.Relative));        
+                    break;
+            }
+
         }
 
     }

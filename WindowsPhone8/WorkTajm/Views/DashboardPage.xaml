@@ -18,8 +18,7 @@
         <Grid x:Name="LayoutRoot">
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <ProgressBar x:Name="Progress"  Width="auto" />
-        <phone:Panorama Title="{Binding Path=LocalizedResources.ApplicationName, Source={StaticResource LocalizedStrings}}">
+            <phone:Panorama x:Name="Panorama" Title="{Binding Path=LocalizedResources.ApplicationName, Source={StaticResource LocalizedStrings}}">
                 <phone:PanoramaItem Header="{Binding Path=LocalizedResources.StartTitle, Source={StaticResource LocalizedStrings}}">
                     <Grid>
                         <Grid.RowDefinitions>

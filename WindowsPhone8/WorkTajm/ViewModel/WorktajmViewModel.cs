@@ -247,5 +247,20 @@ namespace WorkTajm
             PhoneApplicationFrame NavigationService = (Application.Current.RootVisual as PhoneApplicationFrame);
             NavigationService.Navigate(new Uri("/Views/DashboardPage.xaml", UriKind.Relative));
         }
+
+        internal void AddNewProject(Project project)
+        {
+            Projects.Add(project);
+        }
+
+        internal void AddNewCustomer(Customer customer)
+        {
+            Customers.Add(customer);
+        }
+
+        internal void AddNewTimeEntry(TimeEntry timeEntry)
+        {
+            TimeEntries.Add(timeEntry);
+        }
     }
 }

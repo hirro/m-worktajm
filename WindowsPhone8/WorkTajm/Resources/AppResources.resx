@@ -160,9 +160,30 @@
   <data name="ApplicationTitle" xml:space="preserve">
     <value>WorkTajm</value>
   </data>
+  <data name="CustomerAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="CustomerCountry" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="CustomerDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="CustomerOrgNumber" xml:space="preserve">
+    <value>Organization number</value>
+  </data>
+  <data name="CustomerReference" xml:space="preserve">
+    <value>Reference person</value>
+  </data>
   <data name="CustomersTitle" xml:space="preserve">
     <value>Customers</value>
     <comment>All the available customers</comment>
+  </data>
+  <data name="CustomerZipCode" xml:space="preserve">
+    <value>Zip code</value>
   </data>
   <data name="LoginFailedButton" xml:space="preserve">
     <value>OK</value>
@@ -202,9 +223,18 @@ Are you sure you want to logout?</value>
   <data name="LogoutTitle" xml:space="preserve">
     <value>Confirm Logout</value>
   </data>
+  <data name="ProjectDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Project name</value>
+  </data>
   <data name="ProjectsTitle" xml:space="preserve">
     <value>Projects</value>
     <comment>All the available projects</comment>
+  </data>
+  <data name="ProjectTitle" xml:space="preserve">
+    <value>Project</value>
   </data>
   <data name="RegisterEmail" xml:space="preserve">
     <value>Email</value>
@@ -245,6 +275,27 @@ Are you sure you want to logout?</value>
   <data name="TimeEntriesTitle" xml:space="preserve">
     <value>Time Entries</value>
     <comment>All the books time entries</comment>
+  </data>
+  <data name="TimeEntryCustomerName" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="TimeEntryDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="TimeEntryEndTime" xml:space="preserve">
+    <value>End time</value>
+  </data>
+  <data name="TimeEntryProjectName" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="TimeEntryStartTime" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
+  <data name="TimeEntryTime" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="TimeEntryTitle" xml:space="preserve">
+    <value>Time Entry</value>
   </data>
   <data name="WebExceptionStatus_CacheEntryNotFound" xml:space="preserve">
     <value>The specified cache entry was not found.</value>
