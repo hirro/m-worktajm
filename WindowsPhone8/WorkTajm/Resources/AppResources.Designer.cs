@@ -259,6 +259,51 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed.
+        /// </summary>
+        public static string HttpStatusCode_DefaultError {
+            get {
+                return ResourceManager.GetString("HttpStatusCode_DefaultError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The server refuses to fulfill the request..
+        /// </summary>
+        public static string HttpStatusCode_Forbidden {
+            get {
+                return ResourceManager.GetString("HttpStatusCode_Forbidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generic error has occurred on the server..
+        /// </summary>
+        public static string HttpStatusCode_InternalServerError {
+            get {
+                return ResourceManager.GetString("HttpStatusCode_InternalServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The requested resource does not exist on the server.
+        /// </summary>
+        public static string HttpStatusCode_NotFound {
+            get {
+                return ResourceManager.GetString("HttpStatusCode_NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The requested resource requires authentication.
+        /// </summary>
+        public static string HttpStatusCode_Unauthorized {
+            get {
+                return ResourceManager.GetString("HttpStatusCode_Unauthorized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
         public static string LoginFailedButton {

@@ -24,19 +24,6 @@ namespace WorkTajm.Backend
     /// </summary>
     class Synchronizer
     {
-        const string HOST_CF = "http://worktajm-api.cfapps.io";
-        const string HOST_AC = "http://arnellconsulting.dyndns.org:8080";
-
-        const string CONTEXT_PATH = "worktajm-api/";
-
-        const string REGISTER_PATH = "register";
-
-        const string LOGIN_URL =        "http://worktajm-api.cfapps.io/authenticate";
-        const string PROJECTS_URL =     "http://worktajm-api.cfapps.io/project";
-        const string CUSTOMER_URL =     "http://worktajm-api.cfapps.io/customer";
-        const string TIMEENTRY_URL =    "http://worktajm-api.cfapps.io/timeEntry";
-        const string REGISTER_URL =     "http://worktajm-api.cfapps.io/registration";
-
         // Recommended singleton pattern in multithreaded context
         private static volatile Synchronizer instance;
         private static object syncRoot = new Object();
@@ -76,10 +63,13 @@ namespace WorkTajm.Backend
         {
             try
             {
+                Debug.WriteLine("Authenticate");
+
                 // Show progress on system tray
                 Progress progress = new Progress();
 
-                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(LOGIN_URL);
+                string url = UrlBuilder.BuildUrl(UrlBuilder.Paths.Login);
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url); 
                 webRequest.Credentials = new NetworkCredential(Username, Password);
                 try
                 {
@@ -95,12 +85,21 @@ namespace WorkTajm.Backend
                 }
                 catch (WebException ex)
                 {
-                    MessageBox.Show(WebExceptions.Lookup(ex.Status), AppResources.LoginFailedTitle, MessageBoxButton.OK);
+                    Debug.WriteLine("Authentication failed: {0}", ex.ToString());
+                    HttpWebResponse response = ex.Response as HttpWebResponse;
+                    if (response != null)
+                    {
+                        MessageBox.Show(HttpStatusCodeHelper.Lookup(response.StatusCode), AppResources.LoginFailedTitle, MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show(WebExceptionStatusHelper.Lookup(ex.Status), AppResources.LoginFailedTitle, MessageBoxButton.OK);
+                    }
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                Debug.WriteLine("!Authentication failed: {0}", e.ToString());
             }
         }
 
@@ -113,6 +112,7 @@ namespace WorkTajm.Backend
 
             if (!LoggedIn)
             {
+                Debug.WriteLine("Not logged in!");
                 throw new UnauthorizedAccessException("Tried to load projects when not logged in");
             }
 
@@ -138,11 +138,13 @@ namespace WorkTajm.Backend
 
             if (!LoggedIn)
             {
+                Debug.WriteLine("LoadCustomers - Not logged in");
                 throw new UnauthorizedAccessException("Tried to load projects when not logged in");
             }
             try
             {
-                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(CUSTOMER_URL);
+                string url = UrlBuilder.BuildUrl(UrlBuilder.Paths.Customer);
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url); 
                 webRequest.Credentials = new NetworkCredential(Username, Password);
                 try
                 {
@@ -160,15 +162,16 @@ namespace WorkTajm.Backend
 
                         WorkTajmViewModel.Instance.AddCustomer(customer);
                     }
+                    Debug.WriteLine("LoadCustomers complete, {0} customers found", customers.Length);
                 }
                 catch (WebException ex)
                 {
-                    Debug.WriteLine(ex);
+                    Debug.WriteLine("LoadCustomers failed: {0}", ex.ToString());
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                Debug.WriteLine("!LoadCustomers failed: {0}", e.ToString());
             }
         }
 
@@ -178,11 +181,13 @@ namespace WorkTajm.Backend
 
             if (!LoggedIn)
             {
+                Debug.WriteLine("LoadProjects - Not logged in");
                 throw new UnauthorizedAccessException("Tried to load projects when not logged in");
             }
             try
             {
-                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(PROJECTS_URL);
+                string url = UrlBuilder.BuildUrl(UrlBuilder.Paths.Projects);
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
                 webRequest.Credentials = new NetworkCredential(Username, Password);
                 try
                 {
@@ -196,15 +201,16 @@ namespace WorkTajm.Backend
                         Debug.WriteLine("Added project {0}", project.Name);
                         WorkTajmViewModel.Instance.AddProject(project);
                     }
+                    Debug.WriteLine("LoadProjects complete, {0} projects found", projects.Length);
                 }
                 catch (WebException ex)
                 {
-                    Debug.WriteLine(ex);
+                    Debug.WriteLine("LoadProjects failed: {0}", ex.ToString());
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e);
+                Debug.WriteLine("!LoadProjects failed: {0}", e.ToString());
             }
         }
 
@@ -216,11 +222,13 @@ namespace WorkTajm.Backend
 
             if (!LoggedIn)
             {
+                Debug.WriteLine("LoadTimeEntries - Not logged in");
                 throw new UnauthorizedAccessException("Tried to load projects when not logged in");
             }
             try
             {
-                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(TIMEENTRY_URL);
+                string url = UrlBuilder.BuildUrl(UrlBuilder.Paths.TimeEntry);
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
                 webRequest.Credentials = new NetworkCredential(Username, Password);
                 try
                 {
@@ -234,16 +242,16 @@ namespace WorkTajm.Backend
                         Debug.WriteLine("Added time entry");
                         //WorkTajmViewModel.Instance.AddTimeEntry(timeEntry);
                     }
+                    Debug.WriteLine("LoadTimeEntries complete, {0} projects found", timeEntries.Length);
                 }
                 catch (WebException ex)
                 {
-                    Debug.WriteLine(ex);
+                    Debug.WriteLine("LoadTimeEntries failed: {0}", ex.ToString());
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e);
-                Debug.WriteLine(txt);
+                Debug.WriteLine("!LoadTimeEntries failed: {0}", e.ToString());
             }
         }
 
@@ -251,6 +259,8 @@ namespace WorkTajm.Backend
         {
             try
             {
+                Debug.WriteLine("Register");
+
                 // Show progress on system tray
                 Progress progress = new Progress();
 
@@ -259,7 +269,7 @@ namespace WorkTajm.Backend
                     using (var client = new HttpClient())
                     {
                         progress.Text = "Sending authorization request";
-                        client.BaseAddress = new Uri(HOST_CF);
+                        client.BaseAddress = new Uri(UrlBuilder.GetHost());
                         client.DefaultRequestHeaders.Accept.Clear();
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -279,13 +289,15 @@ namespace WorkTajm.Backend
                 }
                 catch (WebException ex)
                 {
-                    MessageBox.Show(WebExceptions.Lookup(ex.Status), AppResources.LoginFailedTitle, MessageBoxButton.OK);
+                    Debug.WriteLine("Register failed: {0}", ex.ToString());
+                    MessageBox.Show(WebExceptionStatusHelper.Lookup(ex.Status), AppResources.LoginFailedTitle, MessageBoxButton.OK);
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                Debug.WriteLine("Register failed: {0}", e.ToString());
             }            
         }
+
     }
 }

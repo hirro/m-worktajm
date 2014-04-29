@@ -16,6 +16,12 @@ namespace WorkTajm.Views
 {
     public partial class PanoramaPage : PhoneApplicationPage
     {
+        public enum ApplicationBarType
+        {
+            None,
+            Normal
+        };
+
         public PanoramaPage()
         {
             InitializeComponent();
@@ -29,35 +35,51 @@ namespace WorkTajm.Views
             BuildLocalizedApplicationBar();
         }
 
+        public void SetApplicationBarType(ApplicationBarType type)
+        {
+            switch (type)
+            {
+                case ApplicationBarType.None:
+                    ApplicationBar = null;
+                    break;
+                case ApplicationBarType.Normal:
+                    ApplicationBar = normalApplicationBar;
+                    break;
+            }
+        }
+
+        private ApplicationBar normalApplicationBar;
+        private ApplicationBar dialogApplicationBar;
         private void BuildLocalizedApplicationBar()
         {
             // Set the page's ApplicationBar to a new instance of ApplicationBar.
-            ApplicationBar = new ApplicationBar();
-            ApplicationBar.Opacity = 1;
-            ApplicationBar.IsVisible = true;
-            ApplicationBar.Mode = ApplicationBarMode.Default;
+            normalApplicationBar = new ApplicationBar();
+            normalApplicationBar.Opacity = 1;
+            normalApplicationBar.IsVisible = true;
+            normalApplicationBar.Mode = ApplicationBarMode.Default;
 
             // Sync button
             ApplicationBarIconButton appBarSyncButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/SDK8/Light/refresh.png", UriKind.Relative));
             appBarSyncButton.Text = AppResources.AppBarSyncButtonText;
             appBarSyncButton.Click += sync_Click;
-            ApplicationBar.Buttons.Add(appBarSyncButton);
+            normalApplicationBar.Buttons.Add(appBarSyncButton);
 
             // Add button
             ApplicationBarIconButton appBarAddButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/SDK8/Light/add.png", UriKind.Relative));
             appBarAddButton.Text = AppResources.AppBarAddButtonText;
             appBarAddButton.Click += add_Click;
-            ApplicationBar.Buttons.Add(appBarAddButton);
+            normalApplicationBar.Buttons.Add(appBarAddButton);
 
             // About menu text
             ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarAboutText);
-            ApplicationBar.MenuItems.Add(appBarMenuItem);
+            normalApplicationBar.MenuItems.Add(appBarMenuItem);
             appBarMenuItem.Click += about_Click;
 
             // Logout menu text
             ApplicationBarMenuItem appBarLogout = new ApplicationBarMenuItem(AppResources.AppBarLogoutText);
-            ApplicationBar.MenuItems.Add(appBarLogout);
+            normalApplicationBar.MenuItems.Add(appBarLogout);
             appBarLogout.Click += logout_Click;
+
         }
 
         private void about_Click(object sender, EventArgs e)

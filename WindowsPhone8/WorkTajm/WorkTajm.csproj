@@ -97,8 +97,10 @@
     <Compile Include="Backend\Json\Registration.cs" />
     <Compile Include="Backend\Synchronizer.cs" />
     <Compile Include="Backend\Json\UserInformation.cs" />
+    <Compile Include="Backend\UrlBuilder.cs" />
     <Compile Include="Constants\Constants.cs" />
-    <Compile Include="Constants\WebExceptions.cs" />
+    <Compile Include="Constants\HttpStatusCodeHelper.cs" />
+    <Compile Include="Constants\WebExceptionStatusHelper.cs" />
     <Compile Include="DataModel\Customer.cs" />
     <Compile Include="DataModel\Project.cs" />
     <Compile Include="DataModel\TimeEntry.cs" />
@@ -126,6 +128,9 @@
     </Compile>
     <Compile Include="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterPopup.xaml.cs">
+      <DependentUpon>RegisterPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TimeEntryControl.xaml.cs">
       <DependentUpon>TimeEntryControl.xaml</DependentUpon>
@@ -170,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

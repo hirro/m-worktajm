@@ -8,7 +8,7 @@ using WorkTajm.Resources;
 
 namespace WorkTajm.Constants
 {
-    class WebExceptions
+    class WebExceptionStatusHelper
     {
         private static readonly Dictionary<WebExceptionStatus, string> ErrorCodes = new Dictionary<WebExceptionStatus, string>
         {

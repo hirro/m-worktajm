@@ -174,71 +174,10 @@ namespace WorkTajm
             }
         }
 
-        #region Popup
-        private Popup loginPopup = new Popup();
         public void Login()
         {
-            // First try to login using the stored credentials
-            if (loginPopup.Child == null)
-            {
-                LoginPopupControl pup = new LoginPopupControl();
-                if (Configuration.Instance.RememberMe)
-                {
-                    pup.username.Text = Configuration.Instance.Username;
-                    pup.password.Password = Configuration.Instance.Password;
-                    pup.rememberMe.IsChecked = true;
-                }
-                else
-                {
-                    pup.rememberMe.IsChecked = false;
-                }
-                pup.LoginButton.Click += new RoutedEventHandler(PopupLogin_Click);
-                pup.RegisterButton.Click += new RoutedEventHandler(PopupRegister_Click);
-                loginPopup.Child = pup;
-            }
-            loginPopup.IsOpen = true;
+            LoginPopupControl.Show();
         }
-
-        private async void PopupRegister_Click(object sender, RoutedEventArgs e)
-        {
-            if (loginPopup != null)
-            {
-                PhoneApplicationFrame NavigationService = (Application.Current.RootVisual as PhoneApplicationFrame);
-                loginPopup.IsOpen = false;
-                NavigationService.Navigate(new Uri("/Views/RegisterPage.xaml", UriKind.Relative));
-            }
-            loginPopup.Child = null;
-        }
-
-        private async void PopupLogin_Click(object sender, RoutedEventArgs e)
-        {
-            if (loginPopup != null)
-            {
-                var form = (LoginPopupControl)loginPopup.Child;
-                Synchronizer.Instance.Password = form.password.Password;
-                Synchronizer.Instance.Username = form.username.Text;
-                await Synchronizer.Instance.Authenticate();
-                if (Synchronizer.Instance.LoggedIn)
-                {
-                    loginPopup.IsOpen = false;
-                    if (form.rememberMe.IsChecked.Value)
-                    {
-                        Configuration.Instance.Password = form.password.Password;
-                        Configuration.Instance.Username = form.username.Text;
-                        Configuration.Instance.RememberMe = true;
-                    }
-                    else
-                    {
-                        Configuration.Instance.Password = "";
-                        Configuration.Instance.Username = "";
-                        Configuration.Instance.RememberMe = false;
-                    }
-                }
-            }
-            loginPopup.Child = null;
-        }
-        #endregion
-
 
         public async Task Register(string firstName, string lastName, string email, string password)
         {

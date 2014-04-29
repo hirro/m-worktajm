@@ -185,6 +185,21 @@
   <data name="CustomerZipCode" xml:space="preserve">
     <value>Zip code</value>
   </data>
+  <data name="HttpStatusCode_DefaultError" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="HttpStatusCode_Forbidden" xml:space="preserve">
+    <value>The server refuses to fulfill the request.</value>
+  </data>
+  <data name="HttpStatusCode_InternalServerError" xml:space="preserve">
+    <value>Generic error has occurred on the server.</value>
+  </data>
+  <data name="HttpStatusCode_NotFound" xml:space="preserve">
+    <value>The requested resource does not exist on the server</value>
+  </data>
+  <data name="HttpStatusCode_Unauthorized" xml:space="preserve">
+    <value>The requested resource requires authentication</value>
+  </data>
   <data name="LoginFailedButton" xml:space="preserve">
     <value>OK</value>
   </data>
