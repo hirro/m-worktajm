@@ -26,13 +26,18 @@ namespace WorkTajm.Views
         {
             InitializeComponent();
 
+            // Sample code to localize the ApplicationBar
+            BuildLocalizedApplicationBar();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
             if (!WorkTajmViewModel.Instance.IsLoggedIn)
             {
                 WorkTajmViewModel.Instance.Login();
             }
-
-            // Sample code to localize the ApplicationBar
-            BuildLocalizedApplicationBar();
         }
 
         public void SetApplicationBarType(ApplicationBarType type)

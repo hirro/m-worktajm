@@ -11,6 +11,7 @@ using System.Windows.Controls.Primitives;
 using WorkTajm.Storage;
 using WorkTajm.Backend;
 using WorkTajm.Views;
+using WorkTajm.Resources;
 
 namespace WorkTajm
 {
@@ -27,9 +28,34 @@ namespace WorkTajm
             this.Width = width;
             this.Height = height;
 
+            BuildDialogApplicationBar();
         }
 
-        private async void login_Click(object sender, RoutedEventArgs e)
+        private void BuildDialogApplicationBar()
+        {
+            // Set the page's ApplicationBar to a new instance of ApplicationBar.
+            ApplicationBar dialogApplicationBar = new ApplicationBar();
+            dialogApplicationBar.Opacity = 1;
+            dialogApplicationBar.IsVisible = true;
+            dialogApplicationBar.Mode = ApplicationBarMode.Default;
+
+            // Login (check) button
+            ApplicationBarIconButton appBarSyncButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/SDK8/Light/check.png", UriKind.Relative));
+            appBarSyncButton.Text = AppResources.AppBarLoginButtonText;
+            appBarSyncButton.Click += check_Click;
+            dialogApplicationBar.Buttons.Add(appBarSyncButton);
+
+            // Login (check) button
+            ApplicationBarIconButton appBarRegisterButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/SDK8/Light/add.png", UriKind.Relative));
+            appBarRegisterButton.Text = AppResources.AppBarRegisterButtonText;
+            appBarRegisterButton.Click += register_Click;
+            dialogApplicationBar.Buttons.Add(appBarRegisterButton);
+
+            PanoramaPage currentPage = (App.Current.RootVisual as PhoneApplicationFrame).Content as PanoramaPage;
+            currentPage.ApplicationBar = dialogApplicationBar;
+        }
+
+        private async void check_Click(object sender, EventArgs e)
         {
             var form = (LoginPopupControl)loginPopup.Child;
             Synchronizer.Instance.Password = form.password.Password;
@@ -50,10 +76,14 @@ namespace WorkTajm
                     Configuration.Instance.Username = "";
                     Configuration.Instance.RememberMe = false;
                 }
+
+                // Restore application bar
+                PanoramaPage currentPage = (App.Current.RootVisual as PhoneApplicationFrame).Content as PanoramaPage;
+                currentPage.SetApplicationBarType(PanoramaPage.ApplicationBarType.Normal);
             }
         }
 
-        private void register_Click(object sender, RoutedEventArgs e)
+        private void register_Click(object sender, EventArgs e)
         {
             Hide();
             RegisterPopupControl.Show();

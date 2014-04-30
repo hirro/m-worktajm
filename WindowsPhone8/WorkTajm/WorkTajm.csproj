@@ -142,6 +142,7 @@
     <Compile Include="Views\TimeEntryPage.xaml.cs">
       <DependentUpon>TimeEntryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\WorktajmFormControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
