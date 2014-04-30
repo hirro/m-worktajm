@@ -504,11 +504,20 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Register New User.
+        ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string RegisterTitle {
             get {
                 return ResourceManager.GetString("RegisterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration failed.
+        /// </summary>
+        public static string RegistrationFailedTitle {
+            get {
+                return ResourceManager.GetString("RegistrationFailedTitle", resourceCulture);
             }
         }
         

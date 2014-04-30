@@ -30,6 +30,7 @@ using WorkTajm.Backend;
 using WorkTajm.DataModel;
 using WorkTajm.Resources;
 using WorkTajm.Storage;
+using WorkTajm.Views;
 
 namespace WorkTajm
 {
@@ -149,6 +150,10 @@ namespace WorkTajm
                 }
             };
 
+            // Reset application bar
+            PanoramaPage currentPage = (App.Current.RootVisual as PhoneApplicationFrame).Content as PanoramaPage;
+            currentPage.SetApplicationBarType(PanoramaPage.ApplicationBarType.None);
+
             messageBox.Show();
         }
 
@@ -162,8 +167,6 @@ namespace WorkTajm
                 NavigationService.RemoveBackEntry();
             }
             Login();
-            //NavigationService.GoBack();
-            //NavigationService.Navigate(new Uri("/Views/LoginPage.xaml", UriKind.Relative));
         }
 
         public bool IsLoggedIn 
@@ -179,12 +182,18 @@ namespace WorkTajm
             LoginPopupControl.Show();
         }
 
-        public async Task Register(string firstName, string lastName, string email, string password)
+        public async Task<bool> Register(string firstName, string lastName, string email, string password)
         {
-            await Synchronizer.Instance.Register(firstName, lastName, email, password);
+            var registered = await Synchronizer.Instance.Register(firstName, lastName, email, password);
 
-            PhoneApplicationFrame NavigationService = (Application.Current.RootVisual as PhoneApplicationFrame);
-            NavigationService.Navigate(new Uri("/Views/DashboardPage.xaml", UriKind.Relative));
+            if (registered)
+            {
+                // Reset application bar
+                PanoramaPage currentPage = (App.Current.RootVisual as PhoneApplicationFrame).Content as PanoramaPage;
+                currentPage.SetApplicationBarType(PanoramaPage.ApplicationBarType.Normal);
+            }
+
+            return registered;
         }
 
         internal void AddNewProject(Project project)

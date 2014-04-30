@@ -255,48 +255,56 @@ namespace WorkTajm.Backend
             }
         }
 
-        public async Task Register(string firstName, string lastName, string email, string password)
+        public async Task<bool> Register(string firstName, string lastName, string email, string password)
         {
+            bool result = false;
+
+            Debug.WriteLine("Register");
+
+            // Show progress on system tray
+            Progress progress = new Progress();
+
             try
             {
-                Debug.WriteLine("Register");
-
-                // Show progress on system tray
-                Progress progress = new Progress();
-
-                try
+                using (var client = new HttpClient())
                 {
-                    using (var client = new HttpClient())
-                    {
-                        progress.Text = "Sending authorization request";
-                        client.BaseAddress = new Uri(UrlBuilder.GetHost());
-                        client.DefaultRequestHeaders.Accept.Clear();
-                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    progress.Text = "Sending authorization request";
+                    client.BaseAddress = new Uri(UrlBuilder.GetHost());
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                        // Create PDU
-                        Registration registration = new Registration() { firstName = firstName, lastName = lastName, email = email, password = password };
-                        progress.Text = "Waiting for response";
-                        var response = await client.PostAsJsonAsync("registration", registration);
-                        if (response.IsSuccessStatusCode)
-                        {
-                            // All is ok, store credentials and process to dashboard
-                            Configuration.Instance.Password = password;
-                            Configuration.Instance.Username = email;
-                            Configuration.Instance.RememberMe = true;
-                        }
-                        progress.Visible=false;
+                    // Create PDU
+                    Registration registration = new Registration() { firstName = firstName, lastName = lastName, email = email, password = password };
+                    progress.Text = "Waiting for response";
+                    var response = await client.PostAsJsonAsync("registration", registration);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // All is ok, store credentials and process to dashboard
+                        Configuration.Instance.Password = password;
+                        Configuration.Instance.Username = email;
+                        Configuration.Instance.RememberMe = true;
+                        result = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Registration failed", AppResources.RegistrationFailedTitle, MessageBoxButton.OK);
                     }
                 }
-                catch (WebException ex)
-                {
-                    Debug.WriteLine("Register failed: {0}", ex.ToString());
-                    MessageBox.Show(WebExceptionStatusHelper.Lookup(ex.Status), AppResources.LoginFailedTitle, MessageBoxButton.OK);
-                }
+            }
+            catch (WebException ex)
+            {
+                Debug.WriteLine("Register failed: {0}", ex.ToString());
+                MessageBox.Show(WebExceptionStatusHelper.Lookup(ex.Status), AppResources.LoginFailedTitle, MessageBoxButton.OK);
             }
             catch (Exception e)
             {
                 Debug.WriteLine("Register failed: {0}", e.ToString());
-            }            
+            }
+            finally
+            {
+                progress.Visible = false;
+            }
+            return result;
         }
 
     }

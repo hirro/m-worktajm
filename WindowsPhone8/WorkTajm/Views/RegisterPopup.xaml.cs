@@ -51,25 +51,13 @@ namespace WorkTajm.Views
 
         private async void register_Click(object sender, EventArgs e)
         {
-            var form = (LoginPopupControl)registerPopup.Child;
-            Synchronizer.Instance.Password = form.password.Password;
-            Synchronizer.Instance.Username = form.username.Text;
-            await Synchronizer.Instance.Authenticate();
-            if (Synchronizer.Instance.LoggedIn)
+            var form = (RegisterPopupControl)registerPopup.Child;
+
+            // Send registration request
+            var registered = await WorkTajmViewModel.Instance.Register(firstName.Text, lastName.Text, email.Text, password.Password);
+            if (registered)
             {
                 registerPopup.IsOpen = false;
-                if (form.rememberMe.IsChecked.Value)
-                {
-                    Configuration.Instance.Password = form.password.Password;
-                    Configuration.Instance.Username = form.username.Text;
-                    Configuration.Instance.RememberMe = true;
-                }
-                else
-                {
-                    Configuration.Instance.Password = "";
-                    Configuration.Instance.Username = "";
-                    Configuration.Instance.RememberMe = false;
-                }
             }
         }
 
