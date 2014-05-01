@@ -61,33 +61,6 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customers.
-        /// </summary>
-        public static string AboutCustomers {
-            get {
-                return ResourceManager.GetString("AboutCustomers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Projects.
-        /// </summary>
-        public static string AboutProjects {
-            get {
-                return ResourceManager.GetString("AboutProjects", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Time entries.
-        /// </summary>
-        public static string AboutTimeEntries {
-            get {
-                return ResourceManager.GetString("AboutTimeEntries", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string AboutTitle {
@@ -106,7 +79,7 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About....
+        ///   Looks up a localized string similar to about worktajm.
         /// </summary>
         public static string AppBarAboutText {
             get {
@@ -124,7 +97,7 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login.
+        ///   Looks up a localized string similar to login.
         /// </summary>
         public static string AppBarLoginButtonText {
             get {
@@ -133,7 +106,7 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logout.
+        ///   Looks up a localized string similar to logout.
         /// </summary>
         public static string AppBarLogoutText {
             get {
@@ -156,6 +129,15 @@ namespace WorkTajm.Resources {
         public static string AppBarRegisterButtonText {
             get {
                 return ResourceManager.GetString("AppBarRegisterButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string AppBarSettingsText {
+            get {
+                return ResourceManager.GetString("AppBarSettingsText", resourceCulture);
             }
         }
         
@@ -540,11 +522,56 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account.
+        /// </summary>
+        public static string SettingsAccountTitle {
+            get {
+                return ResourceManager.GetString("SettingsAccountTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customers.
+        /// </summary>
+        public static string SettingsCustomers {
+            get {
+                return ResourceManager.GetString("SettingsCustomers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projects.
+        /// </summary>
+        public static string SettingsProjects {
+            get {
+                return ResourceManager.GetString("SettingsProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time entries.
+        /// </summary>
+        public static string SettingsTimeEntries {
+            get {
+                return ResourceManager.GetString("SettingsTimeEntries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string SettingsTitle {
             get {
                 return ResourceManager.GetString("SettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User name.
+        /// </summary>
+        public static string SettingsUsername {
+            get {
+                return ResourceManager.GetString("SettingsUsername", resourceCulture);
             }
         }
         

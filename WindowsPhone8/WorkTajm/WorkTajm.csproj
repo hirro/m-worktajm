@@ -95,7 +95,7 @@
     </Compile>
     <Compile Include="Backend\Json\Project.cs" />
     <Compile Include="Backend\Json\Registration.cs" />
-    <Compile Include="Backend\Synchronizer.cs" />
+    <Compile Include="Backend\BackendApi.cs" />
     <Compile Include="Backend\Json\UserInformation.cs" />
     <Compile Include="Backend\UrlBuilder.cs" />
     <Compile Include="Constants\Constants.cs" />
@@ -123,11 +123,11 @@
     <Compile Include="Views\ProjectPage.xaml.cs">
       <DependentUpon>ProjectPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegisterPage.xaml.cs">
-      <DependentUpon>RegisterPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\RegisterPopup.xaml.cs">
       <DependentUpon>RegisterPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TimeEntryControl.xaml.cs">
       <DependentUpon>TimeEntryControl.xaml</DependentUpon>
@@ -142,7 +142,6 @@
     <Compile Include="Views\TimeEntryPage.xaml.cs">
       <DependentUpon>TimeEntryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WorktajmFormControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -168,11 +167,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RegisterPage.xaml">
+    <Page Include="Views\RegisterPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RegisterPopup.xaml">
+    <Page Include="Views\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

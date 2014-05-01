@@ -22,29 +22,8 @@ namespace WorkTajm.Backend
     /// 
     /// It authenticates and synchronizes items with the database.
     /// </summary>
-    class Synchronizer
+    class BackendApi
     {
-        // Recommended singleton pattern in multithreaded context
-        private static volatile Synchronizer instance;
-        private static object syncRoot = new Object();
-        public static Synchronizer Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                        {
-                            instance = new Synchronizer();
-                        }
-                    }
-                }
-                return instance;
-            }
-        }
-
         [DefaultValue("demo@worktajm.com")]
         public string Username { get; set; }
 
@@ -54,12 +33,12 @@ namespace WorkTajm.Backend
         [DefaultValue(false)]
         public bool LoggedIn { get; set; }
 
-        private Synchronizer()
+        public BackendApi()
         {
             // Hidden
         }
 
-        public async Task Authenticate()
+        public async Task Authenticate(string username, string password)
         {
             try
             {
@@ -69,8 +48,8 @@ namespace WorkTajm.Backend
                 Progress progress = new Progress();
 
                 string url = UrlBuilder.BuildUrl(UrlBuilder.Paths.Login);
-                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url); 
-                webRequest.Credentials = new NetworkCredential(Username, Password);
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
+                webRequest.Credentials = new NetworkCredential(username, password);
                 try
                 {
                     WebResponse response = await webRequest.GetResponseAsync();
@@ -126,7 +105,7 @@ namespace WorkTajm.Backend
 
             // Load time entries
             progress.Text= "Loading time entries...";
-            await LoadTimeEntries();
+            //await LoadTimeEntries();
 
             // Done
             progress.Visible = false;
@@ -158,8 +137,6 @@ namespace WorkTajm.Backend
                         Debug.WriteLine("Adding customer name: [{0}], Id: [{1}]", customer.Name, customer.Id);
 
                         // Check that the items not already exists
-                        //WorkTajmViewModel.Instance.FindCustomer(customer.Id);
-
                         WorkTajmViewModel.Instance.AddCustomer(customer);
                     }
                     Debug.WriteLine("LoadCustomers complete, {0} customers found", customers.Length);
@@ -198,7 +175,7 @@ namespace WorkTajm.Backend
                     WorkTajm.DataModel.Project[] projects = JsonConvert.DeserializeObject<WorkTajm.DataModel.Project[]>(txt);
                     foreach (WorkTajm.DataModel.Project project in projects)
                     {
-                        Debug.WriteLine("Added project {0}", project.Name);
+                        Debug.WriteLine("Added project {0}", project.ProjectName);
                         WorkTajmViewModel.Instance.AddProject(project);
                     }
                     Debug.WriteLine("LoadProjects complete, {0} projects found", projects.Length);

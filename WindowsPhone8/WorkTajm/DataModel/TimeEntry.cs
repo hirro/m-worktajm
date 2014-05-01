@@ -37,18 +37,18 @@ namespace WorkTajm.DataModel
         }
 
         // Define project name: private field, public property, and database column.
-        private string _projectmName;
+        private string _projectName;
 
         [Column]
         public string ProjectName
         {
-            get { return _projectmName; }
+            get { return _projectName; }
             set
             {
-                if (_projectmName != value)
+                if (_projectName != value)
                 {
                     NotifyPropertyChanging("ProjectName");
-                    _projectmName = value;
+                    _projectName = value;
                     NotifyPropertyChanged("ProjectName");
                 }
             }

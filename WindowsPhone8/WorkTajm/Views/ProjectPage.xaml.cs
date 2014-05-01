@@ -40,7 +40,7 @@ namespace WorkTajm.Views
         private void ok_Click(object sender, EventArgs e)
         {
             Project project = new Project();
-            project.Name = projectName.Text;
+            project.ProjectName = projectName.Text;
             project.Description = projectDescription.Text;
             WorkTajmViewModel.Instance.AddNewProject(project);
 

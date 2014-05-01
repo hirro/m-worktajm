@@ -16,11 +16,6 @@ namespace WorkTajm.Views
 {
     public partial class PanoramaPage : PhoneApplicationPage
     {
-        public enum ApplicationBarType
-        {
-            None,
-            Normal
-        };
 
         public PanoramaPage()
         {
@@ -28,6 +23,10 @@ namespace WorkTajm.Views
 
             // Sample code to localize the ApplicationBar
             BuildLocalizedApplicationBar();
+
+
+            // Setup data bindsing
+            this.DataContext = WorkTajmViewModel.Instance;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -40,21 +39,12 @@ namespace WorkTajm.Views
             }
         }
 
-        public void SetApplicationBarType(ApplicationBarType type)
+        public void ShowApplicationBar()
         {
-            switch (type)
-            {
-                case ApplicationBarType.None:
-                    ApplicationBar = null;
-                    break;
-                case ApplicationBarType.Normal:
-                    ApplicationBar = normalApplicationBar;
-                    break;
-            }
+            ApplicationBar = normalApplicationBar;
         }
 
         private ApplicationBar normalApplicationBar;
-        private ApplicationBar dialogApplicationBar;
         private void BuildLocalizedApplicationBar()
         {
             // Set the page's ApplicationBar to a new instance of ApplicationBar.
@@ -80,6 +70,11 @@ namespace WorkTajm.Views
             normalApplicationBar.MenuItems.Add(appBarMenuItem);
             appBarMenuItem.Click += about_Click;
 
+            // Settings menu text
+            ApplicationBarMenuItem appBarSettings = new ApplicationBarMenuItem(AppResources.AppBarSettingsText);
+            normalApplicationBar.MenuItems.Add(appBarSettings);
+            appBarSettings.Click += settings_Click;
+
             // Logout menu text
             ApplicationBarMenuItem appBarLogout = new ApplicationBarMenuItem(AppResources.AppBarLogoutText);
             normalApplicationBar.MenuItems.Add(appBarLogout);
@@ -90,6 +85,11 @@ namespace WorkTajm.Views
         private void about_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/AboutPage.xaml", UriKind.Relative));
+        }
+
+        private void settings_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/SettingsPage.xaml", UriKind.Relative));
         }
 
         private void logout_Click(object sender, EventArgs e)

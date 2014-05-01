@@ -43,49 +43,97 @@
                                 <TextBlock Text="08:00:00" Style="{StaticResource PhoneTextTitle3Style}"/>
                             </StackPanel>
                         </Grid>
-                        <phone:LongListSelector Grid.Row="1" x:Name="availableProjectsSelector" ItemsSource="{Binding Projects}">
-                            <phone:LongListSelector.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                        </Grid.RowDefinitions>
-                                        <StackPanel Grid.Row="0" Grid.Column="0">
-                                            <TextBlock Text="Project name" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                            <TextBlock Text="Project A" Style="{StaticResource PhoneTextTitle3Style}"/>
-                                        </StackPanel>
-                                        <Button Content="sdfsdf"/>
-                                        <StackPanel Grid.Row="1" Grid.Column="0">
-                                            <TextBlock Text="Today" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                            <TextBlock Text="08:00:00" Style="{StaticResource PhoneTextTitle3Style}"/>
-                                        </StackPanel>
-                                        <StackPanel Grid.Row="1" Grid.Column="1">
-                                            <TextBlock Text="Week" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                            <TextBlock Text="40:00:00" Style="{StaticResource PhoneTextTitle3Style}"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </phone:LongListSelector.ItemTemplate>
-                        </phone:LongListSelector>
+                        <Grid Grid.Row="1">
+
+                            <ListBox x:Name="availableProjectsSelector" ItemsSource="{Binding Projects}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <StackPanel Grid.Row="0" Grid.Column="0">
+                                                <TextBlock Text="Project name" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                                <TextBlock Text="Project A" Style="{StaticResource PhoneTextTitle3Style}"/>
+                                            </StackPanel>
+                                            <Button Grid.Row="0" Grid.Column="1" Content="Start"/>
+                                            <StackPanel Grid.Row="1" Grid.Column="0">
+                                                <TextBlock Text="Today" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                                <TextBlock Text="08:00:00" Style="{StaticResource PhoneTextTitle3Style}"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="1" Grid.Column="1">
+                                                <TextBlock Text="Week" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                                <TextBlock Text="40:00:00" Style="{StaticResource PhoneTextTitle3Style}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+
+                        </Grid>
                     </Grid>
                 </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="{Binding Path=LocalizedResources.ProjectsTitle, Source={StaticResource LocalizedStrings}}">
-                <Grid/>
-            </phone:PanoramaItem>
+                    <Grid>
+                        <ListBox ItemsSource="{Binding Projects}" Height="400">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="466" Margin="0, 0, 0, 12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock
+                                    Text="{Binding Name}"
+                                    Style="{StaticResource PhoneTextTitle3Style}"
+                                    />
+
+                                            <TextBlock
+                                    Text="{Binding Description}"
+                                    Style="{StaticResource PhoneTextTitle3Style}"
+                                    Foreground="{StaticResource PhoneSubtleBrush}"
+                                    />
+                                        </StackPanel>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="{Binding Path=LocalizedResources.CustomersTitle, Source={StaticResource LocalizedStrings}}">
-                <Grid/>
-            </phone:PanoramaItem>
+                    <Grid>
+                        <ListBox ItemsSource="{Binding Customers}" Height="400">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="466" Margin="0, 0, 0, 12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock Text="{Binding Name}" Style="{StaticResource PhoneTextTitle3Style}"/>
+                                            <TextBlock Text="{Binding Description}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>                        
+                    </Grid>
+                </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="{Binding Path=LocalizedResources.TimeEntriesTitle, Source={StaticResource LocalizedStrings}}">
-                <Grid/>
-            </phone:PanoramaItem>
+                    <Grid>
+                    </Grid>
+                </phone:PanoramaItem>
 
         </phone:Panorama>
         </StackPanel>

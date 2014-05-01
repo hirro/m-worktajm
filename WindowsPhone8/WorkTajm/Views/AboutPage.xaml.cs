@@ -15,10 +15,7 @@ namespace WorkTajm.Views
         public About()
         {
             InitializeComponent();
-
-            NumberOfCustomers.Text = Convert.ToString(WorkTajmViewModel.Instance.Customers.Count);
-            NumberOfProjects.Text = Convert.ToString(WorkTajmViewModel.Instance.Projects.Count);
-            NumberOfTimeEntries.Text = Convert.ToString(WorkTajmViewModel.Instance.TimeEntries.Count);
+            this.DataContext = WorkTajmViewModel.Instance;
         }
     }
 }

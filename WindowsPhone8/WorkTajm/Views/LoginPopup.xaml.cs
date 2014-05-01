@@ -27,7 +27,6 @@ namespace WorkTajm
 
             this.Width = width;
             this.Height = height;
-
             BuildDialogApplicationBar();
         }
 
@@ -45,12 +44,6 @@ namespace WorkTajm
             appBarSyncButton.Click += check_Click;
             dialogApplicationBar.Buttons.Add(appBarSyncButton);
 
-            // Login (check) button
-            ApplicationBarIconButton appBarRegisterButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/SDK8/Light/add.png", UriKind.Relative));
-            appBarRegisterButton.Text = AppResources.AppBarRegisterButtonText;
-            appBarRegisterButton.Click += register_Click;
-            dialogApplicationBar.Buttons.Add(appBarRegisterButton);
-
             PanoramaPage currentPage = (App.Current.RootVisual as PhoneApplicationFrame).Content as PanoramaPage;
             currentPage.ApplicationBar = dialogApplicationBar;
         }
@@ -58,10 +51,8 @@ namespace WorkTajm
         private async void check_Click(object sender, EventArgs e)
         {
             var form = (LoginPopupControl)loginPopup.Child;
-            Synchronizer.Instance.Password = form.password.Password;
-            Synchronizer.Instance.Username = form.username.Text;
-            await Synchronizer.Instance.Authenticate();
-            if (Synchronizer.Instance.LoggedIn)
+            await WorkTajmViewModel.Instance.Authenticate(form.username.Text, form.password.Password);
+            if (WorkTajmViewModel.Instance.Authenticated)
             {
                 loginPopup.IsOpen = false;
                 if (form.rememberMe.IsChecked.Value)
@@ -79,7 +70,7 @@ namespace WorkTajm
 
                 // Restore application bar
                 PanoramaPage currentPage = (App.Current.RootVisual as PhoneApplicationFrame).Content as PanoramaPage;
-                currentPage.SetApplicationBarType(PanoramaPage.ApplicationBarType.Normal);
+                currentPage.ShowApplicationBar();
             }
         }
 
@@ -92,11 +83,7 @@ namespace WorkTajm
         static private Popup loginPopup = new Popup();
         static public void Show()
         {
-            // First try to login using the stored credentials
-            if (loginPopup.Child == null)
-            {
-                loginPopup.Child = new LoginPopupControl();
-            }
+            loginPopup.Child = new LoginPopupControl();
 
             LoginPopupControl pup = loginPopup.Child as LoginPopupControl;
             if (Configuration.Instance.RememberMe)

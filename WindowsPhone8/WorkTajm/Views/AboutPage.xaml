@@ -36,16 +36,36 @@
                 <TextBlock Text="{Binding Path=LocalizedResources.AboutVersion, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextSubtleStyle}"/>
                 <TextBlock Text="1.0.0.0" Style="{StaticResource PhoneTextTitle3Style}"/>
             </StackPanel>
-            <StackPanel Grid.Row="1">
-                <TextBlock Text="{Binding Path=LocalizedResources.AboutCustomers, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                <TextBlock x:Name="NumberOfCustomers" Style="{StaticResource PhoneTextTitle3Style}"/>
+            <StackPanel Grid.Row="2">
+                <ListBox 
+                x:Name="booksListBox" 
+                ItemsSource="{Binding Projects}" Height="400"
+                >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="466" Margin="0, 0, 0, 12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock
+                                    Text="{Binding Name}"
+                                    Style="{StaticResource PhoneTextTitle3Style}"
+                                    />
 
-                <TextBlock Text="{Binding Path=LocalizedResources.AboutProjects, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                <TextBlock x:Name="NumberOfProjects" Text="12" Style="{StaticResource PhoneTextTitle3Style}"/>
+                                    <TextBlock
+                                    Text="{Binding Description}"
+                                    Style="{StaticResource PhoneTextTitle3Style}"
+                                    Foreground="{StaticResource PhoneSubtleBrush}"
+                                    />
+                                </StackPanel>
 
-                <TextBlock Text="{Binding Path=LocalizedResources.AboutTimeEntries, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                <TextBlock x:Name="NumberOfTimeEntries" Text="456" Style="{StaticResource PhoneTextTitle3Style}"/>
-                
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
             </StackPanel>
 
         </Grid>

@@ -37,18 +37,18 @@ namespace WorkTajm.DataModel
         }
 
         // Project name
-        private string name;
+        private string projectName;
         [Column]
-        public string Name
+        public string ProjectName
         {
             get
             {
-                return name;
+                return projectName;
             }
             set
             {
                 NotifyPropertyChanging();
-                name = value;
+                projectName = value;
                 NotifyPropertyChanged();
             }
         }

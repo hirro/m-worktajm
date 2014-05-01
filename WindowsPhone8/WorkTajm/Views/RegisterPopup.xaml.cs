@@ -39,16 +39,16 @@ namespace WorkTajm.Views
             dialogApplicationBar.Mode = ApplicationBarMode.Default;
 
             // Sync button
-            ApplicationBarIconButton appBarSyncButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/SDK8/Light/check.png", UriKind.Relative));
-            appBarSyncButton.Text = AppResources.AppBarSyncButtonText;
-            appBarSyncButton.Click += check_Click;
-            dialogApplicationBar.Buttons.Add(appBarSyncButton);
+            ApplicationBarIconButton appBarRegisterButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/SDK8/Light/check.png", UriKind.Relative));
+            appBarRegisterButton.Text = AppResources.AppBarRegisterButtonText;
+            appBarRegisterButton.Click += register_Click;
+            dialogApplicationBar.Buttons.Add(appBarRegisterButton);
 
             PanoramaPage currentPage = (App.Current.RootVisual as PhoneApplicationFrame).Content as PanoramaPage;
             currentPage.ApplicationBar = dialogApplicationBar;
         }
 
-        private async void check_Click(object sender, EventArgs e)
+        private async void register_Click(object sender, EventArgs e)
         {
             var form = (RegisterPopupControl)registerPopup.Child;
 
@@ -60,7 +60,7 @@ namespace WorkTajm.Views
 
                 // Restore application bar
                 PanoramaPage currentPage = (App.Current.RootVisual as PhoneApplicationFrame).Content as PanoramaPage;
-                currentPage.SetApplicationBarType(PanoramaPage.ApplicationBarType.Normal);
+                currentPage.ShowApplicationBar();
             }
         }
 
