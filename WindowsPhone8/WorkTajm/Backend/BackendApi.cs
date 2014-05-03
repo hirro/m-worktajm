@@ -38,7 +38,7 @@ namespace WorkTajm.Backend
             // Hidden
         }
 
-        public async Task Authenticate(string username, string password)
+        public async Task Authenticate()
         {
             try
             {
@@ -49,7 +49,7 @@ namespace WorkTajm.Backend
 
                 string url = UrlBuilder.BuildUrl(UrlBuilder.Paths.Login);
                 HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
-                webRequest.Credentials = new NetworkCredential(username, password);
+                webRequest.Credentials = new NetworkCredential(Username, Password);
                 try
                 {
                     WebResponse response = await webRequest.GetResponseAsync();

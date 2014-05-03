@@ -45,7 +45,7 @@
                         </Grid>
                         <Grid Grid.Row="1">
 
-                            <ListBox x:Name="availableProjectsSelector" ItemsSource="{Binding Projects}">
+                            <ListBox ItemsSource="{Binding Projects}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -59,7 +59,7 @@
                                             </Grid.RowDefinitions>
                                             <StackPanel Grid.Row="0" Grid.Column="0">
                                                 <TextBlock Text="Project name" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                                <TextBlock Text="Project A" Style="{StaticResource PhoneTextTitle3Style}"/>
+                                                <TextBlock Text="{Binding ProjectName}" Style="{StaticResource PhoneTextTitle3Style}"/>
                                             </StackPanel>
                                             <Button Grid.Row="0" Grid.Column="1" Content="Start"/>
                                             <StackPanel Grid.Row="1" Grid.Column="0">
@@ -81,7 +81,7 @@
 
             <phone:PanoramaItem Header="{Binding Path=LocalizedResources.ProjectsTitle, Source={StaticResource LocalizedStrings}}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding Projects}" Height="400">
+                        <ListBox ItemsSource="{Binding Projects}" Height="Auto">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Width="466" Margin="0, 0, 0, 12">
@@ -90,16 +90,8 @@
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <TextBlock
-                                    Text="{Binding Name}"
-                                    Style="{StaticResource PhoneTextTitle3Style}"
-                                    />
-
-                                            <TextBlock
-                                    Text="{Binding Description}"
-                                    Style="{StaticResource PhoneTextTitle3Style}"
-                                    Foreground="{StaticResource PhoneSubtleBrush}"
-                                    />
+                                            <TextBlock Text="{Binding ProjectName}" Style="{StaticResource PhoneTextTitle3Style}" />
+                                            <TextBlock Text="{Binding Description}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}"/>
                                         </StackPanel>
 
                                     </Grid>

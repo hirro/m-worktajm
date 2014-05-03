@@ -87,8 +87,9 @@ namespace WorkTajm
             if (!workTajmDb.DatabaseExists())
             {
                 workTajmDb.CreateDatabase();
+                workTajmDb.SubmitChanges();
+
             }
-            LoadData();
         }
 
         public void LoadData()
@@ -99,29 +100,6 @@ namespace WorkTajm
                 Projects = new ObservableCollection<Project>(workTajmDb.Projects);
                 TimeEntries = new ObservableCollection<TimeEntry>(workTajmDb.TimeEntries);
 
-                Projects.Add(new Project() { ProjectName="Test Project", Description="Description", Id=33});
-                /*
-                using( WorkTajmContext library = new WorkTajmContext( WorkTajmContext.ConnectionString)) 
-                { 
-                    DataLoadOptions dlo = new DataLoadOptions(); 
-                    dlo.LoadWith < Customer > (customer => customer); 
-                    library.LoadOptions = dlo; 
-                    Customers = library.Customers;
-                }
-                 */
-
-                // Find all customers
-                var loadedCustomers = from Customer b in workTajmDb.Customers
-                                   orderby b.Name
-                                   select b;
-                var ccc = loadedCustomers.ToArray();
-            
-                // Find all projecs
-                var loadedProjects = from Project p in workTajmDb.Projects
-                                      orderby p.ProjectName
-                                      select p;
-                var ddd = loadedProjects.ToArray();
-
                 // All is loaded
                 isDataLoaded = true;
             }
@@ -131,8 +109,8 @@ namespace WorkTajm
         public void AddProject(Project project)
         {
             // Check for duplicates
-            var cc = from Customer b in workTajmDb.Projects where b.Id == project.Id select b;
-            if (cc == null)
+            Project p = workTajmDb.Projects.FirstOrDefault(s => s.Id == project.Id);
+            if (p == null)
             {
                 // Add it
                 Debug.WriteLine("AddProject - New project, adding it to the database");
@@ -144,16 +122,14 @@ namespace WorkTajm
             {
                 Debug.WriteLine("AddProject - Project already exists");
             }
-            workTajmDb.Projects.InsertOnSubmit(project);
-            Projects.Add(project);
-            workTajmDb.SubmitChanges();
+            NotifyPropertyChanged("Projects");
         }
 
         public void AddCustomer(Customer customer)
         {
             // Check for duplicates
-            var cc = from Customer b in workTajmDb.Customers where b.Id==customer.Id select b;
-            if (cc == null)
+            Customer c = workTajmDb.Customers.FirstOrDefault(s => ((Customer)s).Id == customer.Id);
+            if (c == null)
             {
                 // Add it
                 Debug.WriteLine("AddCustomer - New customer, adding it to the database");
@@ -165,13 +141,14 @@ namespace WorkTajm
             {
                 Debug.WriteLine("AddCustomer - Customer already exists");
             }
+            NotifyPropertyChanged("Customers");
         }
 
         public void AddTimeEntry(TimeEntry timeEntry)
         {
             // Check for duplicates
-            var cc = from Customer b in workTajmDb.TimeEntries where b.Id == timeEntry.Id select b;
-            if (cc == null)
+            TimeEntry c = workTajmDb.TimeEntries.FirstOrDefault(s => s.Id == timeEntry.Id);
+            if (c == null)
             {
                 // Add it
                 Debug.WriteLine("AddTimeEntry - New time entry, adding it to the database");
@@ -183,6 +160,7 @@ namespace WorkTajm
             {
                 Debug.WriteLine("AddTimeEntry - Time entry already exists");
             }
+            NotifyPropertyChanged("TimeEntries");
         }
 
         #region INotifyPropertyChanged Members
@@ -235,6 +213,7 @@ namespace WorkTajm
         {
             Configuration.Instance.ForgeMe();
             workTajmDb.ResetDatabase();
+            isDataLoaded = false;
             PhoneApplicationFrame NavigationService = (Application.Current.RootVisual as PhoneApplicationFrame);
             while (NavigationService.CanGoBack) 
             {
@@ -255,7 +234,7 @@ namespace WorkTajm
         {
             get
             {
-                return BackendApi.Username;
+                return Configuration.Instance.Username;
             }
         }
 
@@ -293,9 +272,17 @@ namespace WorkTajm
             TimeEntries.Add(timeEntry);
         }
 
-        internal Task Authenticate(string username, string password)
+        internal async Task Authenticate(string username, string password, bool rememberMe)
         {
-            return BackendApi.Authenticate(username, password);
+            BackendApi.Username = username;
+            BackendApi.Password = password;
+            await BackendApi.Authenticate();
+            if (Authenticated)
+            {
+                LoadData();
+                Configuration.Instance.Username = username;
+                Configuration.Instance.Password = password;
+            }
         }
 
         public bool Authenticated

@@ -101,6 +101,7 @@
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Constants\HttpStatusCodeHelper.cs" />
     <Compile Include="Constants\WebExceptionStatusHelper.cs" />
+    <Compile Include="DataModel\BaseEntity.cs" />
     <Compile Include="DataModel\Customer.cs" />
     <Compile Include="DataModel\Project.cs" />
     <Compile Include="DataModel\TimeEntry.cs" />

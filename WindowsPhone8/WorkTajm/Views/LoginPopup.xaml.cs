@@ -51,7 +51,12 @@ namespace WorkTajm
         private async void check_Click(object sender, EventArgs e)
         {
             var form = (LoginPopupControl)loginPopup.Child;
-            await WorkTajmViewModel.Instance.Authenticate(form.username.Text, form.password.Password);
+            bool rememberMe = false;
+            if (form.rememberMe.IsChecked.HasValue)
+            {
+                rememberMe = (bool) form.rememberMe.IsChecked;
+            }
+            await WorkTajmViewModel.Instance.Authenticate(form.username.Text, form.password.Password, rememberMe);
             if (WorkTajmViewModel.Instance.Authenticated)
             {
                 loginPopup.IsOpen = false;

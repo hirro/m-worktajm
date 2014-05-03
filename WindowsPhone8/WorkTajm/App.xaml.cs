@@ -65,7 +65,6 @@ namespace WorkTajm
             UriMapper mapper = Resources["uriMapper"] as UriMapper;
             RootFrame.UriMapper = mapper;
             mapper.UriMappings[0].MappedUri = new Uri("/Views/LoginPage.xaml", UriKind.Relative);
-            WorkTajmViewModel.Instance.LoadData();
         }
 
         // Code to execute when the application is activated (brought to foreground)
