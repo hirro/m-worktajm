@@ -58,56 +58,6 @@ namespace WorkTajm
             }
         }
 
-        private static Mutex mutex = new Mutex();
-        private void Synchronize(object state)
-        {
-            Thread.Sleep(10*1000);
-            while (true)
-            {
-                mutex.WaitOne();
-                Debug.WriteLine("Synchronize - Starting");
-                if (IsLoggedIn)
-                {
-                    SynchronizeInternal();
-                }
-                Thread.Sleep(30000);
-                Debug.WriteLine("Synchronize - Done");
-            }
-        }
-
-        private async Task SynchronizeInternal()
-        {
-            await SynchronzizeCustomers();
-            await SynchronizeProjects();
-            await SynchronizeTimeEntries();
-        }
-
-        private async Task SynchronizeTimeEntries()
-        {
-            //
-        }
-
-        private async Task SynchronizeProjects()
-        {
-        }
-
-        private async Task SynchronzizeCustomers()
-        {
-            // Find all customers that are new
-            var newCustomers = from c in Customers where c.Id == 0 select c;
-            foreach (var customer in newCustomers)
-            {
-                long newCustomerId = await BackendApi.Create(customer);
-
-                // Update customer with id
-                customer.Id = newCustomerId;
-            }
-
-            // Find all customers that are modified
-
-            // Find all customers which are to be deleted
-        }
-
         // Backend API
         private BackendApi _backendApi = new BackendApi();
         public BackendApi BackendApi
@@ -153,64 +103,6 @@ namespace WorkTajm
             }
         }
 
-
-        public void AddProject(Project project)
-        {
-            // Check for duplicates
-            Project p = workTajmDb.Projects.FirstOrDefault(s => ((Project) s).Id == project.Id);
-            if (p == null)
-            {
-                // Add it
-                Debug.WriteLine("AddProject - New project, adding it to the database");
-                workTajmDb.Projects.InsertOnSubmit(project);
-                Projects.Add(project);
-                workTajmDb.SubmitChanges();
-            }
-            else
-            {
-                Debug.WriteLine("AddProject - Project already exists");
-            }
-            NotifyPropertyChanged("Projects");
-        }
-
-        public void AddCustomer(Customer customer)
-        {
-            // Check for duplicates
-            Customer c = workTajmDb.Customers.FirstOrDefault(s => ((Customer)s).Id == customer.Id);
-            if (c == null)
-            {
-                // Add it
-                Debug.WriteLine("AddCustomer - New customer, adding it to the database");
-                workTajmDb.Customers.InsertOnSubmit(customer);
-                Customers.Add(customer);
-                workTajmDb.SubmitChanges();
-            }
-            else
-            {
-                Debug.WriteLine("AddCustomer - Customer already exists");
-            }
-            NotifyPropertyChanged("Customers");
-        }
-
-        public void AddTimeEntry(TimeEntry timeEntry)
-        {
-            // Check for duplicates
-            TimeEntry c = workTajmDb.TimeEntries.FirstOrDefault(s => ((TimeEntry) s).Id == timeEntry.Id);
-            if (c == null)
-            {
-                // Add it
-                Debug.WriteLine("AddTimeEntry - New time entry, adding it to the database");
-                workTajmDb.TimeEntries.InsertOnSubmit(timeEntry);
-                TimeEntries.Add(timeEntry);
-                workTajmDb.SubmitChanges();
-            }
-            else
-            {
-                Debug.WriteLine("AddTimeEntry - Time entry already exists");
-            }
-            NotifyPropertyChanged("TimeEntries");
-        }
-
         #region INotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -225,6 +117,27 @@ namespace WorkTajm
         }
         #endregion
 
+
+        internal async Task Authenticate(string username, string password, bool rememberMe)
+        {
+            BackendApi.Username = username;
+            BackendApi.Password = password;
+            await BackendApi.Authenticate();
+            if (Authenticated)
+            {
+                LoadData();
+                Configuration.Instance.Username = username;
+                Configuration.Instance.Password = password;
+            }
+        }
+
+        public bool Authenticated
+        {
+            get
+            {
+                return BackendApi.LoggedIn;
+            }
+        }
 
         internal void Logout()
         {
@@ -320,28 +233,129 @@ namespace WorkTajm
             TimeEntries.Add(timeEntry);
         }
 
-        internal async Task Authenticate(string username, string password, bool rememberMe)
+        public void AddProject(Project project)
         {
-            BackendApi.Username = username;
-            BackendApi.Password = password;
-            await BackendApi.Authenticate();
-            if (Authenticated)
+            // Check for duplicates
+            Project p = workTajmDb.Projects.FirstOrDefault(s => ((Project)s).Id == project.Id);
+            if (p == null)
             {
-                LoadData();
-                Configuration.Instance.Username = username;
-                Configuration.Instance.Password = password;
+                // Add it
+                Debug.WriteLine("AddProject - New project, adding it to the database");
+                workTajmDb.Projects.InsertOnSubmit(project);
+                Projects.Add(project);
+                workTajmDb.SubmitChanges();
+            }
+            else
+            {
+                Debug.WriteLine("AddProject - Project already exists");
+            }
+            NotifyPropertyChanged("Projects");
+        }
+
+        public void AddCustomer(Customer customer)
+        {
+            // Check for duplicates
+            Customer c = workTajmDb.Customers.FirstOrDefault(s => ((Customer)s).Id == customer.Id);
+            if (c == null)
+            {
+                // Add it
+                Debug.WriteLine("AddCustomer - New customer, adding it to the database");
+                workTajmDb.Customers.InsertOnSubmit(customer);
+                Customers.Add(customer);
+                workTajmDb.SubmitChanges();
+            }
+            else
+            {
+                Debug.WriteLine("AddCustomer - Customer already exists");
+            }
+            NotifyPropertyChanged("Customers");
+        }
+
+        public void AddTimeEntry(TimeEntry timeEntry)
+        {
+            // Check for duplicates
+            TimeEntry c = workTajmDb.TimeEntries.FirstOrDefault(s => ((TimeEntry)s).Id == timeEntry.Id);
+            if (c == null)
+            {
+                // Add it
+                Debug.WriteLine("AddTimeEntry - New time entry, adding it to the database");
+                workTajmDb.TimeEntries.InsertOnSubmit(timeEntry);
+                TimeEntries.Add(timeEntry);
+                workTajmDb.SubmitChanges();
+            }
+            else
+            {
+                Debug.WriteLine("AddTimeEntry - Time entry already exists");
+            }
+            NotifyPropertyChanged("TimeEntries");
+        }
+
+        private static Mutex mutex = new Mutex();
+        private void Synchronize(object state)
+        {
+            Thread.Sleep(10 * 1000);
+            while (true)
+            {
+                mutex.WaitOne();
+                Debug.WriteLine("Synchronize - Starting");
+                if (IsLoggedIn)
+                {
+                    SynchronizeInternal();
+                }
+                Thread.Sleep(30000);
+                Debug.WriteLine("Synchronize - Done");
             }
         }
 
-        public bool Authenticated
-        { 
-            get
-            {
-                return BackendApi.LoggedIn;
-            }  
+        private async Task SynchronizeInternal()
+        {
+            await SynchronzizeCustomers();
+            await SynchronizeProjects();
+            await SynchronizeTimeEntries();
         }
 
+        private async Task SynchronizeTimeEntries()
+        {
+            // Find all customers that are new
+            var newItems = from c in TimeEntries where c.Id == 0 select c;
+            foreach (var timeEntry in newItems)
+            {
+                long newCustomerId = await BackendApi.Create(timeEntry);
 
+                // Update customer with id
+                timeEntry.Id = newCustomerId;
+            }
+        }
+
+        private async Task SynchronizeProjects()
+        {
+            // Find all customers that are new
+            var newItems = from c in Projects where c.Id == 0 select c;
+            foreach (var project in newItems)
+            {
+                long newCustomerId = await BackendApi.Create(project);
+
+                // Update customer with id
+                project.Id = newCustomerId;
+            }
+        }
+
+        private async Task SynchronzizeCustomers()
+        {
+            // Find all customers that are new
+            var newCustomers = from c in Customers where c.Id == 0 select c;
+            foreach (var customer in newCustomers)
+            {
+                long newCustomerId = await BackendApi.Create(customer);
+
+                // Update customer with id
+                customer.Id = newCustomerId;
+            }
+
+            // Find all customers that are modified
+
+            // Find all customers which are to be deleted
+        }
 
     }
 }
