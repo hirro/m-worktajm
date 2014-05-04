@@ -51,19 +51,22 @@ namespace WorkTajm.Views
             normalApplicationBar = new ApplicationBar();
             normalApplicationBar.Opacity = 1;
             normalApplicationBar.IsVisible = true;
-            normalApplicationBar.Mode = ApplicationBarMode.Default;
+            normalApplicationBar.Mode = ApplicationBarMode.Minimized;
 
-            // Sync button
-            ApplicationBarIconButton appBarSyncButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/SDK8/Light/refresh.png", UriKind.Relative));
-            appBarSyncButton.Text = AppResources.AppBarSyncButtonText;
-            appBarSyncButton.Click += sync_Click;
-            normalApplicationBar.Buttons.Add(appBarSyncButton);
+            // Add new project
+            ApplicationBarMenuItem addProject = new ApplicationBarMenuItem(AppResources.AppBarAddProjectText);
+            normalApplicationBar.MenuItems.Add(addProject);
+            addProject.Click += add_ProjectClick;
 
-            // Add button
-            ApplicationBarIconButton appBarAddButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/SDK8/Light/add.png", UriKind.Relative));
-            appBarAddButton.Text = AppResources.AppBarAddButtonText;
-            appBarAddButton.Click += add_Click;
-            normalApplicationBar.Buttons.Add(appBarAddButton);
+            // Add new customer
+            ApplicationBarMenuItem addCustomer= new ApplicationBarMenuItem(AppResources.AppBarAddCustomerText);
+            normalApplicationBar.MenuItems.Add(addCustomer);
+            addCustomer.Click += add_CustomerClick;
+
+            // Add new time entry
+            ApplicationBarMenuItem addTimeEntry = new ApplicationBarMenuItem(AppResources.AppBarAddTimeEntryText);
+            normalApplicationBar.MenuItems.Add(addTimeEntry);
+            addTimeEntry.Click += add_TimeEntryClick;
 
             // About menu text
             ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarAboutText);
@@ -97,26 +100,19 @@ namespace WorkTajm.Views
             WorkTajmViewModel.Instance.Logout();
         }
 
-        private void sync_Click(object sender, EventArgs e)
+        private void add_ProjectClick(object sender, EventArgs e)
         {
-            //
+            NavigationService.Navigate(new Uri("/Views/ProjectPage.xaml", UriKind.Relative));
         }
 
-        private void add_Click(object sender, EventArgs e)
+        private void add_CustomerClick(object sender, EventArgs e)
         {
-            switch (this.Panorama.SelectedIndex)
-            {
-                case 2:
-                    NavigationService.Navigate(new Uri("/Views/CustomerPage.xaml", UriKind.Relative));        
-                    break;
-                case 3:
-                    NavigationService.Navigate(new Uri("/Views/TimeEntryPage.xaml", UriKind.Relative));        
-                    break;
-                default:
-                    NavigationService.Navigate(new Uri("/Views/ProjectPage.xaml", UriKind.Relative));        
-                    break;
-            }
+            NavigationService.Navigate(new Uri("/Views/CustomerPage.xaml", UriKind.Relative));
+        }
 
+        private void add_TimeEntryClick(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/TimeEntryPage.xaml", UriKind.Relative));
         }
 
     }

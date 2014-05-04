@@ -24,10 +24,12 @@ using System.Data.Linq;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
+using System.Windows.Threading;
 using WorkTajm.Backend;
 using WorkTajm.DataModel;
 using WorkTajm.Resources;
@@ -56,6 +58,56 @@ namespace WorkTajm
             }
         }
 
+        private static Mutex mutex = new Mutex();
+        private void Synchronize(object state)
+        {
+            Thread.Sleep(10*1000);
+            while (true)
+            {
+                mutex.WaitOne();
+                Debug.WriteLine("Synchronize - Starting");
+                if (IsLoggedIn)
+                {
+                    SynchronizeInternal();
+                }
+                Thread.Sleep(30000);
+                Debug.WriteLine("Synchronize - Done");
+            }
+        }
+
+        private async Task SynchronizeInternal()
+        {
+            await SynchronzizeCustomers();
+            await SynchronizeProjects();
+            await SynchronizeTimeEntries();
+        }
+
+        private async Task SynchronizeTimeEntries()
+        {
+            //
+        }
+
+        private async Task SynchronizeProjects()
+        {
+        }
+
+        private async Task SynchronzizeCustomers()
+        {
+            // Find all customers that are new
+            var newCustomers = from c in Customers where c.Id == 0 select c;
+            foreach (var customer in newCustomers)
+            {
+                long newCustomerId = await BackendApi.Create(customer);
+
+                // Update customer with id
+                customer.Id = newCustomerId;
+            }
+
+            // Find all customers that are modified
+
+            // Find all customers which are to be deleted
+        }
+
         // Backend API
         private BackendApi _backendApi = new BackendApi();
         public BackendApi BackendApi
@@ -78,18 +130,14 @@ namespace WorkTajm
         {
             workTajmDb = new WorkTajmContext(workTajmConnectionString);
 
-            /*
-            if (workTajmDb.DatabaseExists())
-            {
-                workTajmDb.DeleteDatabase();
-            }
-             */ 
             if (!workTajmDb.DatabaseExists())
             {
                 workTajmDb.CreateDatabase();
                 workTajmDb.SubmitChanges();
-
             }
+
+            // Start background thread
+            ThreadPool.QueueUserWorkItem(Synchronize);
         }
 
         public void LoadData()
@@ -109,7 +157,7 @@ namespace WorkTajm
         public void AddProject(Project project)
         {
             // Check for duplicates
-            Project p = workTajmDb.Projects.FirstOrDefault(s => s.Id == project.Id);
+            Project p = workTajmDb.Projects.FirstOrDefault(s => ((Project) s).Id == project.Id);
             if (p == null)
             {
                 // Add it
@@ -147,7 +195,7 @@ namespace WorkTajm
         public void AddTimeEntry(TimeEntry timeEntry)
         {
             // Check for duplicates
-            TimeEntry c = workTajmDb.TimeEntries.FirstOrDefault(s => s.Id == timeEntry.Id);
+            TimeEntry c = workTajmDb.TimeEntries.FirstOrDefault(s => ((TimeEntry) s).Id == timeEntry.Id);
             if (c == null)
             {
                 // Add it
@@ -292,5 +340,8 @@ namespace WorkTajm
                 return BackendApi.LoggedIn;
             }  
         }
+
+
+
     }
 }

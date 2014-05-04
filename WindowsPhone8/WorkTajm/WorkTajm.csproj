@@ -93,6 +93,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Backend\Json\Customer.cs" />
     <Compile Include="Backend\Json\Project.cs" />
     <Compile Include="Backend\Json\Registration.cs" />
     <Compile Include="Backend\BackendApi.cs" />

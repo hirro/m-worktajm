@@ -387,4 +387,16 @@ Are you sure you want to logout?</value>
   <data name="SettingsUsername" xml:space="preserve">
     <value>User name</value>
   </data>
+  <data name="SettingsReloadDatabaseButton" xml:space="preserve">
+    <value>Reload all items from central server</value>
+  </data>
+  <data name="AppBarAddCustomerText" xml:space="preserve">
+    <value>Add new customer</value>
+  </data>
+  <data name="AppBarAddProjectText" xml:space="preserve">
+    <value>Add new project</value>
+  </data>
+  <data name="AppBarAddTimeEntryText" xml:space="preserve">
+    <value>Add new time entry</value>
+  </data>
 </root>

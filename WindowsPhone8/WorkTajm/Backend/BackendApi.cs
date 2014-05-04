@@ -175,7 +175,7 @@ namespace WorkTajm.Backend
                     WorkTajm.DataModel.Project[] projects = JsonConvert.DeserializeObject<WorkTajm.DataModel.Project[]>(txt);
                     foreach (WorkTajm.DataModel.Project project in projects)
                     {
-                        Debug.WriteLine("Added project {0}", project.ProjectName);
+                        Debug.WriteLine("Added project {0}", project.Name);
                         WorkTajmViewModel.Instance.AddProject(project);
                     }
                     Debug.WriteLine("LoadProjects complete, {0} projects found", projects.Length);
@@ -284,5 +284,58 @@ namespace WorkTajm.Backend
             return result;
         }
 
+
+        internal async Task<long> Create(DataModel.Customer customer)
+        {
+            Debug.WriteLine("Register");
+
+            try
+            {
+                using (var handler = new HttpClientHandler { Credentials = new NetworkCredential(Username, Password) })
+                {
+
+                    using (var client = new HttpClient(handler))
+                    {
+                        client.BaseAddress = new Uri(UrlBuilder.GetHost());
+                        client.DefaultRequestHeaders.Accept.Clear();
+                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+
+                        // Create PDU
+                        Json.Customer customerJson = new Json.Customer()
+                        {
+                            name = customer.Name,
+                            line1 = customer.Line1,
+                            line2 = customer.Line2,
+                            country = customer.Country,
+                            vatRegistrationNumber = customer.OrganizationNumber,
+                            referencePerson = customer.ReferencePerson,
+                            zip = customer.Zip
+                        };
+                        var response = await client.PostAsJsonAsync("customer", customerJson);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            string txt = await response.Content.ReadAsStringAsync();
+                            WorkTajm.DataModel.Customer newCustomer = JsonConvert.DeserializeObject<WorkTajm.DataModel.Customer>(txt);
+                            return newCustomer.Id;
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                Debug.WriteLine("Create customer failed: {0}", ex.ToString());
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Create customer failed: {0}", e.ToString());
+            }
+            finally
+            {
+            }
+
+            // This will make sure no other attempts will be made for failed create.
+            return -1;            
+        }
     }
 }

@@ -18,7 +18,11 @@
         <!--Pivot Control-->
         <phone:Pivot Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}">
             <phone:PivotItem Header="{Binding Path=LocalizedResources.SettingsTitle, Source={StaticResource LocalizedStrings}}">
-                <Grid/>
+                <Grid>
+                    <StackPanel>
+                        <Button  Content="{Binding Path=LocalizedResources.SettingsReloadDatabaseButton, Source={StaticResource LocalizedStrings}}" Click="Reload_click"/>
+                    </StackPanel>
+                </Grid>
             </phone:PivotItem>
 
             <phone:PivotItem Header="{Binding Path=LocalizedResources.SettingsAccountTitle, Source={StaticResource LocalizedStrings}}">

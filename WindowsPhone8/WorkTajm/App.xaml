@@ -12,6 +12,21 @@
         <navigation:UriMapper x:Name="uriMapper">
             <navigation:UriMapping Uri="/LoginPage.xaml" />
         </navigation:UriMapper>
+        <DataTemplate x:Key="StartListItem">
+            <Grid ShowGridLines="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource PhoneTextTitle3Style}"/>
+                    <TextBlock Text="08:00:00" Style="{StaticResource PhoneTextTitle3Style}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Button Content="Start"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
@@ -20,5 +35,6 @@
             Launching="Application_Launching" Closing="Application_Closing"
             Activated="Application_Activated" Deactivated="Application_Deactivated"/>
     </Application.ApplicationLifetimeObjects>
+    
 
 </Application>

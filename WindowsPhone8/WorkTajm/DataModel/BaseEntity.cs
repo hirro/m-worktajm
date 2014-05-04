@@ -18,12 +18,12 @@ namespace WorkTajm.DataModel
         /// <summary>
         /// The internal database idenfier, real primary key.
         /// </summary>
-        public virtual int InternalId { get; set; }
+        public virtual long InternalId { get; set; }
 
         /// <summary>
         /// The remote id of the database entry.
         /// </summary>
-        public virtual int Id { get; set; }
+        public virtual long Id { get; set; }
 
         /// <summary>
         /// Object exists at remote but is modified.

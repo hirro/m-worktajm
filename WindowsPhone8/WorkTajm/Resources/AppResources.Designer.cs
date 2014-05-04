@@ -97,6 +97,33 @@ namespace WorkTajm.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new customer.
+        /// </summary>
+        public static string AppBarAddCustomerText {
+            get {
+                return ResourceManager.GetString("AppBarAddCustomerText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add new project.
+        /// </summary>
+        public static string AppBarAddProjectText {
+            get {
+                return ResourceManager.GetString("AppBarAddProjectText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add new time entry.
+        /// </summary>
+        public static string AppBarAddTimeEntryText {
+            get {
+                return ResourceManager.GetString("AppBarAddTimeEntryText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to login.
         /// </summary>
         public static string AppBarLoginButtonText {
@@ -545,6 +572,15 @@ namespace WorkTajm.Resources {
         public static string SettingsProjects {
             get {
                 return ResourceManager.GetString("SettingsProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reload all items from central server.
+        /// </summary>
+        public static string SettingsReloadDatabaseButton {
+            get {
+                return ResourceManager.GetString("SettingsReloadDatabaseButton", resourceCulture);
             }
         }
         

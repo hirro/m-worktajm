@@ -17,5 +17,6 @@ namespace WorkTajm.Views
             InitializeComponent();
             this.DataContext = WorkTajmViewModel.Instance;
         }
+
     }
 }

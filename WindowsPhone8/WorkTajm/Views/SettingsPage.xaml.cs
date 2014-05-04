@@ -21,5 +21,9 @@ namespace WorkTajm.Views
             NumberOfTimeEntries.Text = Convert.ToString(WorkTajmViewModel.Instance.TimeEntries.Count);
             UserName.Text = WorkTajmViewModel.Instance.Username;
         }
+
+        private void Reload_click(object sender, EventArgs e)
+        {
+        }
     }
 }
