@@ -68,6 +68,13 @@ namespace WorkTajm
             }
         }
 
+        // Synchronizer
+        private Synchronizer _synchronizer = new Synchronizer();
+        public Synchronizer Synchronizer
+        {
+            get { return _synchronizer; }
+        }
+
         // LINQ to SQL data context for the local database
         private WorkTajmContext workTajmDb;
         private bool isDataLoaded;
@@ -218,21 +225,6 @@ namespace WorkTajm
             return registered;
         }
 
-        internal void AddNewProject(Project project)
-        {
-            Projects.Add(project);
-        }
-
-        internal void AddNewCustomer(Customer customer)
-        {
-            Customers.Add(customer);
-        }
-
-        internal void AddNewTimeEntry(TimeEntry timeEntry)
-        {
-            TimeEntries.Add(timeEntry);
-        }
-
         public void AddProject(Project project)
         {
             // Check for duplicates
@@ -300,62 +292,13 @@ namespace WorkTajm
                 Debug.WriteLine("Synchronize - Starting");
                 if (IsLoggedIn)
                 {
-                    SynchronizeInternal();
+                    Synchronizer.SynchronizeAsync();
                 }
                 Thread.Sleep(30000);
                 Debug.WriteLine("Synchronize - Done");
             }
         }
 
-        private async Task SynchronizeInternal()
-        {
-            await SynchronzizeCustomers();
-            await SynchronizeProjects();
-            await SynchronizeTimeEntries();
-        }
-
-        private async Task SynchronizeTimeEntries()
-        {
-            // Find all customers that are new
-            var newItems = from c in TimeEntries where c.Id == 0 select c;
-            foreach (var timeEntry in newItems)
-            {
-                long newCustomerId = await BackendApi.Create(timeEntry);
-
-                // Update customer with id
-                timeEntry.Id = newCustomerId;
-            }
-        }
-
-        private async Task SynchronizeProjects()
-        {
-            // Find all customers that are new
-            var newItems = from c in Projects where c.Id == 0 select c;
-            foreach (var project in newItems)
-            {
-                long newCustomerId = await BackendApi.Create(project);
-
-                // Update customer with id
-                project.Id = newCustomerId;
-            }
-        }
-
-        private async Task SynchronzizeCustomers()
-        {
-            // Find all customers that are new
-            var newCustomers = from c in Customers where c.Id == 0 select c;
-            foreach (var customer in newCustomers)
-            {
-                long newCustomerId = await BackendApi.Create(customer);
-
-                // Update customer with id
-                customer.Id = newCustomerId;
-            }
-
-            // Find all customers that are modified
-
-            // Find all customers which are to be deleted
-        }
 
     }
 }

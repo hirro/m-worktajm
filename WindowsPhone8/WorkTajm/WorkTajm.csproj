@@ -98,6 +98,7 @@
     <Compile Include="Backend\Json\Registration.cs" />
     <Compile Include="Backend\BackendApi.cs" />
     <Compile Include="Backend\Json\UserInformation.cs" />
+    <Compile Include="Backend\Synchronizer.cs" />
     <Compile Include="Backend\UrlBuilder.cs" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Constants\HttpStatusCodeHelper.cs" />

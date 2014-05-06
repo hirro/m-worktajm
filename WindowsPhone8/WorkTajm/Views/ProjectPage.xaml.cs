@@ -42,7 +42,7 @@ namespace WorkTajm.Views
             Project project = new Project();
             project.Name = projectName.Text;
             project.Description = projectDescription.Text;
-            WorkTajmViewModel.Instance.AddNewProject(project);
+            WorkTajmViewModel.Instance.Projects.Add(project);
 
             if (this.NavigationService.CanGoBack)
             {

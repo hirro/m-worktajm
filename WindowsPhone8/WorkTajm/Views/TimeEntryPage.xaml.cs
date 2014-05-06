@@ -39,7 +39,7 @@ namespace WorkTajm.Views
         {
             TimeEntry timeEntry = new TimeEntry();
             timeEntry.ProjectName = projectName.Text;
-            WorkTajmViewModel.Instance.AddNewTimeEntry(timeEntry);
+            WorkTajmViewModel.Instance.TimeEntries.Add(timeEntry);
 
             if (this.NavigationService.CanGoBack)
             {

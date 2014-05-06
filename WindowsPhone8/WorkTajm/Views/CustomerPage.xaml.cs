@@ -45,7 +45,7 @@ namespace WorkTajm.Views
             customer.Zip = zipCode.Text;
             customer.Country = country.Text;
             customer.ReferencePerson = referencePerson.Text;
-            WorkTajmViewModel.Instance.AddNewCustomer(customer);
+            WorkTajmViewModel.Instance.Customers.Add(customer);
 
             if (this.NavigationService.CanGoBack)
             {
