@@ -60,7 +60,7 @@ namespace WorkTajm.Backend
                     LoggedIn = true;
 
                     // Let the projects load in its own pace
-                    Task projectLoader = LoadFromBackend(); 
+                    Task projectLoader = LoadEntriesFromBackend(); 
                 }
                 catch (WebException ex)
                 {
@@ -82,7 +82,7 @@ namespace WorkTajm.Backend
             }
         }
 
-        public async Task LoadFromBackend()
+        public async Task LoadEntriesFromBackend()
         {
             Debug.WriteLine("LoadFromBackend");
 
@@ -97,11 +97,11 @@ namespace WorkTajm.Backend
 
             // Load customers
             progress.Text = "Loading customers...";
-            await LoadCustomers();
+            await GetCustomers();
 
             // Load projects
             progress.Text = "Loading projects...";
-            await LoadProjects();
+            await GetProjects();
 
             // Load time entries
             progress.Text= "Loading time entries...";
@@ -111,7 +111,7 @@ namespace WorkTajm.Backend
             progress.Visible = false;
         }
 
-        public async Task LoadCustomers()
+        public async Task GetCustomers()
         {
             Debug.WriteLine("LoadCustomers");
 
@@ -152,7 +152,7 @@ namespace WorkTajm.Backend
             }
         }
 
-        public async Task LoadProjects()
+        public async Task GetProjects()
         {
             Debug.WriteLine("LoadProjects");
 
@@ -191,7 +191,7 @@ namespace WorkTajm.Backend
             }
         }
 
-        public async Task LoadTimeEntries()
+        public async Task GetTimeEntries()
         {
             string txt = "";
 

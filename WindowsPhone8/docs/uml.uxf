@@ -5,19 +5,33 @@
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>910</x>
-      <y>320</y>
+      <y>20</y>
       <w>240</w>
-      <h>30</h>
+      <h>330</h>
     </coordinates>
-    <panel_attributes>BackendApi</panel_attributes>
+    <panel_attributes>BackendApi
+--
+- string: Username
+- string: Password
+- bool: LoggedIn
+--
++ Authenticate(): Task
++ LoadFromBackend(): Task
++ GetCustomers(): Task
++ GetProjects(): Task
++ GetTimeEnties(): Task
++ Register(username, password, ...): Task
++ Create(Entity*) : Task
++ Update(Entity*) : Task
++ Delete(Entity*) : Task</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>450</x>
+      <x>370</x>
       <y>320</y>
-      <w>280</w>
+      <w>360</w>
       <h>390</h>
     </coordinates>
     <panel_attributes>WorktajmViewModel
@@ -25,6 +39,9 @@
 - backendApi: BackendApi
 - configuration: Configuration
 - synchronizer: Synchronizer
+- ObservableCollection&lt;Customer&gt;: Customers
+- ObservableCollection&lt;Project&gt;: Proejcts
+- ObservableCollection&lt;TimeEntry&gt;: TimeEntries
 --
 + Login(): void
 + Logout(): void
@@ -104,11 +121,11 @@ fg=red</panel_attributes>
     <coordinates>
       <x>260</x>
       <y>300</y>
-      <w>210</w>
+      <w>130</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>30;30;190;30</additional_attributes>
+    <additional_attributes>30;30;110;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
