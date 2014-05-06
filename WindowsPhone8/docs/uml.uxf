@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="12.2">
-  <zoom_level>10</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>910</x>
-      <y>20</y>
-      <w>240</w>
-      <h>330</h>
+      <x>816</x>
+      <y>64</y>
+      <w>192</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>BackendApi
 --
@@ -17,9 +17,9 @@
 --
 + Authenticate(): Task
 + LoadFromBackend(): Task
-+ GetCustomers(): Task
-+ GetProjects(): Task
-+ GetTimeEnties(): Task
++ ListCustomers(Date after): Task
++ ListProjects(Date after): Task
++ ListTimeEnties(Date after): Task
 + Register(username, password, ...): Task
 + Create(Entity*) : Task
 + Update(Entity*) : Task
@@ -29,10 +29,10 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>370</x>
-      <y>320</y>
-      <w>360</w>
-      <h>390</h>
+      <x>384</x>
+      <y>304</y>
+      <w>288</w>
+      <h>312</h>
     </coordinates>
     <panel_attributes>WorktajmViewModel
 --
@@ -59,48 +59,52 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>910</x>
-      <y>470</y>
-      <w>240</w>
-      <h>100</h>
+      <x>424</x>
+      <y>752</y>
+      <w>192</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Configuration
 --
 - string: Password
 - string: Username
 - bool: RememberMe
+- Date: LastSynchronized
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>700</x>
-      <y>300</y>
-      <w>230</w>
-      <h>50</h>
+      <x>568</x>
+      <y>48</y>
+      <w>264</w>
+      <h>272</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>210;30;30;30</additional_attributes>
+    <panel_attributes>lt=&lt;-
+r1=BackendApi</panel_attributes>
+    <additional_attributes>248;24;24;256</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>700</x>
-      <y>450</y>
-      <w>230</w>
-      <h>50</h>
+      <x>480</x>
+      <y>592</y>
+      <w>82</w>
+      <h>176</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>210;30;30;30</additional_attributes>
+    <panel_attributes>lt=&lt;-
+r1=Configuration</panel_attributes>
+    <additional_attributes>48;160;48;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Package</type>
     <coordinates>
-      <x>110</x>
+      <x>64</x>
       <y>240</y>
-      <w>180</w>
-      <h>200</h>
+      <w>192</w>
+      <h>184</h>
     </coordinates>
     <panel_attributes>Views
 --
@@ -119,21 +123,21 @@ fg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>260</x>
-      <y>300</y>
-      <w>130</w>
-      <h>50</h>
+      <x>232</x>
+      <y>288</y>
+      <w>168</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>30;30;110;30</additional_attributes>
+    <additional_attributes>24;24;152;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>240</x>
-      <y>170</y>
-      <w>100</w>
-      <h>30</h>
+      <x>480</x>
+      <y>88</y>
+      <w>80</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>App
 
@@ -143,10 +147,10 @@ fg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>910</x>
-      <y>630</y>
-      <w>280</w>
-      <h>200</h>
+      <x>816</x>
+      <y>376</y>
+      <w>224</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>Synchronizer
 --
@@ -163,12 +167,276 @@ fg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>700</x>
-      <y>610</y>
-      <w>230</w>
-      <h>50</h>
+      <x>648</x>
+      <y>360</y>
+      <w>184</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=Synchronizer</panel_attributes>
+    <additional_attributes>168;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>936</x>
+      <y>640</y>
+      <w>136</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>/BaseEntity/
+--
+- Id: long
+- InternalId: long
+- Modified: DateTime
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>768</x>
+      <y>816</y>
+      <w>144</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Customer
+--
+- Name: string
+- Line1: string
+- Line2: string
+- OrganizationNumber: string
+- ReferencePerson: string
+- Country: string
+- Zip: string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>800</x>
+      <y>696</y>
+      <w>216</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>200;24;200;48;24;48;24;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1088</x>
+      <y>816</y>
+      <w>144</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Project
+--
+- Name: string
+- Rate: float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>976</x>
+      <y>696</y>
+      <w>40</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>928</x>
+      <y>816</y>
+      <w>144</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Project
+--
+- Name: string
+- Rate: float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>976</x>
+      <y>696</y>
+      <w>200</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;48;184;48;184;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>80</x>
+      <y>688</y>
+      <w>632</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>Storage
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>744</x>
+      <y>608</y>
+      <w>568</w>
+      <h>376</h>
+    </coordinates>
+    <panel_attributes>DataModel
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>744</x>
+      <y>16</y>
+      <w>568</w>
+      <h>536</h>
+    </coordinates>
+    <panel_attributes>Backend
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>344</x>
+      <y>248</y>
+      <w>368</w>
+      <h>400</h>
+    </coordinates>
+    <panel_attributes>ViewModel
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>1088</x>
+      <y>352</y>
+      <w>200</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Checks if any local changes needs
+to be synchronized to the backend.
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1016</x>
+      <y>360</y>
+      <w>88</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>210;30;30;30</additional_attributes>
+    <additional_attributes>24;24;72;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>856</x>
+      <y>240</y>
+      <w>98</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;using&gt;&gt;</panel_attributes>
+    <additional_attributes>56;24;56;136</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>1096</x>
+      <y>64</y>
+      <w>200</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Communicates to the backend.
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>984</x>
+      <y>48</y>
+      <w>128</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>24;24;112;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>344</x>
+      <y>760</y>
+      <w>96</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>80;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>168</x>
+      <y>752</y>
+      <w>200</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Stores persistant configuration data.
+All data is encrypted using the built-in 
+encryption.
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>872</x>
+      <y>512</y>
+      <w>98</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;using&gt;&gt;</panel_attributes>
+    <additional_attributes>56;96;56;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>824</x>
+      <y>672</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Context</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>648</x>
+      <y>512</y>
+      <w>210</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=DatabaseContext</panel_attributes>
+    <additional_attributes>176;168;24;24</additional_attributes>
   </element>
 </diagram>

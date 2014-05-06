@@ -53,14 +53,29 @@ namespace WorkTajm.Backend
 
         private async Task SynchronizeTimeEntriesAsync()
         {
-            // Find all customers that are new
+            // Find all time entries that are new
             var newItems = from c in WorkTajmViewModel.Instance.TimeEntries where c.Id == 0 select c;
             foreach (var timeEntry in newItems)
             {
                 long newCustomerId = await WorkTajmViewModel.Instance.BackendApi.Create(timeEntry);
 
-                // Update customer with id
+                // Update time entry with id
                 timeEntry.Id = newCustomerId;
+            }
+
+            // Find all time entries that are modified
+            var modifiedTimeEntries = from c in WorkTajmViewModel.Instance.TimeEntries where c.Modified == true select c;
+            foreach (var timeEntry in modifiedTimeEntries)
+            {
+                await WorkTajmViewModel.Instance.BackendApi.Update(timeEntry);
+            }
+
+            // Find all time entries which are to be deleted
+            var deletedTimeEntries = from c in WorkTajmViewModel.Instance.TimeEntries where c.Deleted == true select c;
+            foreach (var timeEntry in deletedTimeEntries)
+            {
+                long newCustomerId = await WorkTajmViewModel.Instance.BackendApi.Delete(timeEntry);
+                WorkTajmViewModel.Instance.TimeEntries.Remove(timeEntry);
             }
         }
 
@@ -74,6 +89,21 @@ namespace WorkTajm.Backend
 
                 // Update customer with id
                 project.Id = newCustomerId;
+            }
+
+            // Find all customers that are modified
+            var modifiedProjects= from c in WorkTajmViewModel.Instance.Projects where c.Modified == true select c;
+            foreach (var project in modifiedProjects)
+            {
+                await WorkTajmViewModel.Instance.BackendApi.Update(project);
+            }
+
+            // Find all customers which are to be deleted
+            var deletedProjects = from c in WorkTajmViewModel.Instance.Projects where c.Deleted == true select c;
+            foreach (var project in deletedProjects)
+            {
+                long newCustomerId = await WorkTajmViewModel.Instance.BackendApi.Delete(project);
+                WorkTajmViewModel.Instance.Projects.Remove(project);
             }
         }
 
@@ -90,8 +120,19 @@ namespace WorkTajm.Backend
             }
 
             // Find all customers that are modified
+            var modifiedCustomers = from c in WorkTajmViewModel.Instance.Customers where c.Modified==true select c;
+            foreach (var customer in modifiedCustomers)
+            {
+                await WorkTajmViewModel.Instance.BackendApi.Update(customer);
+            }
 
             // Find all customers which are to be deleted
+            var deletedCustomers = from c in WorkTajmViewModel.Instance.Customers where c.Deleted == true select c;
+            foreach (var customer in deletedCustomers)
+            {
+                await WorkTajmViewModel.Instance.BackendApi.Delete(customer);
+                WorkTajmViewModel.Instance.Customers.Remove(customer);
+            }
         }
 
     }

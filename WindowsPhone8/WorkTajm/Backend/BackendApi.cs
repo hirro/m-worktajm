@@ -287,7 +287,7 @@ namespace WorkTajm.Backend
 
         internal async Task<long> Create(DataModel.Customer customer)
         {
-            Debug.WriteLine("Register");
+            Debug.WriteLine("Create customer, name: {0}", customer.Name);
 
             try
             {
@@ -341,7 +341,7 @@ namespace WorkTajm.Backend
 
         internal async Task<long> Create(DataModel.Project project)
         {
-            Debug.WriteLine("Register");
+            Debug.WriteLine("Create project, name: {0}", project.Name);
 
             try
             {
@@ -389,7 +389,44 @@ namespace WorkTajm.Backend
 
         internal async Task<long> Create(DataModel.TimeEntry timeEntry)
         {
+            Debug.WriteLine("Create time entry");
             return -1L;
+        }
+
+        internal Task Delete(DataModel.Customer customer)
+        {
+            Debug.WriteLine("Delete customer, name: {0}", customer.Name);
+            return null;
+        }
+
+        internal Task Update(DataModel.Customer customer)
+        {
+            Debug.WriteLine("Update customer, name: {0}", customer.Name);
+            return null;
+        }
+
+        internal Task<long> Delete(DataModel.Project project)
+        {
+            Debug.WriteLine("Delete customer, name: {0}", project.Name);
+            return null;
+        }
+
+        internal Task Update(DataModel.Project project)
+        {
+            Debug.WriteLine("Update project, name: {0}", project.Name);
+            return null;
+        }
+
+        internal Task<long> Delete(DataModel.TimeEntry timeEntry)
+        {
+            Debug.WriteLine("Delete time entry");
+            return null;
+        }
+
+        internal Task Update(DataModel.TimeEntry timeEntry)
+        {
+            Debug.WriteLine("Update time entry");
+            return null;
         }
     }
 }

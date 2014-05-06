@@ -29,7 +29,13 @@ namespace WorkTajm.DataModel
         /// Object exists at remote but is modified.
         /// </summary>
         public virtual bool Modified { get; set; }
-       
+
+        /// <summary>
+        /// Object is deleted locally
+        /// </summary>
+        [Column]
+        public virtual bool Deleted { get; set; }
+
         /// <summary>
         /// Object is new and unsynchronized.
         /// </summary>

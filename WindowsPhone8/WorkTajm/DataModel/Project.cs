@@ -17,6 +17,8 @@ namespace WorkTajm.DataModel
         public override long Id { get; set; }
         [Column]
         public override bool Modified { get; set; }
+        [Column]
+        public override bool Deleted { get; set; }
 
         #endregion
 
