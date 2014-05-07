@@ -189,6 +189,7 @@ r1=Synchronizer</panel_attributes>
 - Id: long
 - InternalId: long
 - Modified: DateTime
+- WaitingForDelete: bool
 </panel_attributes>
     <additional_attributes/>
   </element>

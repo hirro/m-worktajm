@@ -24,6 +24,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="60"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" ShowGridLines="True" >
                             <Grid.RowDefinitions>
@@ -59,44 +60,35 @@
 
             <phone:PanoramaItem Header="{Binding Path=LocalizedResources.ProjectsTitle, Source={StaticResource LocalizedStrings}}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding Projects}" Height="Auto">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Width="466" Margin="0, 0, 0, 12">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <StackPanel Grid.Column="0">
-                                            <TextBlock Text="{Binding Name}" Style="{StaticResource PhoneTextTitle3Style}" />
-                                            <TextBlock Text="{Binding Description}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}"/>
-                                        </StackPanel>
-
-                                    </Grid>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>                        
+                        <ListBox ItemsSource="{Binding Projects}" ItemTemplate="{StaticResource ProjectListItem}">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
                         </ListBox>
                     </Grid>
                 </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="{Binding Path=LocalizedResources.CustomersTitle, Source={StaticResource LocalizedStrings}}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding Customers}" Height="400">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Width="466" Margin="0, 0, 0, 12">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <StackPanel Grid.Column="0">
-                                            <TextBlock Text="{Binding Name}" Style="{StaticResource PhoneTextTitle3Style}"/>
-                                            <TextBlock Text="{Binding Description}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+                        <ListBox ItemsSource="{Binding Projects}" ItemTemplate="{StaticResource CustomerListItem}">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
                     </Grid>
                 </phone:PanoramaItem>
 

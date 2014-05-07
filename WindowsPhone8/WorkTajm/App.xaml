@@ -27,6 +27,36 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
+        <DataTemplate x:Key="ProjectListItem">
+            <Grid ShowGridLines="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource PhoneTextTitle3Style}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Button Content="Edit"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="CustomerListItem">
+            <Grid ShowGridLines="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource PhoneTextTitle3Style}"/>
+                    <TextBlock Text="{Binding Description}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Button Content="Edit"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
