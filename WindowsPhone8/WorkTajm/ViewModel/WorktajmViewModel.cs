@@ -300,5 +300,10 @@ namespace WorkTajm
         }
 
 
+
+        internal void DeleteCustomer(Customer customerToDelete)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
