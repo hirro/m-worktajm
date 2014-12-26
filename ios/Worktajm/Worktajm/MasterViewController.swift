@@ -1,8 +1,8 @@
 //
 //  MasterViewController.swift
-//  Worktajm
+//  worktajm
 //
-//  Created by Jim Arnell on 10/12/14.
+//  Created by Jim Arnell on 2014-12-26.
 //  Copyright (c) 2014 Arnell Consulting AB. All rights reserved.
 //
 

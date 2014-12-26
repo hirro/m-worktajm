@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Worktajm.xcscheme</key>
+		<key>worktajm.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>80D707601A3835C2009E2DEF</key>
+		<key>80B7B0161A4DCBDA00885524</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>80D7077A1A3835C2009E2DEF</key>
+		<key>80B7B0301A4DCBDA00885524</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,50 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80D707671A3835C2009E2DEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D707661A3835C2009E2DEF /* AppDelegate.swift */; };
-		80D7076A1A3835C2009E2DEF /* Worktajm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80D707681A3835C2009E2DEF /* Worktajm.xcdatamodeld */; };
-		80D7076C1A3835C2009E2DEF /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D7076B1A3835C2009E2DEF /* MasterViewController.swift */; };
-		80D7076E1A3835C2009E2DEF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D7076D1A3835C2009E2DEF /* DetailViewController.swift */; };
-		80D707711A3835C2009E2DEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80D7076F1A3835C2009E2DEF /* Main.storyboard */; };
-		80D707731A3835C2009E2DEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80D707721A3835C2009E2DEF /* Images.xcassets */; };
-		80D707761A3835C2009E2DEF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80D707741A3835C2009E2DEF /* LaunchScreen.xib */; };
-		80D707821A3835C2009E2DEF /* WorktajmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D707811A3835C2009E2DEF /* WorktajmTests.swift */; };
+		80B7B01D1A4DCBDA00885524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B01C1A4DCBDA00885524 /* AppDelegate.swift */; };
+		80B7B0201A4DCBDA00885524 /* worktajm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B01E1A4DCBDA00885524 /* worktajm.xcdatamodeld */; };
+		80B7B0221A4DCBDA00885524 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B0211A4DCBDA00885524 /* MasterViewController.swift */; };
+		80B7B0241A4DCBDA00885524 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B0231A4DCBDA00885524 /* DetailViewController.swift */; };
+		80B7B0271A4DCBDA00885524 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80B7B0251A4DCBDA00885524 /* Main.storyboard */; };
+		80B7B0291A4DCBDA00885524 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B7B0281A4DCBDA00885524 /* Images.xcassets */; };
+		80B7B02C1A4DCBDA00885524 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80B7B02A1A4DCBDA00885524 /* LaunchScreen.xib */; };
+		80B7B0381A4DCBDA00885524 /* worktajmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B0371A4DCBDA00885524 /* worktajmTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		80D7077C1A3835C2009E2DEF /* PBXContainerItemProxy */ = {
+		80B7B0321A4DCBDA00885524 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80D707591A3835C2009E2DEF /* Project object */;
+			containerPortal = 80B7B00F1A4DCBDA00885524 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 80D707601A3835C2009E2DEF;
-			remoteInfo = Worktajm;
+			remoteGlobalIDString = 80B7B0161A4DCBDA00885524;
+			remoteInfo = worktajm;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		80D707611A3835C2009E2DEF /* Worktajm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Worktajm.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		80D707651A3835C2009E2DEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80D707661A3835C2009E2DEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		80D707691A3835C2009E2DEF /* Worktajm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Worktajm.xcdatamodel; sourceTree = "<group>"; };
-		80D7076B1A3835C2009E2DEF /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		80D7076D1A3835C2009E2DEF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		80D707701A3835C2009E2DEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		80D707721A3835C2009E2DEF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		80D707751A3835C2009E2DEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		80D7077B1A3835C2009E2DEF /* WorktajmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorktajmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		80D707801A3835C2009E2DEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80D707811A3835C2009E2DEF /* WorktajmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorktajmTests.swift; sourceTree = "<group>"; };
+		80B7B0171A4DCBDA00885524 /* worktajm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = worktajm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		80B7B01B1A4DCBDA00885524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80B7B01C1A4DCBDA00885524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		80B7B01F1A4DCBDA00885524 /* worktajm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = worktajm.xcdatamodel; sourceTree = "<group>"; };
+		80B7B0211A4DCBDA00885524 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		80B7B0231A4DCBDA00885524 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		80B7B0261A4DCBDA00885524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		80B7B0281A4DCBDA00885524 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		80B7B02B1A4DCBDA00885524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		80B7B0311A4DCBDA00885524 /* worktajmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = worktajmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80B7B0361A4DCBDA00885524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80B7B0371A4DCBDA00885524 /* worktajmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = worktajmTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		80D7075E1A3835C2009E2DEF /* Frameworks */ = {
+		80B7B0141A4DCBDA00885524 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		80D707781A3835C2009E2DEF /* Frameworks */ = {
+		80B7B02E1A4DCBDA00885524 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,60 +60,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		80D707581A3835C2009E2DEF = {
+		80B7B00E1A4DCBDA00885524 = {
 			isa = PBXGroup;
 			children = (
-				80D707631A3835C2009E2DEF /* Worktajm */,
-				80D7077E1A3835C2009E2DEF /* WorktajmTests */,
-				80D707621A3835C2009E2DEF /* Products */,
+				80B7B0191A4DCBDA00885524 /* worktajm */,
+				80B7B0341A4DCBDA00885524 /* worktajmTests */,
+				80B7B0181A4DCBDA00885524 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		80D707621A3835C2009E2DEF /* Products */ = {
+		80B7B0181A4DCBDA00885524 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				80D707611A3835C2009E2DEF /* Worktajm.app */,
-				80D7077B1A3835C2009E2DEF /* WorktajmTests.xctest */,
+				80B7B0171A4DCBDA00885524 /* worktajm.app */,
+				80B7B0311A4DCBDA00885524 /* worktajmTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		80D707631A3835C2009E2DEF /* Worktajm */ = {
+		80B7B0191A4DCBDA00885524 /* worktajm */ = {
 			isa = PBXGroup;
 			children = (
-				80D707661A3835C2009E2DEF /* AppDelegate.swift */,
-				80D7076B1A3835C2009E2DEF /* MasterViewController.swift */,
-				80D7076D1A3835C2009E2DEF /* DetailViewController.swift */,
-				80D7076F1A3835C2009E2DEF /* Main.storyboard */,
-				80D707721A3835C2009E2DEF /* Images.xcassets */,
-				80D707741A3835C2009E2DEF /* LaunchScreen.xib */,
-				80D707681A3835C2009E2DEF /* Worktajm.xcdatamodeld */,
-				80D707641A3835C2009E2DEF /* Supporting Files */,
+				80B7B01C1A4DCBDA00885524 /* AppDelegate.swift */,
+				80B7B0211A4DCBDA00885524 /* MasterViewController.swift */,
+				80B7B0231A4DCBDA00885524 /* DetailViewController.swift */,
+				80B7B0251A4DCBDA00885524 /* Main.storyboard */,
+				80B7B0281A4DCBDA00885524 /* Images.xcassets */,
+				80B7B02A1A4DCBDA00885524 /* LaunchScreen.xib */,
+				80B7B01E1A4DCBDA00885524 /* worktajm.xcdatamodeld */,
+				80B7B01A1A4DCBDA00885524 /* Supporting Files */,
 			);
-			path = Worktajm;
+			path = worktajm;
 			sourceTree = "<group>";
 		};
-		80D707641A3835C2009E2DEF /* Supporting Files */ = {
+		80B7B01A1A4DCBDA00885524 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				80D707651A3835C2009E2DEF /* Info.plist */,
+				80B7B01B1A4DCBDA00885524 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		80D7077E1A3835C2009E2DEF /* WorktajmTests */ = {
+		80B7B0341A4DCBDA00885524 /* worktajmTests */ = {
 			isa = PBXGroup;
 			children = (
-				80D707811A3835C2009E2DEF /* WorktajmTests.swift */,
-				80D7077F1A3835C2009E2DEF /* Supporting Files */,
+				80B7B0371A4DCBDA00885524 /* worktajmTests.swift */,
+				80B7B0351A4DCBDA00885524 /* Supporting Files */,
 			);
-			path = WorktajmTests;
+			path = worktajmTests;
 			sourceTree = "<group>";
 		};
-		80D7077F1A3835C2009E2DEF /* Supporting Files */ = {
+		80B7B0351A4DCBDA00885524 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				80D707801A3835C2009E2DEF /* Info.plist */,
+				80B7B0361A4DCBDA00885524 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -121,60 +121,60 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		80D707601A3835C2009E2DEF /* Worktajm */ = {
+		80B7B0161A4DCBDA00885524 /* worktajm */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80D707851A3835C2009E2DEF /* Build configuration list for PBXNativeTarget "Worktajm" */;
+			buildConfigurationList = 80B7B03B1A4DCBDA00885524 /* Build configuration list for PBXNativeTarget "worktajm" */;
 			buildPhases = (
-				80D7075D1A3835C2009E2DEF /* Sources */,
-				80D7075E1A3835C2009E2DEF /* Frameworks */,
-				80D7075F1A3835C2009E2DEF /* Resources */,
+				80B7B0131A4DCBDA00885524 /* Sources */,
+				80B7B0141A4DCBDA00885524 /* Frameworks */,
+				80B7B0151A4DCBDA00885524 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Worktajm;
-			productName = Worktajm;
-			productReference = 80D707611A3835C2009E2DEF /* Worktajm.app */;
+			name = worktajm;
+			productName = worktajm;
+			productReference = 80B7B0171A4DCBDA00885524 /* worktajm.app */;
 			productType = "com.apple.product-type.application";
 		};
-		80D7077A1A3835C2009E2DEF /* WorktajmTests */ = {
+		80B7B0301A4DCBDA00885524 /* worktajmTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80D707881A3835C2009E2DEF /* Build configuration list for PBXNativeTarget "WorktajmTests" */;
+			buildConfigurationList = 80B7B03E1A4DCBDA00885524 /* Build configuration list for PBXNativeTarget "worktajmTests" */;
 			buildPhases = (
-				80D707771A3835C2009E2DEF /* Sources */,
-				80D707781A3835C2009E2DEF /* Frameworks */,
-				80D707791A3835C2009E2DEF /* Resources */,
+				80B7B02D1A4DCBDA00885524 /* Sources */,
+				80B7B02E1A4DCBDA00885524 /* Frameworks */,
+				80B7B02F1A4DCBDA00885524 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				80D7077D1A3835C2009E2DEF /* PBXTargetDependency */,
+				80B7B0331A4DCBDA00885524 /* PBXTargetDependency */,
 			);
-			name = WorktajmTests;
-			productName = WorktajmTests;
-			productReference = 80D7077B1A3835C2009E2DEF /* WorktajmTests.xctest */;
+			name = worktajmTests;
+			productName = worktajmTests;
+			productReference = 80B7B0311A4DCBDA00885524 /* worktajmTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		80D707591A3835C2009E2DEF /* Project object */ = {
+		80B7B00F1A4DCBDA00885524 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Arnell Consulting AB";
 				TargetAttributes = {
-					80D707601A3835C2009E2DEF = {
+					80B7B0161A4DCBDA00885524 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
-					80D7077A1A3835C2009E2DEF = {
+					80B7B0301A4DCBDA00885524 = {
 						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 80D707601A3835C2009E2DEF;
+						TestTargetID = 80B7B0161A4DCBDA00885524;
 					};
 				};
 			};
-			buildConfigurationList = 80D7075C1A3835C2009E2DEF /* Build configuration list for PBXProject "Worktajm" */;
+			buildConfigurationList = 80B7B0121A4DCBDA00885524 /* Build configuration list for PBXProject "worktajm" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -182,29 +182,29 @@
 				en,
 				Base,
 			);
-			mainGroup = 80D707581A3835C2009E2DEF;
-			productRefGroup = 80D707621A3835C2009E2DEF /* Products */;
+			mainGroup = 80B7B00E1A4DCBDA00885524;
+			productRefGroup = 80B7B0181A4DCBDA00885524 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				80D707601A3835C2009E2DEF /* Worktajm */,
-				80D7077A1A3835C2009E2DEF /* WorktajmTests */,
+				80B7B0161A4DCBDA00885524 /* worktajm */,
+				80B7B0301A4DCBDA00885524 /* worktajmTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		80D7075F1A3835C2009E2DEF /* Resources */ = {
+		80B7B0151A4DCBDA00885524 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80D707711A3835C2009E2DEF /* Main.storyboard in Resources */,
-				80D707761A3835C2009E2DEF /* LaunchScreen.xib in Resources */,
-				80D707731A3835C2009E2DEF /* Images.xcassets in Resources */,
+				80B7B0271A4DCBDA00885524 /* Main.storyboard in Resources */,
+				80B7B02C1A4DCBDA00885524 /* LaunchScreen.xib in Resources */,
+				80B7B0291A4DCBDA00885524 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		80D707791A3835C2009E2DEF /* Resources */ = {
+		80B7B02F1A4DCBDA00885524 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -214,48 +214,48 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		80D7075D1A3835C2009E2DEF /* Sources */ = {
+		80B7B0131A4DCBDA00885524 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80D7076A1A3835C2009E2DEF /* Worktajm.xcdatamodeld in Sources */,
-				80D707671A3835C2009E2DEF /* AppDelegate.swift in Sources */,
-				80D7076C1A3835C2009E2DEF /* MasterViewController.swift in Sources */,
-				80D7076E1A3835C2009E2DEF /* DetailViewController.swift in Sources */,
+				80B7B0201A4DCBDA00885524 /* worktajm.xcdatamodeld in Sources */,
+				80B7B01D1A4DCBDA00885524 /* AppDelegate.swift in Sources */,
+				80B7B0221A4DCBDA00885524 /* MasterViewController.swift in Sources */,
+				80B7B0241A4DCBDA00885524 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		80D707771A3835C2009E2DEF /* Sources */ = {
+		80B7B02D1A4DCBDA00885524 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80D707821A3835C2009E2DEF /* WorktajmTests.swift in Sources */,
+				80B7B0381A4DCBDA00885524 /* worktajmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		80D7077D1A3835C2009E2DEF /* PBXTargetDependency */ = {
+		80B7B0331A4DCBDA00885524 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 80D707601A3835C2009E2DEF /* Worktajm */;
-			targetProxy = 80D7077C1A3835C2009E2DEF /* PBXContainerItemProxy */;
+			target = 80B7B0161A4DCBDA00885524 /* worktajm */;
+			targetProxy = 80B7B0321A4DCBDA00885524 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		80D7076F1A3835C2009E2DEF /* Main.storyboard */ = {
+		80B7B0251A4DCBDA00885524 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				80D707701A3835C2009E2DEF /* Base */,
+				80B7B0261A4DCBDA00885524 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		80D707741A3835C2009E2DEF /* LaunchScreen.xib */ = {
+		80B7B02A1A4DCBDA00885524 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				80D707751A3835C2009E2DEF /* Base */,
+				80B7B02B1A4DCBDA00885524 /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -263,7 +263,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		80D707831A3835C2009E2DEF /* Debug */ = {
+		80B7B0391A4DCBDA00885524 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -306,7 +306,7 @@
 			};
 			name = Debug;
 		};
-		80D707841A3835C2009E2DEF /* Release */ = {
+		80B7B03A1A4DCBDA00885524 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -342,27 +342,27 @@
 			};
 			name = Release;
 		};
-		80D707861A3835C2009E2DEF /* Debug */ = {
+		80B7B03C1A4DCBDA00885524 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Worktajm/Info.plist;
+				INFOPLIST_FILE = worktajm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		80D707871A3835C2009E2DEF /* Release */ = {
+		80B7B03D1A4DCBDA00885524 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Worktajm/Info.plist;
+				INFOPLIST_FILE = worktajm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
-		80D707891A3835C2009E2DEF /* Debug */ = {
+		80B7B03F1A4DCBDA00885524 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -374,14 +374,14 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = WorktajmTests/Info.plist;
+				INFOPLIST_FILE = worktajmTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Worktajm.app/Worktajm";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/worktajm.app/worktajm";
 			};
 			name = Debug;
 		};
-		80D7078A1A3835C2009E2DEF /* Release */ = {
+		80B7B0401A4DCBDA00885524 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -389,55 +389,55 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = WorktajmTests/Info.plist;
+				INFOPLIST_FILE = worktajmTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Worktajm.app/Worktajm";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/worktajm.app/worktajm";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		80D7075C1A3835C2009E2DEF /* Build configuration list for PBXProject "Worktajm" */ = {
+		80B7B0121A4DCBDA00885524 /* Build configuration list for PBXProject "worktajm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				80D707831A3835C2009E2DEF /* Debug */,
-				80D707841A3835C2009E2DEF /* Release */,
+				80B7B0391A4DCBDA00885524 /* Debug */,
+				80B7B03A1A4DCBDA00885524 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80D707851A3835C2009E2DEF /* Build configuration list for PBXNativeTarget "Worktajm" */ = {
+		80B7B03B1A4DCBDA00885524 /* Build configuration list for PBXNativeTarget "worktajm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				80D707861A3835C2009E2DEF /* Debug */,
-				80D707871A3835C2009E2DEF /* Release */,
+				80B7B03C1A4DCBDA00885524 /* Debug */,
+				80B7B03D1A4DCBDA00885524 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		80D707881A3835C2009E2DEF /* Build configuration list for PBXNativeTarget "WorktajmTests" */ = {
+		80B7B03E1A4DCBDA00885524 /* Build configuration list for PBXNativeTarget "worktajmTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				80D707891A3835C2009E2DEF /* Debug */,
-				80D7078A1A3835C2009E2DEF /* Release */,
+				80B7B03F1A4DCBDA00885524 /* Debug */,
+				80B7B0401A4DCBDA00885524 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		80D707681A3835C2009E2DEF /* Worktajm.xcdatamodeld */ = {
+		80B7B01E1A4DCBDA00885524 /* worktajm.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				80D707691A3835C2009E2DEF /* Worktajm.xcdatamodel */,
+				80B7B01F1A4DCBDA00885524 /* worktajm.xcdatamodel */,
 			);
-			currentVersion = 80D707691A3835C2009E2DEF /* Worktajm.xcdatamodel */;
-			path = Worktajm.xcdatamodeld;
+			currentVersion = 80B7B01F1A4DCBDA00885524 /* worktajm.xcdatamodel */;
+			path = worktajm.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = 80D707591A3835C2009E2DEF /* Project object */;
+	rootObject = 80B7B00F1A4DCBDA00885524 /* Project object */;
 }

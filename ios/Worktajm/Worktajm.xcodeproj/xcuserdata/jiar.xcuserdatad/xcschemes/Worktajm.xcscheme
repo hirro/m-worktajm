@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80D707601A3835C2009E2DEF"
-               BuildableName = "Worktajm.app"
-               BlueprintName = "Worktajm"
-               ReferencedContainer = "container:Worktajm.xcodeproj">
+               BlueprintIdentifier = "80B7B0161A4DCBDA00885524"
+               BuildableName = "worktajm.app"
+               BlueprintName = "worktajm"
+               ReferencedContainer = "container:worktajm.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80D7077A1A3835C2009E2DEF"
-               BuildableName = "WorktajmTests.xctest"
-               BlueprintName = "WorktajmTests"
-               ReferencedContainer = "container:Worktajm.xcodeproj">
+               BlueprintIdentifier = "80B7B0301A4DCBDA00885524"
+               BuildableName = "worktajmTests.xctest"
+               BlueprintName = "worktajmTests"
+               ReferencedContainer = "container:worktajm.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80D7077A1A3835C2009E2DEF"
-               BuildableName = "WorktajmTests.xctest"
-               BlueprintName = "WorktajmTests"
-               ReferencedContainer = "container:Worktajm.xcodeproj">
+               BlueprintIdentifier = "80B7B0301A4DCBDA00885524"
+               BuildableName = "worktajmTests.xctest"
+               BlueprintName = "worktajmTests"
+               ReferencedContainer = "container:worktajm.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "80D707601A3835C2009E2DEF"
-            BuildableName = "Worktajm.app"
-            BlueprintName = "Worktajm"
-            ReferencedContainer = "container:Worktajm.xcodeproj">
+            BlueprintIdentifier = "80B7B0161A4DCBDA00885524"
+            BuildableName = "worktajm.app"
+            BlueprintName = "worktajm"
+            ReferencedContainer = "container:worktajm.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -75,10 +75,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "80D707601A3835C2009E2DEF"
-            BuildableName = "Worktajm.app"
-            BlueprintName = "Worktajm"
-            ReferencedContainer = "container:Worktajm.xcodeproj">
+            BlueprintIdentifier = "80B7B0161A4DCBDA00885524"
+            BuildableName = "worktajm.app"
+            BlueprintName = "worktajm"
+            ReferencedContainer = "container:worktajm.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -93,10 +93,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "80D707601A3835C2009E2DEF"
-            BuildableName = "Worktajm.app"
-            BlueprintName = "Worktajm"
-            ReferencedContainer = "container:Worktajm.xcodeproj">
+            BlueprintIdentifier = "80B7B0161A4DCBDA00885524"
+            BuildableName = "worktajm.app"
+            BlueprintName = "worktajm"
+            ReferencedContainer = "container:worktajm.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
