@@ -2,8 +2,8 @@
 //  worktajmTests.swift
 //  worktajmTests
 //
-//  Created by Jim Arnell on 2014-12-26.
-//  Copyright (c) 2014 Arnell Consulting AB. All rights reserved.
+//  Created by Jim Arnell on 01/01/15.
+//  Copyright (c) 2015 Arnell Consulting AB. All rights reserved.
 //
 
 import UIKit

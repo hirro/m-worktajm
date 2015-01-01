@@ -7,50 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80B7B01D1A4DCBDA00885524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B01C1A4DCBDA00885524 /* AppDelegate.swift */; };
-		80B7B0201A4DCBDA00885524 /* worktajm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B01E1A4DCBDA00885524 /* worktajm.xcdatamodeld */; };
-		80B7B0221A4DCBDA00885524 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B0211A4DCBDA00885524 /* MasterViewController.swift */; };
-		80B7B0241A4DCBDA00885524 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B0231A4DCBDA00885524 /* DetailViewController.swift */; };
-		80B7B0271A4DCBDA00885524 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80B7B0251A4DCBDA00885524 /* Main.storyboard */; };
-		80B7B0291A4DCBDA00885524 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B7B0281A4DCBDA00885524 /* Images.xcassets */; };
-		80B7B02C1A4DCBDA00885524 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80B7B02A1A4DCBDA00885524 /* LaunchScreen.xib */; };
-		80B7B0381A4DCBDA00885524 /* worktajmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B0371A4DCBDA00885524 /* worktajmTests.swift */; };
+		8081843D1A55F488005AD8BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081843C1A55F488005AD8BE /* AppDelegate.swift */; };
+		8081843F1A55F488005AD8BE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081843E1A55F488005AD8BE /* FirstViewController.swift */; };
+		808184411A55F488005AD8BE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808184401A55F488005AD8BE /* SecondViewController.swift */; };
+		808184441A55F488005AD8BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808184421A55F488005AD8BE /* Main.storyboard */; };
+		808184461A55F488005AD8BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 808184451A55F488005AD8BE /* Images.xcassets */; };
+		808184491A55F488005AD8BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 808184471A55F488005AD8BE /* LaunchScreen.xib */; };
+		808184551A55F488005AD8BE /* worktajmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808184541A55F488005AD8BE /* worktajmTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		80B7B0321A4DCBDA00885524 /* PBXContainerItemProxy */ = {
+		8081844F1A55F488005AD8BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80B7B00F1A4DCBDA00885524 /* Project object */;
+			containerPortal = 8081842F1A55F488005AD8BE /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 80B7B0161A4DCBDA00885524;
+			remoteGlobalIDString = 808184361A55F488005AD8BE;
 			remoteInfo = worktajm;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		80B7B0171A4DCBDA00885524 /* worktajm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = worktajm.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		80B7B01B1A4DCBDA00885524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80B7B01C1A4DCBDA00885524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		80B7B01F1A4DCBDA00885524 /* worktajm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = worktajm.xcdatamodel; sourceTree = "<group>"; };
-		80B7B0211A4DCBDA00885524 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		80B7B0231A4DCBDA00885524 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		80B7B0261A4DCBDA00885524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		80B7B0281A4DCBDA00885524 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		80B7B02B1A4DCBDA00885524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		80B7B0311A4DCBDA00885524 /* worktajmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = worktajmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		80B7B0361A4DCBDA00885524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80B7B0371A4DCBDA00885524 /* worktajmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = worktajmTests.swift; sourceTree = "<group>"; };
+		808184371A55F488005AD8BE /* worktajm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = worktajm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8081843B1A55F488005AD8BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8081843C1A55F488005AD8BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8081843E1A55F488005AD8BE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		808184401A55F488005AD8BE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		808184431A55F488005AD8BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		808184451A55F488005AD8BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		808184481A55F488005AD8BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		8081844E1A55F488005AD8BE /* worktajmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = worktajmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		808184531A55F488005AD8BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		808184541A55F488005AD8BE /* worktajmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = worktajmTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		80B7B0141A4DCBDA00885524 /* Frameworks */ = {
+		808184341A55F488005AD8BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		80B7B02E1A4DCBDA00885524 /* Frameworks */ = {
+		8081844B1A55F488005AD8BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,60 +58,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		80B7B00E1A4DCBDA00885524 = {
+		8081842E1A55F488005AD8BE = {
 			isa = PBXGroup;
 			children = (
-				80B7B0191A4DCBDA00885524 /* worktajm */,
-				80B7B0341A4DCBDA00885524 /* worktajmTests */,
-				80B7B0181A4DCBDA00885524 /* Products */,
+				808184391A55F488005AD8BE /* worktajm */,
+				808184511A55F488005AD8BE /* worktajmTests */,
+				808184381A55F488005AD8BE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		80B7B0181A4DCBDA00885524 /* Products */ = {
+		808184381A55F488005AD8BE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				80B7B0171A4DCBDA00885524 /* worktajm.app */,
-				80B7B0311A4DCBDA00885524 /* worktajmTests.xctest */,
+				808184371A55F488005AD8BE /* worktajm.app */,
+				8081844E1A55F488005AD8BE /* worktajmTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		80B7B0191A4DCBDA00885524 /* worktajm */ = {
+		808184391A55F488005AD8BE /* worktajm */ = {
 			isa = PBXGroup;
 			children = (
-				80B7B01C1A4DCBDA00885524 /* AppDelegate.swift */,
-				80B7B0211A4DCBDA00885524 /* MasterViewController.swift */,
-				80B7B0231A4DCBDA00885524 /* DetailViewController.swift */,
-				80B7B0251A4DCBDA00885524 /* Main.storyboard */,
-				80B7B0281A4DCBDA00885524 /* Images.xcassets */,
-				80B7B02A1A4DCBDA00885524 /* LaunchScreen.xib */,
-				80B7B01E1A4DCBDA00885524 /* worktajm.xcdatamodeld */,
-				80B7B01A1A4DCBDA00885524 /* Supporting Files */,
+				8081843C1A55F488005AD8BE /* AppDelegate.swift */,
+				8081843E1A55F488005AD8BE /* FirstViewController.swift */,
+				808184401A55F488005AD8BE /* SecondViewController.swift */,
+				808184421A55F488005AD8BE /* Main.storyboard */,
+				808184451A55F488005AD8BE /* Images.xcassets */,
+				808184471A55F488005AD8BE /* LaunchScreen.xib */,
+				8081843A1A55F488005AD8BE /* Supporting Files */,
 			);
 			path = worktajm;
 			sourceTree = "<group>";
 		};
-		80B7B01A1A4DCBDA00885524 /* Supporting Files */ = {
+		8081843A1A55F488005AD8BE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				80B7B01B1A4DCBDA00885524 /* Info.plist */,
+				8081843B1A55F488005AD8BE /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		80B7B0341A4DCBDA00885524 /* worktajmTests */ = {
+		808184511A55F488005AD8BE /* worktajmTests */ = {
 			isa = PBXGroup;
 			children = (
-				80B7B0371A4DCBDA00885524 /* worktajmTests.swift */,
-				80B7B0351A4DCBDA00885524 /* Supporting Files */,
+				808184541A55F488005AD8BE /* worktajmTests.swift */,
+				808184521A55F488005AD8BE /* Supporting Files */,
 			);
 			path = worktajmTests;
 			sourceTree = "<group>";
 		};
-		80B7B0351A4DCBDA00885524 /* Supporting Files */ = {
+		808184521A55F488005AD8BE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				80B7B0361A4DCBDA00885524 /* Info.plist */,
+				808184531A55F488005AD8BE /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -121,13 +118,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		80B7B0161A4DCBDA00885524 /* worktajm */ = {
+		808184361A55F488005AD8BE /* worktajm */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80B7B03B1A4DCBDA00885524 /* Build configuration list for PBXNativeTarget "worktajm" */;
+			buildConfigurationList = 808184581A55F488005AD8BE /* Build configuration list for PBXNativeTarget "worktajm" */;
 			buildPhases = (
-				80B7B0131A4DCBDA00885524 /* Sources */,
-				80B7B0141A4DCBDA00885524 /* Frameworks */,
-				80B7B0151A4DCBDA00885524 /* Resources */,
+				808184331A55F488005AD8BE /* Sources */,
+				808184341A55F488005AD8BE /* Frameworks */,
+				808184351A55F488005AD8BE /* Resources */,
 			);
 			buildRules = (
 			);
@@ -135,46 +132,46 @@
 			);
 			name = worktajm;
 			productName = worktajm;
-			productReference = 80B7B0171A4DCBDA00885524 /* worktajm.app */;
+			productReference = 808184371A55F488005AD8BE /* worktajm.app */;
 			productType = "com.apple.product-type.application";
 		};
-		80B7B0301A4DCBDA00885524 /* worktajmTests */ = {
+		8081844D1A55F488005AD8BE /* worktajmTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80B7B03E1A4DCBDA00885524 /* Build configuration list for PBXNativeTarget "worktajmTests" */;
+			buildConfigurationList = 8081845B1A55F488005AD8BE /* Build configuration list for PBXNativeTarget "worktajmTests" */;
 			buildPhases = (
-				80B7B02D1A4DCBDA00885524 /* Sources */,
-				80B7B02E1A4DCBDA00885524 /* Frameworks */,
-				80B7B02F1A4DCBDA00885524 /* Resources */,
+				8081844A1A55F488005AD8BE /* Sources */,
+				8081844B1A55F488005AD8BE /* Frameworks */,
+				8081844C1A55F488005AD8BE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				80B7B0331A4DCBDA00885524 /* PBXTargetDependency */,
+				808184501A55F488005AD8BE /* PBXTargetDependency */,
 			);
 			name = worktajmTests;
 			productName = worktajmTests;
-			productReference = 80B7B0311A4DCBDA00885524 /* worktajmTests.xctest */;
+			productReference = 8081844E1A55F488005AD8BE /* worktajmTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		80B7B00F1A4DCBDA00885524 /* Project object */ = {
+		8081842F1A55F488005AD8BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Arnell Consulting AB";
 				TargetAttributes = {
-					80B7B0161A4DCBDA00885524 = {
+					808184361A55F488005AD8BE = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
-					80B7B0301A4DCBDA00885524 = {
+					8081844D1A55F488005AD8BE = {
 						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 80B7B0161A4DCBDA00885524;
+						TestTargetID = 808184361A55F488005AD8BE;
 					};
 				};
 			};
-			buildConfigurationList = 80B7B0121A4DCBDA00885524 /* Build configuration list for PBXProject "worktajm" */;
+			buildConfigurationList = 808184321A55F488005AD8BE /* Build configuration list for PBXProject "worktajm" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -182,29 +179,29 @@
 				en,
 				Base,
 			);
-			mainGroup = 80B7B00E1A4DCBDA00885524;
-			productRefGroup = 80B7B0181A4DCBDA00885524 /* Products */;
+			mainGroup = 8081842E1A55F488005AD8BE;
+			productRefGroup = 808184381A55F488005AD8BE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				80B7B0161A4DCBDA00885524 /* worktajm */,
-				80B7B0301A4DCBDA00885524 /* worktajmTests */,
+				808184361A55F488005AD8BE /* worktajm */,
+				8081844D1A55F488005AD8BE /* worktajmTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		80B7B0151A4DCBDA00885524 /* Resources */ = {
+		808184351A55F488005AD8BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80B7B0271A4DCBDA00885524 /* Main.storyboard in Resources */,
-				80B7B02C1A4DCBDA00885524 /* LaunchScreen.xib in Resources */,
-				80B7B0291A4DCBDA00885524 /* Images.xcassets in Resources */,
+				808184441A55F488005AD8BE /* Main.storyboard in Resources */,
+				808184491A55F488005AD8BE /* LaunchScreen.xib in Resources */,
+				808184461A55F488005AD8BE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		80B7B02F1A4DCBDA00885524 /* Resources */ = {
+		8081844C1A55F488005AD8BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -214,48 +211,47 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		80B7B0131A4DCBDA00885524 /* Sources */ = {
+		808184331A55F488005AD8BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80B7B0201A4DCBDA00885524 /* worktajm.xcdatamodeld in Sources */,
-				80B7B01D1A4DCBDA00885524 /* AppDelegate.swift in Sources */,
-				80B7B0221A4DCBDA00885524 /* MasterViewController.swift in Sources */,
-				80B7B0241A4DCBDA00885524 /* DetailViewController.swift in Sources */,
+				808184411A55F488005AD8BE /* SecondViewController.swift in Sources */,
+				8081843D1A55F488005AD8BE /* AppDelegate.swift in Sources */,
+				8081843F1A55F488005AD8BE /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		80B7B02D1A4DCBDA00885524 /* Sources */ = {
+		8081844A1A55F488005AD8BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80B7B0381A4DCBDA00885524 /* worktajmTests.swift in Sources */,
+				808184551A55F488005AD8BE /* worktajmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		80B7B0331A4DCBDA00885524 /* PBXTargetDependency */ = {
+		808184501A55F488005AD8BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 80B7B0161A4DCBDA00885524 /* worktajm */;
-			targetProxy = 80B7B0321A4DCBDA00885524 /* PBXContainerItemProxy */;
+			target = 808184361A55F488005AD8BE /* worktajm */;
+			targetProxy = 8081844F1A55F488005AD8BE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		80B7B0251A4DCBDA00885524 /* Main.storyboard */ = {
+		808184421A55F488005AD8BE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				80B7B0261A4DCBDA00885524 /* Base */,
+				808184431A55F488005AD8BE /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		80B7B02A1A4DCBDA00885524 /* LaunchScreen.xib */ = {
+		808184471A55F488005AD8BE /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				80B7B02B1A4DCBDA00885524 /* Base */,
+				808184481A55F488005AD8BE /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -263,7 +259,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		80B7B0391A4DCBDA00885524 /* Debug */ = {
+		808184561A55F488005AD8BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -306,7 +302,7 @@
 			};
 			name = Debug;
 		};
-		80B7B03A1A4DCBDA00885524 /* Release */ = {
+		808184571A55F488005AD8BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -342,7 +338,7 @@
 			};
 			name = Release;
 		};
-		80B7B03C1A4DCBDA00885524 /* Debug */ = {
+		808184591A55F488005AD8BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -352,7 +348,7 @@
 			};
 			name = Debug;
 		};
-		80B7B03D1A4DCBDA00885524 /* Release */ = {
+		8081845A1A55F488005AD8BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -362,7 +358,7 @@
 			};
 			name = Release;
 		};
-		80B7B03F1A4DCBDA00885524 /* Debug */ = {
+		8081845C1A55F488005AD8BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -381,7 +377,7 @@
 			};
 			name = Debug;
 		};
-		80B7B0401A4DCBDA00885524 /* Release */ = {
+		8081845D1A55F488005AD8BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -399,45 +395,32 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		80B7B0121A4DCBDA00885524 /* Build configuration list for PBXProject "worktajm" */ = {
+		808184321A55F488005AD8BE /* Build configuration list for PBXProject "worktajm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				80B7B0391A4DCBDA00885524 /* Debug */,
-				80B7B03A1A4DCBDA00885524 /* Release */,
+				808184561A55F488005AD8BE /* Debug */,
+				808184571A55F488005AD8BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80B7B03B1A4DCBDA00885524 /* Build configuration list for PBXNativeTarget "worktajm" */ = {
+		808184581A55F488005AD8BE /* Build configuration list for PBXNativeTarget "worktajm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				80B7B03C1A4DCBDA00885524 /* Debug */,
-				80B7B03D1A4DCBDA00885524 /* Release */,
+				808184591A55F488005AD8BE /* Debug */,
+				8081845A1A55F488005AD8BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		80B7B03E1A4DCBDA00885524 /* Build configuration list for PBXNativeTarget "worktajmTests" */ = {
+		8081845B1A55F488005AD8BE /* Build configuration list for PBXNativeTarget "worktajmTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				80B7B03F1A4DCBDA00885524 /* Debug */,
-				80B7B0401A4DCBDA00885524 /* Release */,
+				8081845C1A55F488005AD8BE /* Debug */,
+				8081845D1A55F488005AD8BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		80B7B01E1A4DCBDA00885524 /* worktajm.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				80B7B01F1A4DCBDA00885524 /* worktajm.xcdatamodel */,
-			);
-			currentVersion = 80B7B01F1A4DCBDA00885524 /* worktajm.xcdatamodel */;
-			path = worktajm.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
-	rootObject = 80B7B00F1A4DCBDA00885524 /* Project object */;
+	rootObject = 8081842F1A55F488005AD8BE /* Project object */;
 }

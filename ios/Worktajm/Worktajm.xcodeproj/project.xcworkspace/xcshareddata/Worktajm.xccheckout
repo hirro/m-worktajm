@@ -5,13 +5,11 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>9BCCAAD4-A7FF-47B5-92AD-2A0209C3EAF4</string>
+	<string>C9229F36-FA0F-4E7A-B284-64640AFCBD80</string>
 	<key>IDESourceControlProjectName</key>
 	<string>worktajm</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>63EC897470EC4257D491D9CD69C96EC19DA3A6AA</key>
-		<string>arnellconsulting.dyndns.org:openid.git</string>
 		<key>BA89B72C1869BBCB7D95343F54AF1D87505264CE</key>
 		<string>https://github.com/hirro/m-worktajm.git</string>
 	</dict>
@@ -19,8 +17,6 @@
 	<string>ios/worktajm/worktajm.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>63EC897470EC4257D491D9CD69C96EC19DA3A6AA</key>
-		<string>../../../../..</string>
 		<key>BA89B72C1869BBCB7D95343F54AF1D87505264CE</key>
 		<string>../../../..</string>
 	</dict>
@@ -32,14 +28,6 @@
 	<string>BA89B72C1869BBCB7D95343F54AF1D87505264CE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>63EC897470EC4257D491D9CD69C96EC19DA3A6AA</string>
-			<key>IDESourceControlWCCName</key>
-			<string></string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

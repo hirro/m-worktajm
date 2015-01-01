@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80B7B0161A4DCBDA00885524"
+               BlueprintIdentifier = "808184361A55F488005AD8BE"
                BuildableName = "worktajm.app"
                BlueprintName = "worktajm"
                ReferencedContainer = "container:worktajm.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80B7B0301A4DCBDA00885524"
+               BlueprintIdentifier = "8081844D1A55F488005AD8BE"
                BuildableName = "worktajmTests.xctest"
                BlueprintName = "worktajmTests"
                ReferencedContainer = "container:worktajm.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80B7B0301A4DCBDA00885524"
+               BlueprintIdentifier = "8081844D1A55F488005AD8BE"
                BuildableName = "worktajmTests.xctest"
                BlueprintName = "worktajmTests"
                ReferencedContainer = "container:worktajm.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "80B7B0161A4DCBDA00885524"
+            BlueprintIdentifier = "808184361A55F488005AD8BE"
             BuildableName = "worktajm.app"
             BlueprintName = "worktajm"
             ReferencedContainer = "container:worktajm.xcodeproj">
@@ -75,7 +75,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "80B7B0161A4DCBDA00885524"
+            BlueprintIdentifier = "808184361A55F488005AD8BE"
             BuildableName = "worktajm.app"
             BlueprintName = "worktajm"
             ReferencedContainer = "container:worktajm.xcodeproj">
@@ -93,7 +93,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "80B7B0161A4DCBDA00885524"
+            BlueprintIdentifier = "808184361A55F488005AD8BE"
             BuildableName = "worktajm.app"
             BlueprintName = "worktajm"
             ReferencedContainer = "container:worktajm.xcodeproj">
