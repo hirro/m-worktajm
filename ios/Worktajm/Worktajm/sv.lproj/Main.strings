@@ -1,0 +1,18 @@
+
+/* Class = "IBUILabel"; text = "Password:"; ObjectID = "2Nn-Sl-o1u"; */
+"2Nn-Sl-o1u.text" = "Lösenord:";
+
+/* Class = "IBUIButton"; normalTitle = "Login"; ObjectID = "AZZ-Vd-e3D"; */
+"AZZ-Vd-e3D.normalTitle" = "Logga in";
+
+/* Class = "IBUILabel"; text = "Email:"; ObjectID = "DLb-s7-M1f"; */
+"DLb-s7-M1f.text" = "E-post:";
+
+/* Class = "IBUITabBarItem"; title = "Report"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Rapport";
+
+/* Class = "IBUITabBarItem"; title = "View Time Entries"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Visa raporterad tid";
+
+/* Class = "IBUIButton"; normalTitle = "Register"; ObjectID = "rX8-v2-WHw"; */
+"rX8-v2-WHw.normalTitle" = "Registrera";
