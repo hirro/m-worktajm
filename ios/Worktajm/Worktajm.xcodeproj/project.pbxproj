@@ -14,6 +14,7 @@
 		808184461A55F488005AD8BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 808184451A55F488005AD8BE /* Images.xcassets */; };
 		808184491A55F488005AD8BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 808184471A55F488005AD8BE /* LaunchScreen.xib */; };
 		808184551A55F488005AD8BE /* worktajmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808184541A55F488005AD8BE /* worktajmTests.swift */; };
+		8081845F1A57004C005AD8BE /* SwitchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081845E1A57004C005AD8BE /* SwitchingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		8081844E1A55F488005AD8BE /* worktajmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = worktajmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		808184531A55F488005AD8BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		808184541A55F488005AD8BE /* worktajmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = worktajmTests.swift; sourceTree = "<group>"; };
+		8081845E1A57004C005AD8BE /* SwitchingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				808184451A55F488005AD8BE /* Images.xcassets */,
 				808184471A55F488005AD8BE /* LaunchScreen.xib */,
 				8081843A1A55F488005AD8BE /* Supporting Files */,
+				8081845E1A57004C005AD8BE /* SwitchingViewController.swift */,
 			);
 			path = worktajm;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				808184411A55F488005AD8BE /* SecondViewController.swift in Sources */,
 				8081843D1A55F488005AD8BE /* AppDelegate.swift in Sources */,
 				8081843F1A55F488005AD8BE /* FirstViewController.swift in Sources */,
+				8081845F1A57004C005AD8BE /* SwitchingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +415,7 @@
 				8081845A1A55F488005AD8BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8081845B1A55F488005AD8BE /* Build configuration list for PBXNativeTarget "worktajmTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +424,7 @@
 				8081845D1A55F488005AD8BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
