@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Alamofire
 
 class RootViewController: UIViewController {
     
     private var loginViewController: LoginViewController!
     private var worktajmViewController: UITabBarController!
+    
+    let AuthUrl:String = "http://192.168.1.3:9000/auth/local"
+    // let AuthUrl:String = "http://www.worktajm.com/auth/local"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +33,9 @@ class RootViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
-    func login(username:String, password:String) -> [LoginResult] {
-        var errors = [LoginResult]()
-        if (username.isEmpty) {
-            errors.append(LoginResult.MissingUsername)
-        }
-        if (password.isEmpty) {
-            errors.append(LoginResult.MissingPassword)
-        }
+    func switchViewToWorktajm() {
         if worktajmViewController?.view.superview == nil {
             if worktajmViewController == nil {
                 worktajmViewController = storyboard?.instantiateViewControllerWithIdentifier("Worktajm")
@@ -44,11 +43,7 @@ class RootViewController: UIViewController {
             }
         }
         
-        if (errors.count == 0) {
-            switchViewController(from: loginViewController, to: worktajmViewController)
-        }
-        
-        return errors
+        switchViewController(from: loginViewController, to: worktajmViewController)
     }
 
     
