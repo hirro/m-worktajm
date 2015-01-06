@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onRegister(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://worktajm.com/signup")!)
     }
 
     @IBAction func onLogin(sender: UIButton) {
@@ -56,6 +57,8 @@ class LoginViewController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil)
 
         }
+    }
+    private func login(username:String, password:String) {
     }
     
     @IBAction func backgroundTap(sender: UIControl) {
