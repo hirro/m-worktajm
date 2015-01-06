@@ -10,13 +10,18 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-class RootViewController: UIViewController {
+class RootViewController: UIViewController, BackendApi {
     
     private var loginViewController: LoginViewController!
     private var worktajmViewController: UITabBarController!
+    private var backendApiImpl:BackendApi = BackendApiImpl()
     
     let AuthUrl:String = "http://192.168.1.3:9000/auth/local"
     // let AuthUrl:String = "http://www.worktajm.com/auth/local"
+
+    func login(username:String, password:String, completionHandler:String->Void, errorHandler:[LoginResult]->Void) {
+        backendApiImpl.login(username, password: password, completionHandler: completionHandler, errorHandler: errorHandler)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

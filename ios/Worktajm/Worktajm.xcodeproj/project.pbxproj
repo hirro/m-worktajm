@@ -21,6 +21,8 @@
 		8089E1BE1A5ABB97007E0C60 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8089E1BD1A5ABB97007E0C60 /* LoginResult.swift */; };
 		80EBCC911A5BCF7B00C09AC9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EBCC901A5BCF7B00C09AC9 /* SwiftyJSON.framework */; };
 		80EBCC931A5BCF8400C09AC9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EBCC921A5BCF8400C09AC9 /* Alamofire.framework */; };
+		80EBCC961A5BF6A800C09AC9 /* BackendApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EBCC951A5BF6A800C09AC9 /* BackendApi.swift */; };
+		80EBCC981A5BF87F00C09AC9 /* BackendApiImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EBCC971A5BF87F00C09AC9 /* BackendApiImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		8089E1C21A5ADA9D007E0C60 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		80EBCC901A5BCF7B00C09AC9 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/build/Debug-iphoneos/Pods/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		80EBCC921A5BCF8400C09AC9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/build/Debug-iphoneos/Pods/Alamofire.framework"; sourceTree = "<group>"; };
+		80EBCC951A5BF6A800C09AC9 /* BackendApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendApi.swift; sourceTree = "<group>"; };
+		80EBCC971A5BF87F00C09AC9 /* BackendApiImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendApiImpl.swift; sourceTree = "<group>"; };
 		8B888DA17550B3EADD01AAE9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		951DB0B3EA3739489561BFA9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +126,7 @@
 		808184391A55F488005AD8BE /* worktajm */ = {
 			isa = PBXGroup;
 			children = (
+				80EBCC941A5BF62C00C09AC9 /* backend */,
 				8081843C1A55F488005AD8BE /* AppDelegate.swift */,
 				8081843E1A55F488005AD8BE /* FirstViewController.swift */,
 				808184401A55F488005AD8BE /* SecondViewController.swift */,
@@ -160,6 +165,15 @@
 				808184531A55F488005AD8BE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80EBCC941A5BF62C00C09AC9 /* backend */ = {
+			isa = PBXGroup;
+			children = (
+				80EBCC951A5BF6A800C09AC9 /* BackendApi.swift */,
+				80EBCC971A5BF87F00C09AC9 /* BackendApiImpl.swift */,
+			);
+			name = backend;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,7 +332,9 @@
 				8089E1BE1A5ABB97007E0C60 /* LoginResult.swift in Sources */,
 				8089E1BA1A5AA5D3007E0C60 /* RootViewController.swift in Sources */,
 				808184411A55F488005AD8BE /* SecondViewController.swift in Sources */,
+				80EBCC981A5BF87F00C09AC9 /* BackendApiImpl.swift in Sources */,
 				8081843D1A55F488005AD8BE /* AppDelegate.swift in Sources */,
+				80EBCC961A5BF6A800C09AC9 /* BackendApi.swift in Sources */,
 				8081843F1A55F488005AD8BE /* FirstViewController.swift in Sources */,
 				8081845F1A57004C005AD8BE /* SwitchingViewController.swift in Sources */,
 			);

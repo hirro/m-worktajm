@@ -15,8 +15,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    let AuthUrl:String = "http://192.168.1.3:9000/auth/local"
-    // let AuthUrl:String = "http://www.worktajm.com/auth/local"
     let SignupUrl:String = "http://worktajm.com/signup"
     
     override func viewDidLoad() {
@@ -40,45 +38,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onLogin(sender: UIButton) {
-        login(loginCompletionHandler, username: emailField.text, password: passwordField.text)
-    }
-    
-    func login(completionHandler:String -> Void, username:String, password:String) -> [LoginResult] {
-        var errors = [LoginResult]()
-        if (username.isEmpty) {
-            errors.append(LoginResult.MissingUsername)
-        }
-        if (password.isEmpty) {
-            errors.append(LoginResult.MissingPassword)
-        }
-        
-        if (errors.isEmpty) {
-            let parameters = [
-                "email": username,
-                "password": password
-            ]
-            Alamofire
-                .request(.POST, AuthUrl, parameters: parameters, encoding: .JSON)
-                .validate(statusCode: 200..<300)
-                .validate(contentType: ["application/json"])
-                .responseJSON { (_, response, JSON, error) in
-                    let info = JSON as NSDictionary
-                    var token:String? = info.valueForKey("token") as? String
-                    var message:String? = info.valueForKey("message") as? String
-                    if (token == nil) {
-                        println("Login failed: \(message)")
-                        errors.append(.InvalidCredentials)
-                        self.showLoginErrors(errors)
-                    } else {
-                        println("Login successful: token\(token)")
-                        completionHandler(token!)
-                    }
-            }
-        } else {
-            showLoginErrors(errors)
-        }
-        
-        return errors
+        var parent:RootViewController = self.parentViewController as RootViewController
+        parent.login(emailField.text, password: passwordField.text, completionHandler: loginCompletionHandler, errorHandler: showLoginErrors)
     }
     
     private func loginCompletionHandler(token:String) {
