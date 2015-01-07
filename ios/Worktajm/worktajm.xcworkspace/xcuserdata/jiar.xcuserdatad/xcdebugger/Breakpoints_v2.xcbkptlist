@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "worktajm/LoginViewController.swift"
@@ -38,7 +38,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "worktajm/LoginViewController.swift"
@@ -77,6 +77,52 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
+            landmarkName = "loadProjects(_:errorHandler:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "worktajm.RootViewController.loadProjects (worktajm.RootViewController)(() -&gt; Swift.Array&lt;worktajm.Project&gt;, errorHandler : () -&gt; ()) -&gt; ()"
+                  moduleName = "worktajm"
+                  urlString = "file:///Users/jiar/git/m-worktajm/ios/worktajm/worktajm/RootViewController.swift"
+                  timestampString = "442304655.171655"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "protocol witness for worktajm.BackendApi.loadProjects &lt;A : worktajm.BackendApi&gt;(inout worktajm.BackendApi.Self)(() -&gt; Swift.Array&lt;worktajm.Project&gt;, errorHandler : () -&gt; ()) -&gt; () in conformance worktajm.RootViewController : worktajm.BackendApi"
+                  moduleName = "worktajm"
+                  urlString = "file:///Users/jiar/git/m-worktajm/ios/worktajm/worktajm/RootViewController.swift"
+                  timestampString = "442304655.171807"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "worktajm/BackendApiImpl.swift"
+            timestampString = "442304654.85926"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "login(_:password:completionHandler:errorHandler:)"
             landmarkType = "5">
          </BreakpointContent>

@@ -11,43 +11,72 @@ import SwiftyJSON
 import Alamofire
 
 class BackendApiImpl : BackendApi {
-    let AuthUrl:String = "http://192.168.1.3:9000/auth/local"
-    // let AuthUrl:String = "http://www.worktajm.com/auth/local"
+  // let Host = "http://www.worktajm.com"
+  let Host:String = "http://192.168.1.3:9000"
+  let AuthPath:String = "/auth/local"
+  let ListProjects:String = "/auth/local"
+  
+  var token:String?
+  
+  init() {
     
-    func login(username:String, password:String, completionHandler:String -> Void, errorHandler:[LoginResult] -> Void) {
-        var errors = [LoginResult]()
-        if (username.isEmpty) {
-            errors.append(LoginResult.MissingUsername)
-        }
-        if (password.isEmpty) {
-            errors.append(LoginResult.MissingPassword)
-        }
-        
-        if (errors.isEmpty) {
-            let parameters = [
-                "email": username,
-                "password": password
-            ]
-            Alamofire
-                .request(.POST, AuthUrl, parameters: parameters, encoding: .JSON)
-                .validate(statusCode: 200..<300)
-                .validate(contentType: ["application/json"])
-                .responseJSON { (_, response, JSON, error) in
-                    let info = JSON as NSDictionary
-                    var token:String? = info.valueForKey("token") as? String
-                    var message:String? = info.valueForKey("message") as? String
-                    if (token == nil) {
-                        println("Login failed: \(message)")
-                        errors.append(.InvalidCredentials)
-                        errorHandler(errors)
-                    } else {
-                        println("Login successful: token\(token)")
-                        completionHandler(token!)
-                    }
-            }
-        } else {
-            errorHandler(errors)
-        }
+  }
+   
+  func login(username:String, password:String, completionHandler:String -> Void, errorHandler:[LoginResult] -> Void) {
+    var errors = [LoginResult]()
+    if (username.isEmpty) {
+      errors.append(LoginResult.MissingUsername)
+    }
+    if (password.isEmpty) {
+      errors.append(LoginResult.MissingPassword)
     }
     
+    if (errors.isEmpty) {
+      let parameters = [
+        "email": username,
+        "password": password
+      ]
+      Alamofire
+        .request(.POST, Host + AuthPath, parameters: parameters, encoding: .JSON)
+        .validate(statusCode: 200..<300)
+        .validate(contentType: ["application/json"])
+        .responseJSON { (_, response, JSON, _) in
+          if (JSON == nil) {
+            errors.append(.FailedToConnect)
+          } else {
+            let info = JSON as NSDictionary
+            var jsonToken:String? = info.valueForKey("token") as? String
+            var message:String? = info.valueForKey("message") as? String
+            if (jsonToken == nil) {
+              println("Login failed: \(message)")
+              errors.append(.InvalidCredentials)
+            } else {
+              println("Login successful: token\(jsonToken)")
+              self.token = jsonToken
+            }
+          }
+          
+          // Call error handler if any errors
+          if (errors.count > 0) {
+            errorHandler(errors)
+          } else {
+            completionHandler(self.token!)
+          }
+      }
+    } else {
+      errorHandler(errors)
+    }
+  }
+  
+  func loadProjects(completionHandler:Void->[Project], errorHandler:Void->Void) {
+    Alamofire
+      .request(.GET, Host + ListProjects, encoding: .JSON)
+      .validate(statusCode: 200..<300)
+      .validate(contentType: ["application/json"])
+      .responseJSON { (_, response, JSON, error) in
+        let info = JSON as NSDictionary
+        println(info);
+    }
+    
+  }
 }

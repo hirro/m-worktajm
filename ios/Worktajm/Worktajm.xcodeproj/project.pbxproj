@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3DA87DA8BA2F80285EC04EB5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA0D9002C71B3B20A4D33D5 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8081843D1A55F488005AD8BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081843C1A55F488005AD8BE /* AppDelegate.swift */; };
-		8081843F1A55F488005AD8BE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081843E1A55F488005AD8BE /* FirstViewController.swift */; };
-		808184411A55F488005AD8BE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808184401A55F488005AD8BE /* SecondViewController.swift */; };
+		8081843F1A55F488005AD8BE /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081843E1A55F488005AD8BE /* ProjectViewController.swift */; };
+		808184411A55F488005AD8BE /* TimeEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808184401A55F488005AD8BE /* TimeEntryViewController.swift */; };
 		808184441A55F488005AD8BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808184421A55F488005AD8BE /* Main.storyboard */; };
 		808184461A55F488005AD8BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 808184451A55F488005AD8BE /* Images.xcassets */; };
 		808184491A55F488005AD8BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 808184471A55F488005AD8BE /* LaunchScreen.xib */; };
@@ -23,6 +23,7 @@
 		80EBCC931A5BCF8400C09AC9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EBCC921A5BCF8400C09AC9 /* Alamofire.framework */; };
 		80EBCC961A5BF6A800C09AC9 /* BackendApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EBCC951A5BF6A800C09AC9 /* BackendApi.swift */; };
 		80EBCC981A5BF87F00C09AC9 /* BackendApiImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EBCC971A5BF87F00C09AC9 /* BackendApiImpl.swift */; };
+		80EBCC9A1A5C3A1700C09AC9 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EBCC991A5C3A1700C09AC9 /* Project.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +41,8 @@
 		808184371A55F488005AD8BE /* worktajm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = worktajm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8081843B1A55F488005AD8BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8081843C1A55F488005AD8BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8081843E1A55F488005AD8BE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		808184401A55F488005AD8BE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		8081843E1A55F488005AD8BE /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		808184401A55F488005AD8BE /* TimeEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryViewController.swift; sourceTree = "<group>"; };
 		808184431A55F488005AD8BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		808184451A55F488005AD8BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		808184481A55F488005AD8BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		80EBCC921A5BCF8400C09AC9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/build/Debug-iphoneos/Pods/Alamofire.framework"; sourceTree = "<group>"; };
 		80EBCC951A5BF6A800C09AC9 /* BackendApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendApi.swift; sourceTree = "<group>"; };
 		80EBCC971A5BF87F00C09AC9 /* BackendApiImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendApiImpl.swift; sourceTree = "<group>"; };
+		80EBCC991A5C3A1700C09AC9 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		8B888DA17550B3EADD01AAE9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		951DB0B3EA3739489561BFA9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,8 +130,8 @@
 			children = (
 				80EBCC941A5BF62C00C09AC9 /* backend */,
 				8081843C1A55F488005AD8BE /* AppDelegate.swift */,
-				8081843E1A55F488005AD8BE /* FirstViewController.swift */,
-				808184401A55F488005AD8BE /* SecondViewController.swift */,
+				8081843E1A55F488005AD8BE /* ProjectViewController.swift */,
+				808184401A55F488005AD8BE /* TimeEntryViewController.swift */,
 				808184421A55F488005AD8BE /* Main.storyboard */,
 				808184451A55F488005AD8BE /* Images.xcassets */,
 				808184471A55F488005AD8BE /* LaunchScreen.xib */,
@@ -172,6 +174,7 @@
 			children = (
 				80EBCC951A5BF6A800C09AC9 /* BackendApi.swift */,
 				80EBCC971A5BF87F00C09AC9 /* BackendApiImpl.swift */,
+				80EBCC991A5C3A1700C09AC9 /* Project.swift */,
 			);
 			name = backend;
 			sourceTree = "<group>";
@@ -331,11 +334,12 @@
 				8089E1BC1A5AA6ED007E0C60 /* LoginViewController.swift in Sources */,
 				8089E1BE1A5ABB97007E0C60 /* LoginResult.swift in Sources */,
 				8089E1BA1A5AA5D3007E0C60 /* RootViewController.swift in Sources */,
-				808184411A55F488005AD8BE /* SecondViewController.swift in Sources */,
+				80EBCC9A1A5C3A1700C09AC9 /* Project.swift in Sources */,
+				808184411A55F488005AD8BE /* TimeEntryViewController.swift in Sources */,
 				80EBCC981A5BF87F00C09AC9 /* BackendApiImpl.swift in Sources */,
 				8081843D1A55F488005AD8BE /* AppDelegate.swift in Sources */,
 				80EBCC961A5BF6A800C09AC9 /* BackendApi.swift in Sources */,
-				8081843F1A55F488005AD8BE /* FirstViewController.swift in Sources */,
+				8081843F1A55F488005AD8BE /* ProjectViewController.swift in Sources */,
 				8081845F1A57004C005AD8BE /* SwitchingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

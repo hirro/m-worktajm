@@ -21,4 +21,12 @@ protocol BackendApi {
     */
     func login(username:String, password:String, completionHandler:String->Void, errorHandler:[LoginResult]->Void)
     
+    /**
+    Loads available projects
+    :param completionHandler Completion handler, called with the token id on success
+    :param errorHandler Error handler, called with a list of login errors.
+    :returns: Void
+    */
+    func loadProjects(completionHandler:Void->[Project], errorHandler:Void->Void)
+    
 }

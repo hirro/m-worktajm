@@ -60,6 +60,8 @@ class LoginViewController: UIViewController {
                     message += "Missing user name"
                 case .InvalidCredentials:
                     message += "Invalid credentials"
+                case .FailedToConnect:
+                  message += "Failed to connect"
                 }
             }
             

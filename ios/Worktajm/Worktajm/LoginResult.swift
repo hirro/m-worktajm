@@ -9,7 +9,8 @@
 import Foundation
 
 enum LoginResult {
-    case MissingPassword
-    case MissingUsername
-    case InvalidCredentials
+  case MissingPassword
+  case MissingUsername
+  case InvalidCredentials
+  case FailedToConnect
 }
