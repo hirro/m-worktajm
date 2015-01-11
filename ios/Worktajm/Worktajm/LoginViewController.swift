@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onLogin(sender: UIButton) {
+      
         var parent:RootViewController = self.parentViewController as RootViewController
         parent.login(emailField.text, password: passwordField.text, completionHandler: loginCompletionHandler, errorHandler: showLoginErrors)
     }

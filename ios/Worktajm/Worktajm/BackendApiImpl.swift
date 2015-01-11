@@ -60,6 +60,17 @@ class BackendApiImpl : BackendApi {
           if (errors.count > 0) {
             errorHandler(errors)
           } else {
+            self.loadProjects(
+              {
+                ()->[Project] in
+                var projects:[Project] = []
+                return projects
+              },
+              {
+                Void->Void in
+                return
+              }
+            )
             completionHandler(self.token!)
           }
       }
@@ -69,6 +80,15 @@ class BackendApiImpl : BackendApi {
   }
   
   func loadProjects(completionHandler:Void->[Project], errorHandler:Void->Void) {
+    // Creating an Instance of the Alamofire Manager
+    var manager = Manager.sharedInstance
+
+    // Specifying the Headers we need
+    manager.session.configuration.HTTPAdditionalHeaders = [
+      "Content-Type": "application/json",
+      "Authorization": token!
+    ]
+    
     Alamofire
       .request(.GET, Host + ListProjects, encoding: .JSON)
       .validate(statusCode: 200..<300)
@@ -77,6 +97,5 @@ class BackendApiImpl : BackendApi {
         let info = JSON as NSDictionary
         println(info);
     }
-    
   }
 }
