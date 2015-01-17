@@ -14,7 +14,7 @@ class BackendApiImpl : BackendApi {
   // let Host = "http://www.worktajm.com"
   let Host:String = "http://192.168.1.3:9000"
   let AuthPath:String = "/auth/local"
-  let ListProjects:String = "/auth/local"
+  let ListProjects:String = "/api/projects"
   
   var token:String?
   
@@ -86,16 +86,28 @@ class BackendApiImpl : BackendApi {
     // Specifying the Headers we need
     manager.session.configuration.HTTPAdditionalHeaders = [
       "Content-Type": "application/json",
-      "Authorization": token!
+      "Authorization": "Bearer \(token!)"
     ]
     
+    var url = Host + ListProjects
     Alamofire
-      .request(.GET, Host + ListProjects, encoding: .JSON)
+      .request(.GET, url, encoding: .JSON)
       .validate(statusCode: 200..<300)
       .validate(contentType: ["application/json"])
       .responseJSON { (_, response, JSON, error) in
-        let info = JSON as NSDictionary
-        println(info);
+        if let results = JSON as? Array<NSDictionary> {
+          var o1:NSDictionary = results[0]
+          var o2:NSDictionary = results[1]
+          var o3:NSDictionary = results[2]
+          println(o1.allKeys)
+          println(o1.objectForKey("_id"))
+          println(o1.objectForKey("name"))
+          println(o1.valueForKey("name"))
+          var name = o1.valueForKey("name") as String
+          println(name)
+//          println(o3)
+//          println(o1)
+        }
     }
   }
 }
