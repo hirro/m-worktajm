@@ -11,8 +11,8 @@ import SwiftyJSON
 import Alamofire
 
 class BackendApiImpl : BackendApi {
-  let Host = "http://www.worktajm.com"
-  //let Host:String = "http://192.168.1.3:9000"
+  //let Host = "http://www.worktajm.com"
+  let Host:String = "http://192.168.1.9:9000"
   let AuthPath:String = "/auth/local"
   let ListProjects:String = "/api/projects"
   
@@ -40,7 +40,7 @@ class BackendApiImpl : BackendApi {
         .request(.POST, Host + AuthPath, parameters: parameters, encoding: .JSON)
         .validate(statusCode: 200..<300)
         .validate(contentType: ["application/json"])
-        .responseJSON { (_, response, JSON, _) in
+        .responseJSON { (_, response, JSON, error) in
           if (JSON == nil) {
             errors.append(.FailedToConnect)
           } else {

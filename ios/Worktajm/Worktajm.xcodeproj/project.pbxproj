@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3DA87DA8BA2F80285EC04EB5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA0D9002C71B3B20A4D33D5 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		804C77381A6B8FC000C4FAA9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 804C77371A6B8FC000C4FAA9 /* CoreData.framework */; };
+		804C773B1A6B909500C4FAA9 /* worktajm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 804C77391A6B909500C4FAA9 /* worktajm.xcdatamodeld */; };
 		8081843D1A55F488005AD8BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081843C1A55F488005AD8BE /* AppDelegate.swift */; };
 		8081843F1A55F488005AD8BE /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081843E1A55F488005AD8BE /* ProjectViewController.swift */; };
 		808184411A55F488005AD8BE /* TimeEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808184401A55F488005AD8BE /* TimeEntryViewController.swift */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		2FA0D9002C71B3B20A4D33D5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		804C77371A6B8FC000C4FAA9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		804C773A1A6B909500C4FAA9 /* worktajm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = worktajm.xcdatamodel; sourceTree = "<group>"; };
 		808184371A55F488005AD8BE /* worktajm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = worktajm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8081843B1A55F488005AD8BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8081843C1A55F488005AD8BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				804C77381A6B8FC000C4FAA9 /* CoreData.framework in Frameworks */,
 				80EBCC931A5BCF8400C09AC9 /* Alamofire.framework in Frameworks */,
 				80EBCC911A5BCF7B00C09AC9 /* SwiftyJSON.framework in Frameworks */,
 				3DA87DA8BA2F80285EC04EB5 /* Pods.framework in Frameworks */,
@@ -89,6 +94,7 @@
 		3431FC4DE887C9EDF1DD18F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				804C77371A6B8FC000C4FAA9 /* CoreData.framework */,
 				80EBCC921A5BCF8400C09AC9 /* Alamofire.framework */,
 				80EBCC901A5BCF7B00C09AC9 /* SwiftyJSON.framework */,
 				2FA0D9002C71B3B20A4D33D5 /* Pods.framework */,
@@ -128,6 +134,7 @@
 		808184391A55F488005AD8BE /* worktajm */ = {
 			isa = PBXGroup;
 			children = (
+				804C77391A6B909500C4FAA9 /* worktajm.xcdatamodeld */,
 				80EBCC941A5BF62C00C09AC9 /* backend */,
 				8081843C1A55F488005AD8BE /* AppDelegate.swift */,
 				8081843E1A55F488005AD8BE /* ProjectViewController.swift */,
@@ -337,6 +344,7 @@
 				80EBCC9A1A5C3A1700C09AC9 /* Project.swift in Sources */,
 				808184411A55F488005AD8BE /* TimeEntryViewController.swift in Sources */,
 				80EBCC981A5BF87F00C09AC9 /* BackendApiImpl.swift in Sources */,
+				804C773B1A6B909500C4FAA9 /* worktajm.xcdatamodeld in Sources */,
 				8081843D1A55F488005AD8BE /* AppDelegate.swift in Sources */,
 				80EBCC961A5BF6A800C09AC9 /* BackendApi.swift in Sources */,
 				8081843F1A55F488005AD8BE /* ProjectViewController.swift in Sources */,
@@ -561,6 +569,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		804C77391A6B909500C4FAA9 /* worktajm.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				804C773A1A6B909500C4FAA9 /* worktajm.xcdatamodel */,
+			);
+			currentVersion = 804C773A1A6B909500C4FAA9 /* worktajm.xcdatamodel */;
+			name = worktajm.xcdatamodeld;
+			path = ../worktajm.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8081842F1A55F488005AD8BE /* Project object */;
 }
