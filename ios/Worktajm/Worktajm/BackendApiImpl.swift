@@ -11,8 +11,8 @@ import SwiftyJSON
 import Alamofire
 
 class BackendApiImpl : BackendApi {
-  //let Host = "http://www.worktajm.com"
-  let Host:String = "http://192.168.1.9:9000"
+  let Host = "http://www.worktajm.com"
+//  let Host:String = "http://192.168.1.9:9000"
   let AuthPath:String = "/auth/local"
   let ListProjects:String = "/api/projects"
   
