@@ -31,7 +31,7 @@ class RootViewController: UIViewController, BackendApi {
     
     // Do any additional setup after loading the view.
     loginViewController = storyboard?.instantiateViewControllerWithIdentifier("Login")
-      as LoginViewController
+      as! LoginViewController
     loginViewController.view.frame = view.frame
     switchViewController(from: nil, to: loginViewController)
   }
@@ -46,7 +46,7 @@ class RootViewController: UIViewController, BackendApi {
     if worktajmViewController?.view.superview == nil {
       if worktajmViewController == nil {
         worktajmViewController = storyboard?.instantiateViewControllerWithIdentifier("Worktajm")
-          as UITabBarController
+          as! UITabBarController
       }
     }
     

@@ -39,13 +39,13 @@ class LoginViewController: UIViewController {
     
     @IBAction func onLogin(sender: UIButton) {
       
-        var parent:RootViewController = self.parentViewController as RootViewController
+        var parent:RootViewController = self.parentViewController as! RootViewController
         parent.login(emailField.text, password: passwordField.text, completionHandler: loginCompletionHandler, errorHandler: showLoginErrors)
     }
     
     private func loginCompletionHandler(token:String) {
         println("Logged in as \(token)")
-        (self.parentViewController as RootViewController).switchViewToWorktajm()
+        (self.parentViewController as! RootViewController).switchViewToWorktajm()
     }
     
     private func showLoginErrors(loginResults:[LoginResult]) {

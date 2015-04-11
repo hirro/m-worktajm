@@ -44,7 +44,7 @@ class BackendApiImpl : BackendApi {
           if (JSON == nil) {
             errors.append(.FailedToConnect)
           } else {
-            let info = JSON as NSDictionary
+            let info = JSON as! NSDictionary
             var jsonToken:String? = info.valueForKey("token") as? String
             var message:String? = info.valueForKey("message") as? String
             if (jsonToken == nil) {
@@ -66,7 +66,7 @@ class BackendApiImpl : BackendApi {
                 var projects:[Project] = []
                 return projects
               },
-              {
+              errorHandler: {
                 Void->Void in
                 return
               }
@@ -103,8 +103,8 @@ class BackendApiImpl : BackendApi {
           println(o1.objectForKey("_id"))
           println(o1.objectForKey("name"))
           println(o1.valueForKey("name"))
-          var name = o1.valueForKey("name") as String
-          println(name)
+          //var name = o1.valueForKey("name")as!s String
+//          println(name)
 //          println(o3)
 //          println(o1)
         }

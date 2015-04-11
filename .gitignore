@@ -4,3 +4,4 @@ WindowsPhone8/WorkTajm/Bin/
 WindowsPhone8/WorkTajmTest/Bin/
 WindowsPhone8/WorkTajmTest/obj/
 ios/worktajm/worktajm.xcworkspace/xcuserdata
+*.lock
