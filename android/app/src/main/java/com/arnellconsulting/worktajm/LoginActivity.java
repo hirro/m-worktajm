@@ -3,18 +3,17 @@ package com.arnellconsulting.worktajm;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.support.v7.app.ActionBarActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,19 +25,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.arnellconsulting.worktajm.com.arnellconsulting.worktajm.utils.LogService;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A login screen that offers login via email/password.
  */
 public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks<Cursor> {
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
+    private static final String ACTIVITY_NAME = "LoginActivity";
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "foo@example.com:hello", "bar@example.com:world"
     };
@@ -52,6 +59,10 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+
+    public LoginActivity() {
+        super();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +94,8 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        LogService.initialize(this.getBaseContext());
     }
 
     private void populateAutoComplete() {
@@ -137,7 +150,7 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask(this.getApplicationContext(), email, password);
             mAuthTask.execute((Void) null);
         }
     }
@@ -248,41 +261,71 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String mEmail;
-        private final String mPassword;
+        private final String email;
+        private final String password;
+        private final Context context;
 
-        UserLoginTask(String email, String password) {
-            mEmail = email;
-            mPassword = password;
+        UserLoginTask(Context context, String email, String password) {
+            this.context = context;
+            this.email = email;
+            this.password = password;
+            LogService.initialize(context);
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
             try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
+                LogService.debug(ACTIVITY_NAME, "Creating login request");
+                HashMap<String, String> httpHeaders = new HashMap<String, String>();
+
+                JSONObject request = new JSONObject();
+                request.put("email", "test@test.com");
+                request.put("password", "test");
+
+                JsonObjectRequest jsObjRequest = new JsonObjectRequest(
+                        Request.Method.POST,
+                        "http://worktajm.com/auth/local",
+                        request,
+                        new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                LogService.debug(ACTIVITY_NAME, "Token: " + response.toString());
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                String msg = String.format(
+                                        "Request failed, error code: %d, error: %s",
+                                        error.networkResponse.statusCode,
+                                        error.getMessage());
+                                LogService.error(ACTIVITY_NAME, msg);
+                            }
+                        }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("CUSTOM_HEADER", "Yahoo");
+                        headers.put("ANOTHER_CUSTOM_HEADER", "Google");
+                        return headers;
+                    }
+                };
+                MySingleton.getInstance(context).addToRequestQueue(jsObjRequest);
+            } catch (JSONException e) {
+                LogService.error(ACTIVITY_NAME, "JSONException: " + e.getMessage());
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
+            LogService.debug(ACTIVITY_NAME, "Done?!");
 
-            // TODO: register the new account here.
             return true;
         }
 
         @Override
         protected void onPostExecute(final Boolean success) {
+            LogService.debug(ACTIVITY_NAME, "onPostExecute");
             mAuthTask = null;
-            showProgress(false);
+            showProgress(true);
 
             if (success) {
                 finish();
@@ -294,6 +337,7 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
 
         @Override
         protected void onCancelled() {
+            LogService.debug(ACTIVITY_NAME, "onCancelled");
             mAuthTask = null;
             showProgress(false);
         }
