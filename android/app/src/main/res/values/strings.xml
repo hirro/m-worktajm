@@ -79,4 +79,9 @@
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
     <string name="title_activity_settings2">Settings</string>
+    <string name="LoginTitle">Worktajm</string>
+    <string name="LoginTimeReports">Time Reports</string>
+    <string name="action_sign_in_with_google">Sign in with Google+</string>
+    <string name="action_sign_in_with_facebook">Sign in with Facebook</string>
+    <string name="sign_in_with">OR</string>
 </resources>

@@ -5,4 +5,15 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="WorktajmLogin">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@drawable/background</item>
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+
+    <style name="LoginButton">
+        <item name="android:colorBackground">#ff7a33</item>
+        <item name="android:color">#FFFFFF</item>
+    </style>
+
 </resources>
