@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
@@ -23,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -58,7 +60,8 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
-    private View mLoginFormView;
+    private ScrollView mLoginFormView;
+    private Button mLoginButton;
 
     public LoginActivity() {
         super();
@@ -72,7 +75,12 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
+        mLoginFormView = (ScrollView) findViewById(R.id.login_form);
+        mProgressView =  findViewById(R.id.login_progress);
+        mLoginButton = (Button) findViewById(R.id.email_sign_in_button);
         mPasswordView = (EditText) findViewById(R.id.password);
+        final Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -84,7 +92,6 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,8 +99,24 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        mEmailView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            LogService.debug("LoginActivity",String.format("mPasswordView [%d]", mPasswordView.getScrollY()));
+                            LogService.debug("LoginActivity",String.format("mPasswordView.getBottom() [%d]", mPasswordView.getTop()));
+                            LogService.debug("LoginActivity",String.format("getRelativeTop(mPasswordView) [%d]", getRelativeTop(mPasswordView)));
+                            LogService.debug("LoginActivity",String.format("getLocationInWindow(mPasswordView) [%d]", getLocationInWindow(mPasswordView)));
+                            LogService.debug("LoginActivity",String.format("mLoginFormView.getBottom()[%d]", mLoginFormView.getBottom()));
+                            mLoginFormView.smoothScrollTo(0, mPasswordView.getTop());
+                        }
+                    }, 300);
+                }
+            }
+        });
 
         LogService.initialize(this.getBaseContext());
     }
@@ -341,6 +364,19 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
             mAuthTask = null;
             showProgress(false);
         }
+    }
+    private int getRelativeTop(View myView) {
+        if (myView.getParent() == myView.getRootView())
+            return myView.getTop();
+        else
+            return myView.getTop() + getRelativeTop((View) myView.getParent());
+    }
+
+    private int getLocationInWindow(View view) {
+        int[] location1 = new int[2];
+        int[] location2 = new int[2];
+        view.getLocationOnScreen(location2);
+        return location2[1];
     }
 }
 
