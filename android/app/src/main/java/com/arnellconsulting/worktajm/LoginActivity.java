@@ -4,15 +4,14 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
-import android.content.Context;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
@@ -29,9 +28,8 @@ import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.RequestFuture;
 import com.arnellconsulting.worktajm.com.arnellconsulting.worktajm.utils.LogService;
 
 import org.json.JSONException;
@@ -41,6 +39,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A login screen that offers login via email/password.
@@ -99,25 +98,6 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
             }
         });
 
-        mEmailView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            LogService.debug("LoginActivity",String.format("mPasswordView [%d]", mPasswordView.getScrollY()));
-                            LogService.debug("LoginActivity",String.format("mPasswordView.getBottom() [%d]", mPasswordView.getTop()));
-                            LogService.debug("LoginActivity",String.format("getRelativeTop(mPasswordView) [%d]", getRelativeTop(mPasswordView)));
-                            LogService.debug("LoginActivity",String.format("getLocationInWindow(mPasswordView) [%d]", getLocationInWindow(mPasswordView)));
-                            LogService.debug("LoginActivity",String.format("mLoginFormView.getBottom()[%d]", mLoginFormView.getBottom()));
-                            mLoginFormView.smoothScrollTo(0, mPasswordView.getTop());
-                        }
-                    }, 300);
-                }
-            }
-        });
-
         LogService.initialize(this.getBaseContext());
     }
 
@@ -173,7 +153,7 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(this.getApplicationContext(), email, password);
+            mAuthTask = new UserLoginTask(this, email, password);
             mAuthTask.execute((Void) null);
         }
     }
@@ -185,7 +165,7 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() >= 4;
     }
 
     /**
@@ -286,46 +266,33 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
 
         private final String email;
         private final String password;
-        private final Context context;
+        private final LoginActivity parentActivity;
 
-        UserLoginTask(Context context, String email, String password) {
-            this.context = context;
+        UserLoginTask(LoginActivity parentActivity, String email, String password) {
+            this.parentActivity = parentActivity;
             this.email = email;
             this.password = password;
-            LogService.initialize(context);
+            LogService.initialize(parentActivity.getApplication());
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
+            boolean success = false;
             try {
                 LogService.debug(ACTIVITY_NAME, "Creating login request");
                 HashMap<String, String> httpHeaders = new HashMap<String, String>();
 
                 JSONObject request = new JSONObject();
-                request.put("email", "test@test.com");
-                request.put("password", "test");
+                request.put("email", email);
+                request.put("password", password);
 
+                RequestFuture<JSONObject> future = RequestFuture.newFuture();
                 JsonObjectRequest jsObjRequest = new JsonObjectRequest(
                         Request.Method.POST,
                         "http://worktajm.com/auth/local",
                         request,
-                        new Response.Listener<JSONObject>() {
-
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                LogService.debug(ACTIVITY_NAME, "Token: " + response.toString());
-                            }
-                        }, new Response.ErrorListener() {
-
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                String msg = String.format(
-                                        "Request failed, error code: %d, error: %s",
-                                        error.networkResponse.statusCode,
-                                        error.getMessage());
-                                LogService.error(ACTIVITY_NAME, msg);
-                            }
-                        }) {
+                        future,
+                        future) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         HashMap<String, String> headers = new HashMap<String, String>();
@@ -334,24 +301,33 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
                         return headers;
                     }
                 };
-                MySingleton.getInstance(context).addToRequestQueue(jsObjRequest);
+                MySingleton.getInstance(parentActivity).addToRequestQueue(jsObjRequest);
+
+                JSONObject result = future.get(30, TimeUnit.SECONDS);
+                LogService.debug(ACTIVITY_NAME, "Response: " + result.toString());
+                success = true;
+
             } catch (JSONException e) {
                 LogService.error(ACTIVITY_NAME, "JSONException: " + e.getMessage());
+            } catch (Exception e) {
+                LogService.error(ACTIVITY_NAME, "Exception: " + e.getMessage());
             }
 
             LogService.debug(ACTIVITY_NAME, "Done?!");
 
-            return true;
+            return success;
         }
 
         @Override
         protected void onPostExecute(final Boolean success) {
             LogService.debug(ACTIVITY_NAME, "onPostExecute");
             mAuthTask = null;
-            showProgress(true);
+            showProgress(false);
 
             if (success) {
                 finish();
+                Intent dashboardIntent = new Intent(parentActivity, MainActivity.class);
+                parentActivity.startActivity(dashboardIntent);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -364,19 +340,6 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
             mAuthTask = null;
             showProgress(false);
         }
-    }
-    private int getRelativeTop(View myView) {
-        if (myView.getParent() == myView.getRootView())
-            return myView.getTop();
-        else
-            return myView.getTop() + getRelativeTop((View) myView.getParent());
-    }
-
-    private int getLocationInWindow(View view) {
-        int[] location1 = new int[2];
-        int[] location2 = new int[2];
-        view.getLocationOnScreen(location2);
-        return location2[1];
     }
 }
 
