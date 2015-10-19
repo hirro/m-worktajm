@@ -47,9 +47,7 @@ import java.util.concurrent.TimeUnit;
 public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks<Cursor> {
 
     private static final String ACTIVITY_NAME = "LoginActivity";
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
+
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -60,7 +58,6 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
     private EditText mPasswordView;
     private View mProgressView;
     private ScrollView mLoginFormView;
-    private Button mLoginButton;
 
     public LoginActivity() {
         super();
@@ -70,13 +67,13 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
         mLoginFormView = (ScrollView) findViewById(R.id.login_form);
         mProgressView =  findViewById(R.id.login_progress);
-        mLoginButton = (Button) findViewById(R.id.email_sign_in_button);
         mPasswordView = (EditText) findViewById(R.id.password);
         final Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
 
@@ -295,7 +292,7 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
                         future) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
+                        HashMap<String, String> headers = new HashMap<>();
                         headers.put("CUSTOM_HEADER", "Yahoo");
                         headers.put("ANOTHER_CUSTOM_HEADER", "Google");
                         return headers;

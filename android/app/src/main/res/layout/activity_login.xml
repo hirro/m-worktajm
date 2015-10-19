@@ -68,7 +68,9 @@
                 android:textColor="#ffffff"
                 android:textColorHighlight="#ffffff"
                 android:textColorHint="#ffffff"
-                android:textColorLink="#ffffff" />
+                android:textColorLink="#ffffff"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
 
             <EditText
                 android:id="@+id/password"
@@ -85,7 +87,9 @@
                 android:textColor="#ffffff"
                 android:textColorHighlight="#ffffff"
                 android:textColorHint="#ffffff"
-                android:textColorLink="#ffffff" />
+                android:textColorLink="#ffffff"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
 
             <Button
                 android:id="@+id/email_sign_in_button"
@@ -97,7 +101,9 @@
                 android:background="#ff6803"
                 android:text="@string/action_sign_in"
                 android:textColor="#ffffff"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
 
             <!-- stretching frame layout, using layout_weight -->
             <FrameLayout
