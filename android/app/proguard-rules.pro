@@ -15,3 +15,10 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-keepclassmembers class com.sawyer.advadapters.widget.JSONAdapter {
+    boolean isFilteredOut(...);
+}
+-keepclassmembers class * extends com.sawyer.advadapters.widget.JSONAdapter {
+    boolean isFilteredOut(...);
+}

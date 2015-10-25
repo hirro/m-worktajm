@@ -30,7 +30,8 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
-import com.arnellconsulting.worktajm.com.arnellconsulting.worktajm.utils.LogService;
+import com.arnellconsulting.worktajm.utils.LogService;
+import com.arnellconsulting.worktajm.utils.LoginResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -118,8 +119,8 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String email = mEmailView.getText().toString().trim();
+        String password = mPasswordView.getText().toString().trim();
 
         boolean cancel = false;
         View focusView = null;
@@ -302,6 +303,10 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
 
                 JSONObject result = future.get(30, TimeUnit.SECONDS);
                 LogService.debug(ACTIVITY_NAME, "Response: " + result.toString());
+                LoginResponse loginResponse = LoginResponse.create(result);
+                if (loginResponse != null) {
+                    MySingleton.setLoginResponse(loginResponse);
+                }
                 success = true;
 
             } catch (JSONException e) {
@@ -323,7 +328,7 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
 
             if (success) {
                 finish();
-                Intent dashboardIntent = new Intent(parentActivity, MainActivity.class);
+                Intent dashboardIntent = new Intent(parentActivity, InitialSyncActivity.class);
                 parentActivity.startActivity(dashboardIntent);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
@@ -337,6 +342,8 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
             mAuthTask = null;
             showProgress(false);
         }
+
+
     }
 }
 

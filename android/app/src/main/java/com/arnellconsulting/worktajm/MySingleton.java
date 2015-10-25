@@ -8,12 +8,18 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.arnellconsulting.worktajm.model.TimeEntry;
+import com.arnellconsulting.worktajm.utils.LoginResponse;
+import com.arnellconsulting.worktajm.model.Project;
 
-/**
- * Created by jiar on 2015-10-14.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class MySingleton {
     private static MySingleton mInstance;
+    private static LoginResponse loginResponse;
+    private static List<Project> projects = new ArrayList<>();
+    private static List<TimeEntry> timeEntries = new ArrayList<>();
     private RequestQueue mRequestQueue;
     private ImageLoader mImageLoader;
     private static Context mCtx;
@@ -61,5 +67,46 @@ public class MySingleton {
 
     public ImageLoader getImageLoader() {
         return mImageLoader;
+    }
+
+    public static void setLoginResponse(final LoginResponse loginResponse) {
+        MySingleton.loginResponse = loginResponse;
+    }
+
+    public static boolean isLoggedIn() {
+        return MySingleton.loginResponse != null;
+    }
+
+    public static void logout() {
+        MySingleton.loginResponse = null;
+    }
+
+    public static LoginResponse getLoginResponse() {
+        return MySingleton.loginResponse;
+    }
+
+    // Projects
+    public static void addProject(Project project) {
+        projects.add(project);
+    }
+    public static List<Project> getProjects() {
+        return projects;
+    }
+
+    // Time Entries
+    public static void addTimeEntry(TimeEntry timeEntry) {
+        timeEntries.add(timeEntry);
+    }
+    public static List<TimeEntry> getTimeEntries() {
+        return timeEntries;
+    }
+
+    public static Project findProject(String projectId) {
+        for (Project p : projects) {
+            if (p.getId().contentEquals(projectId)) {
+                return p;
+            }
+        }
+        return null;
     }
 }

@@ -21,6 +21,13 @@
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
 
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar2"
+        android:layout_gravity="right" />
+
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="fill_parent"
@@ -103,7 +110,8 @@
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:focusableInTouchMode="true"
+                android:elevation="2dp" />
 
             <!-- stretching frame layout, using layout_weight -->
             <FrameLayout
@@ -139,7 +147,8 @@
                     android:background="#ff6803"
                     android:text="@string/action_sign_in_with_google"
                     android:textColor="#ffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:elevation="2dp" />
 
                 <Button
                     android:id="@+id/button2"
@@ -151,7 +160,8 @@
                     android:background="#1020ff"
                     android:text="@string/action_sign_in_with_facebook"
                     android:textColor="#ffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:elevation="2dp" />
 
 
             </LinearLayout>

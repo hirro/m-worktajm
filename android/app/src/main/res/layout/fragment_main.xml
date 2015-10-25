@@ -9,11 +9,29 @@
     <TextView android:id="@+id/section_label" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <CalendarView
+        android:layout_below="@+id/section_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendarView"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/section_label"
+        android:showWeekNumber="true"
+        android:touchscreenBlocksFocus="false" />
+
+    <TextView
+        android:layout_below="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="{DATE}"
+        android:id="@+id/textView" />
+
     <ListView
+        android:layout_below="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:layout_toEndOf="@+id/section_label"
-        android:layout_below="@+id/section_label" />
+        android:layout_toEndOf="@+id/section_label" />
 
 </RelativeLayout>
