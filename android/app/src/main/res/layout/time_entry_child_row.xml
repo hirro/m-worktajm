@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        style="@style/largeTextBlack"
+        android:text="{PROJECT NAME}"
+        />
+    <TableLayout
+        android:layout_below="@id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:gravity="center_vertical|left">
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/timerText"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--style="@style/aboutMediumTextBlack"-->
+                <!--android:textStyle="bold"-->
+                <!--android:text="Date:"-->
+                <!--/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/startDate"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="match_parent"-->
+                <!--style="@style/aboutMediumTextBlack"-->
+                <!--android:textStyle="bold"-->
+                <!--android:gravity="right"-->
+                <!--android:text="2016-01-12" />-->
+        <!--</TableRow>-->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/aboutMediumTextBlack"
+                android:textStyle="bold"
+                android:text="Duration:"
+                />
+            <TextView
+                android:id="@+id/duration"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                style="@style/aboutMediumTextBlack"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:text="02:30:00"
+                />
+        </TableRow>
+    </TableLayout>
+
+    <Space
+        android:layout_width="0px"
+        android:layout_height="0px"/>
+</RelativeLayout>

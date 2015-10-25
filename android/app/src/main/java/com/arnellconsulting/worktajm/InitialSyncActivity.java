@@ -200,14 +200,18 @@ public class InitialSyncActivity extends AppCompatActivity {
         }
     }
 
-    private void storeTimeEntries(JSONArray result) throws JSONException {
+    private void storeTimeEntries(JSONArray result) {
         LogService.debug(ACTIVITY_NAME, "Saving time entries to database");
         MySingleton.getTimeEntries().clear();
         for (int i = 0; i < result.length(); i++) {
-            JSONObject o = result.getJSONObject(i);
-            TimeEntry timeEntry = new TimeEntry(o);
-            MySingleton.addTimeEntry(timeEntry);
-            LogService.debug(ACTIVITY_NAME, "Time Entry: " + timeEntry.toString());
+            try {
+                JSONObject o = result.getJSONObject(i);
+                TimeEntry timeEntry = new TimeEntry(o);
+                MySingleton.addTimeEntry(timeEntry);
+                LogService.debug(ACTIVITY_NAME, "Time Entry: " + timeEntry.toString());
+            } catch (JSONException e) {
+                LogService.error(ACTIVITY_NAME, "Failed to transform json object to time entry. ", e);
+            }
         }
     }
 

@@ -7,10 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
 
-import com.arnellconsulting.worktajm.adapter.TimeEntryListAdapter;
-import com.arnellconsulting.worktajm.model.Project;
+import com.arnellconsulting.worktajm.adapter.LogArrayAdapter;
 import com.arnellconsulting.worktajm.model.TimeEntry;
 
 import java.util.List;
@@ -18,8 +17,8 @@ import java.util.List;
 
 public class LogFragment extends Fragment {
 
-    private ListView listView;
-    private TimeEntryListAdapter adapter;
+    private ExpandableListView listView;
+    private LogArrayAdapter adapter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -43,13 +42,15 @@ public class LogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_timer, container, false);
+        View view = inflater.inflate(R.layout.fragment_log, container, false);
 
         // Setup list view
         List<TimeEntry> timeEntries = MySingleton.getTimeEntries();
-        listView = (ListView) view.findViewById(R.id.listViewProjects);
-        adapter = new TimeEntryListAdapter(getActivity(), timeEntries);
+        listView = (ExpandableListView) view.findViewById(R.id.listViewTimeEntries);
+        adapter = new LogArrayAdapter(getActivity());
+        adapter.addAll(timeEntries);
         listView.setAdapter(adapter);
+        adapter.logContents();
 
         return view;
     }

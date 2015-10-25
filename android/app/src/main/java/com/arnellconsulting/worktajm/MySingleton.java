@@ -8,9 +8,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.arnellconsulting.worktajm.model.Project;
 import com.arnellconsulting.worktajm.model.TimeEntry;
 import com.arnellconsulting.worktajm.utils.LoginResponse;
-import com.arnellconsulting.worktajm.model.Project;
+
+import net.danlew.android.joda.JodaTimeAndroid;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,8 @@ public class MySingleton {
                         cache.put(url, bitmap);
                     }
                 });
+
+        JodaTimeAndroid.init(context);
     }
 
     public static synchronized MySingleton getInstance(Context context) {

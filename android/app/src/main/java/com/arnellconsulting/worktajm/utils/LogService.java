@@ -5,6 +5,9 @@ import android.util.Log;
 
 import com.logentries.android.AndroidLogger;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 public class LogService {
 
     private static AndroidLogger LOGGER = null;
@@ -25,10 +28,38 @@ public class LogService {
         }
     }
 
+    public static void debug(String activity, String message, Throwable t) {
+        Log.d(activity, message, t);
+        if (LOGGER != null) {
+            LOGGER.debug(message);
+
+            StringWriter errors = new StringWriter();
+            t.printStackTrace(new PrintWriter(errors));
+            LOGGER.error(errors.toString());
+
+            LOGGER.flushConnection();
+        }
+    }
+
     public static void error(String activity, String message) {
         Log.e(activity, message);
         if (LOGGER != null) {
             LOGGER.error(message);
             LOGGER.flushConnection();
         }
-    }}
+    }
+
+    public static void error(String activity, String message, Throwable t) {
+        Log.e(activity, message, t);
+        if (LOGGER != null) {
+            LOGGER.error(message);
+
+            StringWriter errors = new StringWriter();
+            t.printStackTrace(new PrintWriter(errors));
+            LOGGER.error(errors.toString());
+
+            LOGGER.flushConnection();
+        }
+    }
+
+}

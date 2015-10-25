@@ -25,6 +25,7 @@ dependencies {
     compile 'com.android.support:design:23.1.0'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.jaysoyer.lib:advanced-adapters:15.3'
+    compile 'net.danlew:android.joda:2.8.2'
 //  Local refs (*yuck*)
     compile files('/Users/jiar/git/worktajm/m-worktajm/Android/libs/logentries-android-2.1.5.jar')
     compile files('/Users/jiar/git/worktajm/m-worktajm/Android/libs/volley.jar')
