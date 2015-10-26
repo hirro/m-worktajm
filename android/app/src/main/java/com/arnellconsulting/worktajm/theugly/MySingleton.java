@@ -1,4 +1,4 @@
-package com.arnellconsulting.worktajm;
+package com.arnellconsulting.worktajm.theugly;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,6 +8,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.arnellconsulting.worktajm.model.Me;
 import com.arnellconsulting.worktajm.model.Project;
 import com.arnellconsulting.worktajm.model.TimeEntry;
 import com.arnellconsulting.worktajm.utils.LoginResponse;
@@ -22,6 +23,7 @@ public class MySingleton {
     private static LoginResponse loginResponse;
     private static List<Project> projects = new ArrayList<>();
     private static List<TimeEntry> timeEntries = new ArrayList<>();
+    private static Me me = null;
     private RequestQueue mRequestQueue;
     private ImageLoader mImageLoader;
     private static Context mCtx;
@@ -89,18 +91,18 @@ public class MySingleton {
         return MySingleton.loginResponse;
     }
 
-    // Projects
-    public static void addProject(Project project) {
-        projects.add(project);
+    public static void setMe(final Me me) {
+        MySingleton.me = me;
     }
+
+    // Projects
+    public static void setProjects(final List<Project> p) { projects = p; }
     public static List<Project> getProjects() {
         return projects;
     }
 
     // Time Entries
-    public static void addTimeEntry(TimeEntry timeEntry) {
-        timeEntries.add(timeEntry);
-    }
+    public static void setTimeEntries(final List<TimeEntry> t) { timeEntries = t; };
     public static List<TimeEntry> getTimeEntries() {
         return timeEntries;
     }

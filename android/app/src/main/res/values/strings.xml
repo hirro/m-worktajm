@@ -96,6 +96,7 @@
     <string name="communicating_with_server_text">Synchronizing with server</string>
     <string name="progress_project_progress">Downloading projects</string>
     <string name="progress_time_entries_progress">Downloading time entries</string>
+    <string name="progress_me_progress">Downloading user information</string>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

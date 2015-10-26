@@ -41,77 +41,45 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:id="@+id/loginTitle"
+                style="@style/WorktajmLoginTextViewLarge"
                 android:layout_marginBottom="40dp"
                 android:layout_marginTop="40dp"
-                android:text="@string/LoginTimeReports"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffffff"
-                android:textSize="32dp"
-                android:textStyle="bold" />
+                android:text="@string/LoginTimeReports" />
 
             <LinearLayout
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:layout_width="0px"
                 android:layout_height="0px"/>
-            <!--android:nextFocusUp="@+id/email"-->
-            <!--android:nextFocusLeft="@+id/email"-->
-            <!--android:nextFocusRight="@+id/password"-->
-            <!--android:nextFocusDown="@+id/password"-->
 
             <AutoCompleteTextView
                 android:id="@+id/email"
                 android:nextFocusForward="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/WorktajmLoginTextView"
                 android:hint="@string/prompt_email"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="#ffffff"
-                android:textColorHighlight="#ffffff"
-                android:textColorHint="#ffffff"
-                android:textColorLink="#ffffff"
-                android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/password"
                 android:nextFocusForward="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/WorktajmLoginTextView"
                 android:hint="@string/prompt_password"
                 android:imeActionId="@+id/login"
                 android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="#ffffff"
-                android:textColorHighlight="#ffffff"
-                android:textColorHint="#ffffff"
-                android:textColorLink="#ffffff"
-                android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:inputType="textPassword" />
+
+            <CheckBox
+                style="@style/WorktajmText"
+                android:text="Remember me"
+                android:id="@+id/rememberMe" />
 
             <Button
                 android:id="@+id/email_sign_in_button"
                 android:nextFocusForward="@+id/email"
-                style="@style/LoginButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="#ff6803"
-                android:text="@string/action_sign_in"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:elevation="2dp" />
+                style="@style/WorktajmLoginButton"
+                android:text="@string/action_sign_in" />
 
             <!-- stretching frame layout, using layout_weight -->
             <FrameLayout
@@ -138,30 +106,15 @@
                     android:textColor="#ffffff"
                     android:textStyle="bold" />
                 <Button
-                    android:id="@+id/button"
-                    style="@style/LoginButton"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
-                    android:background="#ff6803"
-                    android:text="@string/action_sign_in_with_google"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold"
-                    android:elevation="2dp" />
+                    android:id="@+id/googleLoginButton"
+                    style="@style/WorktajmLoginButton"
+                    android:text="@string/action_sign_in_with_google" />
 
                 <Button
-                    android:id="@+id/button2"
-                    style="@style/LoginButton"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="16dp"
+                    android:id="@+id/facebookLoginButton"
+                    style="@style/WorktajmLoginButton"
                     android:background="#1020ff"
-                    android:text="@string/action_sign_in_with_facebook"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold"
-                    android:elevation="2dp" />
+                    android:text="@string/action_sign_in_with_facebook" />
 
 
             </LinearLayout>

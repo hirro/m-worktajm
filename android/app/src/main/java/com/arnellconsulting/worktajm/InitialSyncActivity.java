@@ -10,21 +10,23 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.RequestFuture;
+import com.arnellconsulting.worktajm.model.Me;
 import com.arnellconsulting.worktajm.model.Project;
 import com.arnellconsulting.worktajm.model.TimeEntry;
+import com.arnellconsulting.worktajm.storage.MeRepository;
+import com.arnellconsulting.worktajm.storage.ProjectRepository;
+import com.arnellconsulting.worktajm.storage.TimeEntryRepository;
+import com.arnellconsulting.worktajm.theugly.MySingleton;
 import com.arnellconsulting.worktajm.utils.LogService;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
@@ -36,6 +38,7 @@ public class InitialSyncActivity extends AppCompatActivity {
     private SyncTask mSyncTask = null;
     private static final String ACTIVITY_NAME = "InitialSync";
     private View mProgressView;
+    private TextView mProgressText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class InitialSyncActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mProgressView =  findViewById(R.id.projectProgressBar);
+        mProgressText = (TextView) findViewById(R.id.projectProgressText);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -104,43 +108,20 @@ public class InitialSyncActivity extends AppCompatActivity {
         protected Boolean doInBackground(Void... params) {
             boolean success = false;
             try {
+                setProgressText(R.string.progress_project_progress);
+                ProjectRepository ps = new ProjectRepository(parentActivity.getBaseContext());
+                Future<List<Project>> x = ps.list();
+                MySingleton.setProjects(x.get(30, TimeUnit.SECONDS));
 
-                // Fetch my projects
-                LogService.debug(ACTIVITY_NAME, "Fetching data from server");
-                RequestFuture<JSONArray> projectListFuture = RequestFuture.newFuture();
-                JsonArrayRequest fetchProjectListRequest = new JsonArrayRequest(
-                        "http://worktajm.com/api/projects/",
-                        projectListFuture,
-                        projectListFuture) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<>();
-                        headers.put("Authorization", "Bearer " + token);
-                        return headers;
-                    }
-                };
-                MySingleton.getInstance(parentActivity).addToRequestQueue(fetchProjectListRequest);
+                setProgressText(R.string.progress_time_entries_progress);
+                TimeEntryRepository tes = new TimeEntryRepository(parentActivity.getBaseContext());
+                Future<List<TimeEntry>> y = tes.list();
+                MySingleton.setTimeEntries(y.get(30, TimeUnit.SECONDS));
 
-                // Fetch my time entries
-                RequestFuture<JSONArray> timeEntryListFuture = RequestFuture.newFuture();
-                JsonArrayRequest fetchTimeEntriesRequest = new JsonArrayRequest(
-                        "http://worktajm.com/api/timeEntries/",
-                        timeEntryListFuture,
-                        timeEntryListFuture) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<>();
-                        headers.put("Authorization", "Bearer " + token);
-                        return headers;
-                    }
-                };
-                MySingleton.getInstance(parentActivity).addToRequestQueue(fetchTimeEntriesRequest);
-
-                JSONArray projecsResult = projectListFuture.get(30, TimeUnit.SECONDS);
-                storeProjects(projecsResult);
-
-                JSONArray timeEntriesResult = timeEntryListFuture.get(1, TimeUnit.SECONDS);
-                storeTimeEntries(timeEntriesResult);
+                setProgressText(R.string.progress_me_progress);
+                MeRepository mes = new MeRepository(parentActivity.getBaseContext());
+                Future<Me> z = mes.read(null);
+                MySingleton.setMe(z.get(30, TimeUnit.SECONDS));
 
                 success = true;
             } catch (InterruptedException e) {
@@ -154,6 +135,9 @@ public class InitialSyncActivity extends AppCompatActivity {
                 e.printStackTrace();
             } catch (JSONException e) {
                 LogService.error(ACTIVITY_NAME, "TimeoutException: " + e.getMessage());
+                e.printStackTrace();
+            } catch (IOException e) {
+                LogService.error(ACTIVITY_NAME, "IOException: " + e.getMessage());
                 e.printStackTrace();
             }
 
@@ -186,33 +170,16 @@ public class InitialSyncActivity extends AppCompatActivity {
             showProgress(false);
         }
 
-
-    }
-
-    private void storeProjects(JSONArray result) throws JSONException {
-        LogService.debug(ACTIVITY_NAME, "Saving projects to database");
-        MySingleton.getProjects().clear();
-        for (int i = 0; i < result.length(); i++) {
-            JSONObject o = result.getJSONObject(i);
-            Project project = new Project(o);
-            MySingleton.addProject(project);
-            LogService.debug(ACTIVITY_NAME, "Projects: " + project.toString());
+        private void setProgressText(final int text) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mProgressText.setText(text);
+                }
+            });
         }
-    }
 
-    private void storeTimeEntries(JSONArray result) {
-        LogService.debug(ACTIVITY_NAME, "Saving time entries to database");
-        MySingleton.getTimeEntries().clear();
-        for (int i = 0; i < result.length(); i++) {
-            try {
-                JSONObject o = result.getJSONObject(i);
-                TimeEntry timeEntry = new TimeEntry(o);
-                MySingleton.addTimeEntry(timeEntry);
-                LogService.debug(ACTIVITY_NAME, "Time Entry: " + timeEntry.toString());
-            } catch (JSONException e) {
-                LogService.error(ACTIVITY_NAME, "Failed to transform json object to time entry. ", e);
-            }
-        }
+
     }
 
 

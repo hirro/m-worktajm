@@ -31,6 +31,7 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
 import com.arnellconsulting.worktajm.preferences.PreferenceUtil;
+import com.arnellconsulting.worktajm.theugly.MySingleton;
 import com.arnellconsulting.worktajm.utils.LogService;
 import com.arnellconsulting.worktajm.utils.LoginResponse;
 

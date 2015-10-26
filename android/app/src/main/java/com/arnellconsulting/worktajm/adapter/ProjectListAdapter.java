@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.arnellconsulting.worktajm.MySingleton;
+import com.arnellconsulting.worktajm.theugly.MySingleton;
 import com.arnellconsulting.worktajm.R;
 import com.arnellconsulting.worktajm.model.Project;
 

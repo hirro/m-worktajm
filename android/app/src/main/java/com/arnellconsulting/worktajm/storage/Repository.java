@@ -13,6 +13,12 @@ import java.util.concurrent.Future;
  */
 public abstract class Repository<T> {
 
+    protected Context context;
+
+    public Repository(final Context c) {
+        this.context = c;
+    }
+
     /**
      * Creates an remote object.
      *
@@ -21,7 +27,7 @@ public abstract class Repository<T> {
      * @throws IOException on database or network error.
      * @throws JSONException on JSON related errors.
      */
-    protected abstract Future<String> create(T t) throws IOException, JSONException;
+    public abstract Future<String> create(T t) throws IOException, JSONException;
 
     /**
      * Retrieves the object from the remote database.
@@ -31,7 +37,7 @@ public abstract class Repository<T> {
      * @throws IOException on database or network error.
      * @throws JSONException on JSON related errors.
      */
-    protected abstract Future<T> read(final String id) throws IOException, JSONException;
+    public abstract Future<T> read(final String id) throws IOException, JSONException;
 
     /**
      * Updates the provided object in the remote storage/
@@ -40,7 +46,7 @@ public abstract class Repository<T> {
      * @throws IOException on database or network error.
      * @throws JSONException on JSON related errors.
      */
-    protected abstract Future<T> update(T t) throws IOException, JSONException;
+    public abstract Future<T> update(T t) throws IOException, JSONException;
 
     /**
      * Deletes the provided object from the remote storage.
@@ -49,7 +55,7 @@ public abstract class Repository<T> {
      * @throws IOException on database or network error.
      * @throws JSONException on JSON related errors.
      */
-    protected abstract Future<T> delete(final String id) throws IOException, JSONException;
+    public abstract Future<T> delete(final String id) throws IOException, JSONException;
 
     /**
      * Retrieves all the remote objects, may be a bit slow if running the first time.
@@ -57,5 +63,5 @@ public abstract class Repository<T> {
      * @throws IOException on database or network error.
      * @throws JSONException on JSON related errors.
      */
-    protected abstract Future<List<T>> list(final Context context) throws IOException, JSONException;
+    public abstract Future<List<T>> list() throws IOException, JSONException;
 };

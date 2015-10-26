@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.arnellconsulting.worktajm.theugly.MySingleton;
+
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
     private DrawerLayout mDrawer;
     private Toolbar toolbar;

@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.arnellconsulting.worktajm.adapter.ProjectListAdapter;
 import com.arnellconsulting.worktajm.model.Project;
+import com.arnellconsulting.worktajm.theugly.MySingleton;
 
 import java.util.List;
 

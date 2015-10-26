@@ -11,6 +11,7 @@ import android.widget.ExpandableListView;
 
 import com.arnellconsulting.worktajm.adapter.LogArrayAdapter;
 import com.arnellconsulting.worktajm.model.TimeEntry;
+import com.arnellconsulting.worktajm.theugly.MySingleton;
 
 import java.util.List;
 

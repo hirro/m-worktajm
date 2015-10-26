@@ -13,4 +13,5 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
          https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">240dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="log_project_name">150dp</dimen>
 </resources>

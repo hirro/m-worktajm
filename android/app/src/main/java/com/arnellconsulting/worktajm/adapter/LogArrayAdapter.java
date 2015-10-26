@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.arnellconsulting.worktajm.MySingleton;
+import com.arnellconsulting.worktajm.theugly.MySingleton;
 import com.arnellconsulting.worktajm.R;
 import com.arnellconsulting.worktajm.model.Project;
 import com.arnellconsulting.worktajm.model.TimeEntry;
@@ -30,6 +30,21 @@ public class LogArrayAdapter extends RolodexArrayAdapter<Integer, TimeEntry> {
     private Map<String, List<TimeEntry>> groups = new HashMap<>();
     private List<String> indexList = new ArrayList<>();
     private static String DATE_TIME_FORMAT = "yyyyMMdd HH:mm:ss";
+    private PeriodFormatter periodFormatter = new PeriodFormatterBuilder()
+            .appendDays()
+            .appendSuffix("d ")
+            .printZeroAlways()
+            .minimumPrintedDigits(2)
+            .appendHours()
+            .appendSuffix(":")
+            .printZeroAlways()
+            .minimumPrintedDigits(2)
+            .appendMinutes()
+            .appendSuffix(":")
+            .printZeroAlways()
+            .minimumPrintedDigits(2)
+            .appendSeconds()
+            .toFormatter();
 
     public LogArrayAdapter(Context activity) {
         super(activity);
@@ -81,43 +96,26 @@ public class LogArrayAdapter extends RolodexArrayAdapter<Integer, TimeEntry> {
             convertView = inflater.inflate(R.layout.time_entry_child_row, null);
         }
 
-        TextView nameTextView = (TextView) convertView.findViewById(R.id.name);
+        TextView projectNameTextView = (TextView) convertView.findViewById(R.id.projectName);
         TextView durationTextView = (TextView) convertView.findViewById(R.id.duration);
+        TextView startTimeView = (TextView) convertView.findViewById(R.id.startTime);
+        TextView endTimeView = (TextView) convertView.findViewById(R.id.endTime);
+
 
         // Populate the fields
         String groupId = indexList.get(groupPosition);
         TimeEntry timeEntry = groups.get(groupId).get(childPosition);
         Project project = MySingleton.findProject(timeEntry.getProjectId());
         if (project != null) {
-            nameTextView.setText(project.getName());
+            projectNameTextView.setText(project.getName());
         }
 
         DateTime startTime = timeEntry.getStartTime();
         DateTime endTime = timeEntry.getEndTime();
-
-        long diff = endTime.getMillis() - startTime.getMillis();
-        PeriodFormatter periodFormatter = new PeriodFormatterBuilder()
-                .appendDays()
-                .appendSuffix("d ")
-                .printZeroAlways()
-                .minimumPrintedDigits(2)
-                .appendHours()
-                .appendSuffix(":")
-                .printZeroAlways()
-                .minimumPrintedDigits(2)
-                .appendMinutes()
-                .appendSuffix(":")
-                .printZeroAlways()
-                .minimumPrintedDigits(2)
-                .appendSeconds()
-                .toFormatter();
         Period period = new Period(startTime.getMillis(), endTime.getMillis());
-        String durationString = String.format(
-                "%s-%s (%s)",
-                startTime.toString("hh:mm:ss"),
-                endTime.toString("hh:mm:ss"),
-                periodFormatter.print(period));
-        durationTextView.setText(durationString);
+        startTimeView.setText(startTime.toString("HH:mm:ss"));
+        endTimeView.setText(endTime.toString("HH:mm:ss"));
+        durationTextView.setText(periodFormatter.print(period));
 
         return convertView;
     }
@@ -130,10 +128,20 @@ public class LogArrayAdapter extends RolodexArrayAdapter<Integer, TimeEntry> {
         }
 
         TextView name = (TextView) convertView.findViewById(R.id.name);
+        TextView total = (TextView) convertView.findViewById(R.id.total);
 
-        // Populate the fields
+        // Group label (date)
         String label = indexList.get(groupPosition);
         name.setText(label);
+
+        // Total time that day
+        long durationInMs = 0;
+        String groupName = indexList.get(groupPosition);
+        for (TimeEntry t : groups.get(groupName)) {
+            durationInMs += (t.getEndTime().getMillis() - t.getStartTime().getMillis());
+        }
+        Period period = new Period(0, durationInMs);
+        total.setText(periodFormatter.print(period));
 
         return convertView;
     }

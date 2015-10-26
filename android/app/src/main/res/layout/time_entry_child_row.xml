@@ -2,58 +2,114 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        style="@style/largeTextBlack"
-        android:text="{PROJECT NAME}"
-        />
-    <TableLayout
-        android:layout_below="@id/name"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="1"
-        android:gravity="center_vertical|left">
-        <!--<TableRow>-->
-            <!--<TextView-->
-                <!--android:id="@+id/timerText"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--style="@style/aboutMediumTextBlack"-->
-                <!--android:textStyle="bold"-->
-                <!--android:text="Date:"-->
-                <!--/>-->
-            <!--<TextView-->
-                <!--android:id="@+id/startDate"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="match_parent"-->
-                <!--style="@style/aboutMediumTextBlack"-->
-                <!--android:textStyle="bold"-->
-                <!--android:gravity="right"-->
-                <!--android:text="2016-01-12" />-->
-        <!--</TableRow>-->
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/aboutMediumTextBlack"
-                android:textStyle="bold"
-                android:text="Duration:"
-                />
-            <TextView
-                android:id="@+id/duration"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                style="@style/aboutMediumTextBlack"
-                android:textStyle="bold"
-                android:gravity="right"
-                android:text="02:30:00"
-                />
-        </TableRow>
-    </TableLayout>
+    android:layout_height="match_parent"
+    >
 
     <Space
-        android:layout_width="0px"
-        android:layout_height="0px"/>
+        android:id="@+id/blank"
+        android:layout_width="20px"
+        android:layout_height="20px"
+        android:layout_column="0" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/projectName"-->
+        <!--android:layout_width="180dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_toRightOf="@+id/blank"-->
+        <!--style="@style/largeTextBlack"-->
+        <!--android:text="{PROJECT NAME}"-->
+        <!--android:layout_column="1" />-->
+
+    <!--<TableLayout-->
+        <!--android:layout_toRightOf="@+id/projectName"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center_vertical|left">-->
+
+        <!--<TableRow>-->
+
+            <!--<TextView-->
+                <!--style="@style/tableTextBold"-->
+                <!--android:text="From"-->
+                <!--/>-->
+            <!--<Space-->
+                <!--android:layout_width="8dp"-->
+                <!--android:layout_height="0dp"/>-->
+            <!--<TextView-->
+                <!--style="@style/tableTextBold"-->
+                <!--android:text="To" />-->
+        <!--</TableRow>-->
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/startTime"-->
+                <!--style="@style/tableTextPlain"-->
+                <!--android:text="02:30:00"/>-->
+            <!--<Space-->
+                <!--android:layout_width="8dp"/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/endTime"-->
+                <!--style="@style/tableTextPlain"-->
+                <!--android:text="02:34:10" />-->
+        <!--</TableRow>-->
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--style="@style/tableTextBold"-->
+                <!--android:text="Duration: "/>-->
+            <!--<Space-->
+                <!--android:layout_width="8dp"/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/total"-->
+                <!--style="@style/tableTextPlain"-->
+                <!--android:text="02:30:00"/>-->
+        <!--</TableRow>-->
+    <!--</TableLayout>-->
+
+
+
+    <TextView
+        android:id="@+id/projectName"
+        android:layout_width="@dimen/log_project_name"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/blank"
+        style="@style/largeTextBlack"
+        android:text="{PROJECT NAME}"
+        android:layout_column="1" />
+    <LinearLayout
+        android:id="@+id/view"
+        style="@style/tableTextPlain"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_toLeftOf="@+id/duration"
+        android:layout_centerVertical="@+id/projectName"
+        android:baselineAligned="false"
+        android:layout_alignBottom="@+id/projectName">
+        <TextView
+            android:id="@+id/startTime"
+            style="@style/tableTextPlain"
+            android:text="02:30:00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            style="@style/tableTextBold"
+            android:text="-" />
+        <TextView
+            android:id="@+id/endTime"
+            style="@style/tableTextPlain"
+            android:text="02:34:10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/duration"
+        style="@style/tableTextPlain"
+        android:text="02:30:00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/projectName"
+        android:layout_alignParentEnd="true" />
+
+
 </RelativeLayout>

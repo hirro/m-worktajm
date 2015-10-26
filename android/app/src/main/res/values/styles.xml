@@ -23,9 +23,42 @@
         <item name="android:windowBackground">@android:color/black</item>
     </style>
 
-    <style name="LoginButton">
-        <item name="android:colorBackground">#ff7a33</item>
-        <item name="android:color">#FFFFFF</item>
+    <style name="WorktajmText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColorHighlight">#ffffff</item>
+        <item name="android:textColorHint">#ffffff</item>
+        <item name="android:textColorLink">#ffffff</item>
+    </style>
+    <style name="WorktajmLoginTextView" parent="WorktajmText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+
+    <style name="WorktajmLoginTextViewLarge" parent="WorktajmLoginTextView">
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:textSize">32dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
+    <style name="WorktajmLoginButton" parent="android:Widget.Material.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:colorBackground">@color/primary</item>
+        <item name="android:background">@color/primary</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textColor">@color/icons</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <!--<item name="android:color">#FFFFFF</item>-->
     </style>
 
     <style name="worktajmText">
@@ -44,6 +77,16 @@
 
     <style name="aboutMediumText" parent="@style/worktajmText"/>
     <style name="aboutMediumTextBlack" parent="@style/worktajmTextBlack"/>
+
+    <style name="tableTextPlain" parent="@style/worktajmTextBlack"/>
+    <style name="tableTextBold" parent="@style/tableTextPlain">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">right</item>
+        <item name="android:layout_gravity">left</item>
+    </style>
+
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
