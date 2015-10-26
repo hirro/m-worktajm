@@ -30,6 +30,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
+import com.arnellconsulting.worktajm.preferences.PreferenceUtil;
 import com.arnellconsulting.worktajm.utils.LogService;
 import com.arnellconsulting.worktajm.utils.LoginResponse;
 
@@ -88,6 +89,15 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
                 return false;
             }
         });
+
+        String password = PreferenceUtil.getPassword(getBaseContext());
+        String email = PreferenceUtil.getUsername(getBaseContext());
+        if (password != null) {
+            mPasswordView.setText(password);
+        }
+        if (email != null) {
+            mEmailView.setText(email);
+        }
 
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -303,6 +313,8 @@ public class  LoginActivity extends ActionBarActivity implements LoaderCallbacks
 
                 JSONObject result = future.get(30, TimeUnit.SECONDS);
                 LogService.debug(ACTIVITY_NAME, "Response: " + result.toString());
+                PreferenceUtil.setPassword(getBaseContext(), password);
+                PreferenceUtil.setUsername(getBaseContext(), email);
                 LoginResponse loginResponse = LoginResponse.create(result);
                 if (loginResponse != null) {
                     MySingleton.setLoginResponse(loginResponse);

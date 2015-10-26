@@ -14,9 +14,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ListView;
-
-import com.arnellconsulting.worktajm.adapter.ProjectListAdapter;
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
     private DrawerLayout mDrawer;
@@ -41,8 +38,12 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
         // Find our drawer view
         NavigationView nvDrawer = (NavigationView) findViewById(R.id.nvView);
-        // Setup drawer view
         setupDrawerContent(nvDrawer);
+        MenuItem defaultMenuItem = nvDrawer.getMenu().getItem(0);
+        if (defaultMenuItem != null) {
+            selectDrawerItem(defaultMenuItem);
+        }
+
     }
 
     @Override
