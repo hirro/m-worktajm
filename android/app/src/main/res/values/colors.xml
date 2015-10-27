@@ -20,5 +20,6 @@
     <color name="list_row_end_color">#ffffff</color>
     <color name="list_row_hover_start_color">#ebeef0</color>
     <color name="list_row_hover_end_color">#ebeef0</color>
-    <color name="project_active">#00ff00</color>
+    <color name="project_active">#ff0000</color>
+    <color name="project_inactive">#00ff00</color>
 </resources>

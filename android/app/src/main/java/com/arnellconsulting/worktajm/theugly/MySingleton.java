@@ -11,12 +11,19 @@ import com.android.volley.toolbox.Volley;
 import com.arnellconsulting.worktajm.model.Me;
 import com.arnellconsulting.worktajm.model.Project;
 import com.arnellconsulting.worktajm.model.TimeEntry;
+import com.arnellconsulting.worktajm.storage.MeRepository;
+import com.arnellconsulting.worktajm.storage.TimeEntryRepository;
 import com.arnellconsulting.worktajm.utils.LoginResponse;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
+import org.joda.time.DateTime;
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MySingleton {
     private static MySingleton mInstance;
@@ -56,6 +63,10 @@ public class MySingleton {
             mInstance = new MySingleton(context);
         }
         return mInstance;
+    }
+
+    public static Me getMe() {
+        return me;
     }
 
     public RequestQueue getRequestQueue() {
@@ -114,5 +125,32 @@ public class MySingleton {
             }
         }
         return null;
+    }
+
+    public static void stopTimer() {
+        String timeEntryId = me.getActiveTimeEntryId();
+        if (timeEntryId != null) {
+            TimeEntryRepository timeEntryRepository = new TimeEntryRepository(mCtx);
+            MeRepository meRepository = new MeRepository(mCtx);
+            try {
+                TimeEntry timeEntry = timeEntryRepository.read(timeEntryId).get();
+                if (timeEntry != null) {
+                    timeEntry.setEndTime(DateTime.now());
+                    timeEntryRepository.update(timeEntry);
+                    me.setActiveTimeEntryId(null);
+                    Me me = meRepository.read(null).get();
+                    me.setActiveTimeEntryId(null);
+                    meRepository.update(me);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
