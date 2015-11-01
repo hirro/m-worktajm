@@ -13,21 +13,6 @@
 
     <!-- Login progress -->
 
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar2"
-        android:layout_gravity="right" />
-
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="fill_parent"
@@ -70,16 +55,13 @@
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword" />
 
-            <CheckBox
-                style="@style/WorktajmText"
-                android:text="Remember me"
-                android:id="@+id/rememberMe" />
-
             <Button
                 android:id="@+id/email_sign_in_button"
                 android:nextFocusForward="@+id/email"
-                style="@style/WorktajmLoginButton"
-                android:text="@string/action_sign_in" />
+                android:theme="@style/Worktajm.LoginButton"
+                android:text="@string/action_sign_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <!-- stretching frame layout, using layout_weight -->
             <FrameLayout
@@ -107,13 +89,14 @@
                     android:textStyle="bold" />
                 <Button
                     android:id="@+id/googleLoginButton"
-                    style="@style/WorktajmLoginButton"
+                    android:theme="@style/Worktajm.LoginButton.Blue"
+                    style="@style/Worktajm.LoginButton.Blue"
                     android:text="@string/action_sign_in_with_google" />
 
                 <Button
                     android:id="@+id/facebookLoginButton"
-                    style="@style/WorktajmLoginButton"
-                    android:background="#1020ff"
+                    android:theme="@style/Worktajm.LoginButton.Blue"
+                    style="@style/Worktajm.LoginButton.Blue"
                     android:text="@string/action_sign_in_with_facebook" />
 
 

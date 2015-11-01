@@ -60,7 +60,7 @@
 
     <Button
         android:id="@+id/button"
-        style="@android:style/Theme.Material"
+        android:theme="@style/Worktajm.ProjectButton.Start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

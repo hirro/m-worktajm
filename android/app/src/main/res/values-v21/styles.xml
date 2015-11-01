@@ -1,2 +1,14 @@
-<resources>>
+<resources>
+
+    <style name="WorktajmLoginButtoniii" parent="android:Widget.Material.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:colorButtonNormal">@color/primary</item>
+        <item name="android:textColor">@android:color/white</item>
+        <!--<item name="android:colorControlHighlight">@color/accent</item>-->
+        <!--<item name="android:layout_marginTop">16dp</item>-->
+        <!--<item name="android:textStyle">bold</item>-->
+        <!--<item name="android:focusable">true</item>-->
+        <!--<item name="android:focusableInTouchMode">true</item>-->
+    </style>
 </resources>
